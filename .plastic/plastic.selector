@@ -1,0 +1,4 @@
+repository "VRproj@tj_ihu3025@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
