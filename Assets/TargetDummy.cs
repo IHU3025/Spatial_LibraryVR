@@ -1,25 +1,87 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI; 
 
 public class TargetDummy : MonoBehaviour
 {
    [SerializeField] private int health;  
    [SerializeField] private Animator dummyAnimator;  
-   private int hitTimes;
    [SerializeField] private float reviveDelay = 3f;
-   
-   private bool isAlive = true; // <-- NEW FLAG TO TRACK STATE
+   [SerializeField] private Transform playerTarget; 
+   [SerializeField] private string walkingStateName = "Walking";
+
+   private bool isAlive = true; 
+   private int hitTimes;
+   private NavMeshAgent navMeshAgent;
+   private bool shouldMove = false;
 
    private void Start()
     {
         hitTimes = 0;
-        isAlive = true; // Start alive
+        isAlive = true; 
+        navMeshAgent = GetComponent<NavMeshAgent>();
+
+         if (navMeshAgent == null)
+        {
+            navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
+            navMeshAgent.angularSpeed = 120f;
+            navMeshAgent.acceleration = 8f;
+            navMeshAgent.stoppingDistance = 1.5f; 
+             navMeshAgent.speed = 0f;
+        }  else
+        {
+            navMeshAgent.speed = 0f;
+        }
+
+    }
+
+     private void Update() {
+        if (isAlive && playerTarget != null && IsInWalkingState()) 
+        {
+            shouldMove = true;
+        }
+        else
+        {
+            shouldMove = false;
+        }
+        
+        if (shouldMove) 
+        {
+            if (navMeshAgent.isActiveAndEnabled && navMeshAgent.isStopped)
+            {
+                navMeshAgent.isStopped = false; 
+            }
+            
+            navMeshAgent.speed = 2.0f;
+            navMeshAgent.SetDestination(playerTarget.position);
+            float speed = navMeshAgent.velocity.magnitude;
+            dummyAnimator.SetFloat("Speed", speed);
+        } 
+        else 
+        {
+            if (navMeshAgent.isActiveAndEnabled && !navMeshAgent.isStopped)
+            {
+                navMeshAgent.isStopped = true; 
+                navMeshAgent.speed = 0f;
+            }
+            dummyAnimator.SetFloat("Speed", 0);
+        }
+    }
+      private bool IsInWalkingState()
+    {
+        AnimatorStateInfo stateInfo = dummyAnimator.GetCurrentAnimatorStateInfo(0);
+        
+       
+        if (stateInfo.IsName(walkingStateName)) 
+        {
+            return true;
+        }
+        return false;
     }
 
    private void OnTriggerEnter(Collider other)
    {
-        // ONLY process hits if the dummy is alive and the hit is from a weapon
         if (isAlive && other.gameObject.CompareTag("Weapon")) 
         {
             Debug.Log("Weapon TRIGGER detected on dummy");
@@ -28,7 +90,7 @@ public class TargetDummy : MonoBehaviour
             
             if (hitTimes >= health) 
             {
-                Die(); // Call a separate function to handle death
+                Die(); 
             }
         }
 
@@ -43,8 +105,13 @@ public class TargetDummy : MonoBehaviour
         Debug.Log("Attempting to trigger death animation");
         if (dummyAnimator != null)
         {
-            isAlive = false; // <-- CRITICAL: Set flag to false IMMEDIATELY
+            isAlive = false; 
             dummyAnimator.SetTrigger("Death");
+            if (navMeshAgent != null && navMeshAgent.isActiveAndEnabled)
+            {
+                navMeshAgent.isStopped = true;
+                navMeshAgent.speed = 0f;
+            }            
             Debug.Log("Death trigger set");
             StartCoroutine(ReviveAfterDelay());            
         }
@@ -62,15 +129,16 @@ public class TargetDummy : MonoBehaviour
 
    public void ReviveDummy()
     {
-        // Use the class-level dummyAnimator, don't create a new one
         if (dummyAnimator != null)
         {
             dummyAnimator.SetTrigger("Revive");
             Debug.Log("Revive trigger set");
+            navMeshAgent.isStopped = false;
+
         }
         
         hitTimes = 0;
-        isAlive = true; // <-- CRITICAL: Set flag back to true
+        isAlive = true; 
         Debug.Log("Dummy revived! Hit times reset to 0.");
     }
 
