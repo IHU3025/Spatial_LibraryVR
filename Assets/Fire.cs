@@ -6,7 +6,7 @@ public class Fire : MonoBehaviour
 {
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform spawnPoint;
-    [SerializeField] private float bulletSpeed = 10f;
+    [SerializeField] private float bulletSpeed = 15f;
     
     public void FireBullet()
     {
