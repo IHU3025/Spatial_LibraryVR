@@ -10,7 +10,6 @@ namespace Scenes.script
 
         void Start()
         {
-            // Create laser visual with error handling
             try
             {
                 laser = gameObject.AddComponent<LineRenderer>();
@@ -19,7 +18,6 @@ namespace Scenes.script
                     laser.startWidth = 0.01f;
                     laser.endWidth = 0.01f;
 
-                    // Try different shaders if Sprites/Default fails
                     Shader shader = Shader.Find("Sprites/Default");
                     if (shader == null)
                         shader = Shader.Find("Standard");
@@ -44,11 +42,20 @@ namespace Scenes.script
         void Update()
         {
             UpdateControllerTracking();
-
-            // Only draw laser if it was created successfully
+    
             if (laser != null)
             {
                 DrawLaser();
+            }
+            if (Input.GetKeyDown(KeyCode.T)) {
+                Vector3 camOrigin = Camera.main.transform.position;
+                Vector3 camDir = (new Vector3(0,4,10) - camOrigin).normalized; // point at your mesh
+                Debug.DrawRay(camOrigin, camDir * 30f, Color.blue, 2f);
+                if (Physics.Raycast(camOrigin, camDir, out RaycastHit h, 30f)) {
+                    Debug.Log("Camera ray hit: " + h.collider.name);
+                } else {
+                    Debug.Log("Camera ray hit nothing");
+                }
             }
 
             CheckForInput();
@@ -60,28 +67,34 @@ namespace Scenes.script
 
             if (device.isValid)
             {
-                // Update position from real controller
                 if (device.TryGetFeatureValue(CommonUsages.devicePosition, out Vector3 position))
                 {
-                    transform.localPosition = position;
-                    Debug.Log((isLeftController ? "Left" : "Right") + " Controller Position: " + position);
+                    if (transform.parent != null)
+                    {
+                        transform.localPosition = position;
+                    }
+                    else
+                    {
+                        transform.position = position;
+                    }
                 }
 
-                // Update rotation from real controller
                 if (device.TryGetFeatureValue(CommonUsages.deviceRotation, out Quaternion rotation))
                 {
-                    transform.localRotation = rotation;
+                    if (transform.parent != null)
+                        transform.localRotation = rotation;
+                    else
+                        transform.rotation = rotation;
                 }
             }
             else
             {
-                // Fallback position for testing
                 transform.localPosition =
                     isLeftController ? new Vector3(-0.2f, -0.1f, 0.5f) : new Vector3(0.2f, -0.1f, 0.5f);
-                Debug.LogWarning((isLeftController ? "Left" : "Right") +
-                                 " Controller not detected, using fallback position");
+               
             }
         }
+
 
         void DrawLaser()
         {
@@ -136,28 +149,43 @@ namespace Scenes.script
 
         void ShootRaycast()
         {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 10f))
-            {
-                Debug.Log("Ray hit: " + hit.collider.gameObject.name);
+            Vector3 origin = transform.position;
+            Vector3 dir = Camera.main.transform.forward;
+            float maxDist = 50f;
 
-                // Try to get MeshController and trigger interaction
-                MeshController meshController = hit.collider.GetComponent<MeshController>();
-                if (meshController != null)
-                {
-                    Debug.Log("✅ SUCCESS: Found MeshController on " + hit.collider.name);
-                    meshController.TriggerInteraction();
-                }
-                else
-                {
-                    Debug.LogWarning("No MeshController found on " + hit.collider.name);
-                }
-            }
-            else
+            Debug.DrawRay(origin, dir * maxDist, Color.red, 1f);
+            Debug.Log($"[Ray] origin={origin}, forward={dir}, maxDist={maxDist}");
+
+            RaycastHit[] hits = Physics.RaycastAll(origin, dir, maxDist, ~0, QueryTriggerInteraction.Collide);
+            System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
+            if (hits.Length == 0) { Debug.Log("RaycastAll: no hits"); return; }
+
+            for (int i = 0; i < hits.Length; i++)
             {
-                Debug.Log("Ray hit nothing");
+                var h = hits[i];
+                var go = h.collider.gameObject;
+                Debug.Log($"hit[{i}] name={go.name}, dist={h.distance}, hitPoint={h.point}, layer={LayerMask.LayerToName(go.layer)}, isTrigger={h.collider.isTrigger}");
+                Debug.Log($"   transform.pos={go.transform.position}, transform.parent={(go.transform.parent?go.transform.parent.name:"null")}");
+                var col = h.collider;
+                Debug.Log($"   collider.bounds.center={col.bounds.center}, bounds.size={col.bounds.size}");
+                GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                marker.transform.position = h.point;
+                marker.transform.localScale = Vector3.one * 0.05f;
+                Destroy(marker.GetComponent<Collider>()); Destroy(marker, 2f);
+
+                GameObject centerMark = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                centerMark.transform.position = col.bounds.center;
+                centerMark.transform.localScale = Vector3.one * 0.05f;
+                Destroy(centerMark.GetComponent<Collider>()); Destroy(centerMark, 2f);
             }
+
+            RaycastHit chosen = hits[0];
+            MeshController mc = chosen.collider.GetComponent<MeshController>();
+            if (mc != null) mc.TriggerInteraction();
+            else Debug.LogWarning("Closest hit has no MeshController: " + chosen.collider.name);
         }
+
 
         InputDevice GetInputDevice()
         {

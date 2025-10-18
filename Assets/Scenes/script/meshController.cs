@@ -14,19 +14,17 @@ namespace Scenes.script
 
         void Start()
         {
-            // Add collider for ray detection
             if (GetComponent<Collider>() == null)
             {
                 gameObject.AddComponent<BoxCollider>();
             }
 
-            Debug.Log("Mesh Controller Ready - Manual Raycast Mode");
         }
 
         // PUBLIC method that can be called by raycast
         public void TriggerInteraction()
         {
-            Debug.Log("🎯 PLANE INTERACTION TRIGGERED!");
+            Debug.Log(" PLANE INTERACTION TRIGGERED");
 
             if (!hasChild)
             {
@@ -49,7 +47,7 @@ namespace Scenes.script
                 currentChildPlane = Instantiate(planePrefab);
             }
 
-            currentChildPlane.name = "ChildPlane";
+            currentChildPlane.name = $"{gameObject.name}_Child";
             currentChildPlane.transform.SetParent(transform);
 
             Vector3 spawnPosition = CalculateChainPosition();
@@ -68,14 +66,17 @@ namespace Scenes.script
                 desiredWorldScale.y / parentWorldScale.y,
                 desiredWorldScale.z / parentWorldScale.z
             );
+            Debug.Log($"ACTUAL POSITIONS:");
+            Debug.Log($"- Parent center: {transform.position}");
+            Debug.Log($"- Child center: {currentChildPlane.transform.position}");
 
             currentChildPlane.transform.localScale = requiredLocalScale;
 
             // Add controller to child
-            MeshController childController = currentChildPlane.AddComponent<MeshController>();
-            childController.planePrefab = planePrefab;
-            childController.offsetDistance = offsetDistance;
-            childController.scaleReduction = scaleReduction;
+            //MeshController childController = currentChildPlane.AddComponent<MeshController>();
+            //childController.planePrefab = planePrefab;
+            //childController.offsetDistance = offsetDistance;
+            //childController.scaleReduction = scaleReduction;
 
             Renderer childRenderer = currentChildPlane.GetComponent<Renderer>();
             if (childRenderer != null)
@@ -84,21 +85,66 @@ namespace Scenes.script
             }
 
             hasChild = true;
-            Debug.Log("✅ Spawned child plane");
+            Debug.Log("Spawned child plane");
         }
 
         Vector3 CalculateChainPosition()
         {
             Vector3 direction = transform.TransformDirection(spawnDirection);
-            int depth = 0;
-            Transform current = transform;
-            while (current != null)
+
+            int planeDepth = CountPlanesInChain();
+
+            Debug.Log($"Calculating spawn position:");
+            Debug.Log($"- Direction: {direction}");
+            Debug.Log($"- Plane depth in chain: {planeDepth}");
+            Debug.Log($"- Offset distance: {offsetDistance}");
+            Debug.Log($"- Total offset: {offsetDistance * planeDepth}");
+            Debug.Log($"- From position: {transform.position}");
+
+            float heightAdjustment = CalculateHeightAdjustment();
+            float actualOffset = offsetDistance * (1f / planeDepth);
+
+            Vector3 spawnPos = transform.position + direction * actualOffset;
+            spawnPos.y += heightAdjustment;
+    
+            Debug.Log($"Height adjustment: {heightAdjustment}");
+            Debug.Log($"Adjusted position: {spawnPos}");
+    
+            return spawnPos;
+        }
+        
+        float CalculateHeightAdjustment()
+        {
+            Renderer parentRenderer = GetComponent<Renderer>();
+            Renderer childRenderer = currentChildPlane.GetComponent<Renderer>();
+    
+            if (parentRenderer != null && childRenderer != null)
             {
-                depth++;
+                float parentHeight = parentRenderer.bounds.size.y;
+                float childHeight = childRenderer.bounds.size.y;
+        
+                // Since child is smaller, we need to move it down by half the height difference
+                // to keep the centers aligned horizontally
+                return (childHeight - parentHeight) / 3f;
+            }
+    
+            return 0f;
+        }
+
+
+        int CountPlanesInChain()
+        {
+            int count = 0;
+            Transform current = transform;
+    
+            while (current != null && current.GetComponent<MeshController>() != null)
+            {
+                count++;
+                Debug.Log($"  Plane in chain: {current.name}");
                 current = current.parent;
             }
-
-            return transform.position + direction * (offsetDistance * depth);
+    
+            return count;
         }
 
         void RemoveChildPlane()
@@ -107,7 +153,7 @@ namespace Scenes.script
             {
                 Destroy(currentChildPlane);
                 hasChild = false;
-                Debug.Log("✅ Removed child plane");
+                Debug.Log("Removed child plane");
             }
         }
 

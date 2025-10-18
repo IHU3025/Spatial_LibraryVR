@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3119646740854884174}
   - component: {fileID: 5201954608038830283}
   - component: {fileID: 6328903382051689371}
-  - component: {fileID: 5797794720682418025}
+  - component: {fileID: 3940987811406506687}
   m_Layer: 0
   m_Name: Plane1 1
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &5797794720682418025
+--- !u!114 &3940987811406506687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,11 +93,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3217862749056667533}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dadb74e91f27ff749bf2122fa401fdf4, type: 3}
+  m_Script: {fileID: 11500000, guid: f4744246e0960d44d8017d686cd66a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circlePrefab: {fileID: 4886102947487451388, guid: d2852c571a644b0489466581f2b287f6,
-    type: 3}
-  circleDuration: 0.5
-  circleSize: 0.5
-  circleOffset: 0.01
+  planePrefab: {fileID: 3217862749056667533}
+  offsetDistance: 1.5
+  scaleReduction: {x: 0.5, y: 0.5, z: 0.5}
