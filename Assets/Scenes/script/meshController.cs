@@ -1,27 +1,16 @@
 using UnityEngine;
-using System.Collections.Generic;
-using TMPro;
 
 namespace Scenes.script
 {
     public class MeshController : MonoBehaviour
     {
-        [Header("Plane Settings")] 
-        public GameObject planePrefab;
+        [Header("Plane Settings")] public GameObject planePrefab;
         public float offsetDistance = 3f;
         public Vector3 scaleReduction = new Vector3(0.8f, 1f, 0.8f);
-        
-        [Header("UI Settings")]
-        public GameObject folderUIPrefab;
-        public Vector3 uiOffset = new Vector3(0, 0.2f, 0);
 
         private Vector3 spawnDirection = Vector3.down;
         private GameObject currentChildPlane;
         private bool hasChild = false;
-        
-        // ADD THESE FOLDER DATA FIELDS:
-        private FolderData currentFolderData;
-        private GameObject folderUI;
 
         void Start()
         {
@@ -29,34 +18,7 @@ namespace Scenes.script
             {
                 gameObject.AddComponent<BoxCollider>();
             }
-        }
 
-        // ADD THIS METHOD: Set folder data for this plane
-        public void SetFolderData(FolderData folderData)
-        {
-            currentFolderData = folderData;
-            
-            // Create UI to show folder name
-            if (folderUIPrefab != null && currentFolderData != null)
-            {
-                CreateFolderUI();
-            }
-        }
-
-        void CreateFolderUI()
-        {
-            if (folderUIPrefab == null || currentFolderData == null) return;
-            
-            folderUI = Instantiate(folderUIPrefab, transform);
-            folderUI.transform.localPosition = uiOffset;
-            folderUI.transform.rotation = Quaternion.identity;
-            
-            // Update text with folder name
-            TextMeshPro textMesh = folderUI.GetComponentInChildren<TextMeshPro>();
-            if (textMesh != null)
-            {
-                textMesh.text = currentFolderData.folderName;
-            }
         }
 
         // PUBLIC method that can be called by raycast
@@ -64,49 +26,13 @@ namespace Scenes.script
         {
             Debug.Log(" PLANE INTERACTION TRIGGERED");
 
-            // MODIFIED: Check if this is a content folder or subfolder
-            if (currentFolderData != null && currentFolderData.IsLeafFolder)
+            if (!hasChild)
             {
-                // LAST LEVEL: Show content
-                DisplayContent();
+                SpawnChildPlane();
             }
             else
             {
-                // SUBFOLDER LEVEL: Spawn/remove child
-                if (!hasChild)
-                {
-                    SpawnChildPlane();
-                }
-                else
-                {
-                    RemoveChildPlane();
-                }
-            }
-        }
-
-        // ADD THIS METHOD: Display content for leaf folders
-        void DisplayContent()
-        {
-            Debug.Log($"Showing content for: {currentFolderData.folderName}");
-            
-            if (currentFolderData.HasContent)
-            {
-                foreach (string contentItem in currentFolderData.contentItems)
-                {
-                    Debug.Log($" - {contentItem}");
-                    // Here you would load and display actual photos/files
-                }
-                
-                // Visual feedback for content mode
-                Renderer renderer = GetComponent<Renderer>();
-                if (renderer != null)
-                {
-                    renderer.material.color = Color.cyan;
-                }
-            }
-            else
-            {
-                Debug.Log("No content in this folder");
+                RemoveChildPlane();
             }
         }
 
@@ -140,11 +66,17 @@ namespace Scenes.script
                 desiredWorldScale.y / parentWorldScale.y,
                 desiredWorldScale.z / parentWorldScale.z
             );
+            Debug.Log($"ACTUAL POSITIONS:");
+            Debug.Log($"- Parent center: {transform.position}");
+            Debug.Log($"- Child center: {currentChildPlane.transform.position}");
 
             currentChildPlane.transform.localScale = requiredLocalScale;
 
-            // MODIFIED: Setup child with folder data
-            SetupChildPlane();
+            // Add controller to child
+            //MeshController childController = currentChildPlane.AddComponent<MeshController>();
+            //childController.planePrefab = planePrefab;
+            //childController.offsetDistance = offsetDistance;
+            //childController.scaleReduction = scaleReduction;
 
             Renderer childRenderer = currentChildPlane.GetComponent<Renderer>();
             if (childRenderer != null)
@@ -154,25 +86,6 @@ namespace Scenes.script
 
             hasChild = true;
             Debug.Log("Spawned child plane");
-        }
-
-        // ADD THIS METHOD: Setup child plane with folder data
-        void SetupChildPlane()
-        {
-            // Add controller to child
-            MeshController childController = currentChildPlane.AddComponent<MeshController>();
-            childController.planePrefab = planePrefab;
-            childController.offsetDistance = offsetDistance;
-            childController.scaleReduction = scaleReduction;
-            childController.folderUIPrefab = folderUIPrefab;
-            childController.uiOffset = uiOffset;
-
-            // Pass folder data to child (first subfolder)
-            if (currentFolderData != null && currentFolderData.HasSubfolders)
-            {
-                FolderData firstSubfolder = currentFolderData.subfolders[0];
-                childController.SetFolderData(firstSubfolder);
-            }
         }
 
         Vector3 CalculateChainPosition()
@@ -210,11 +123,14 @@ namespace Scenes.script
                 float parentHeight = parentRenderer.bounds.size.y;
                 float childHeight = childRenderer.bounds.size.y;
         
+                // Since child is smaller, we need to move it down by half the height difference
+                // to keep the centers aligned horizontally
                 return (childHeight - parentHeight) / 3f;
             }
     
             return 0f;
         }
+
 
         int CountPlanesInChain()
         {

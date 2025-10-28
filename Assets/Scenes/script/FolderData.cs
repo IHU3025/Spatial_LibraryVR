@@ -1,26 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using System.Collections.Generic;  // Add this line!
 
-namespace Scenes.script
+[System.Serializable]
+public class FolderData
 {
-    [System.Serializable]
-    public class FolderData
+    public string folderName;
+    public string folderPath;
+    public List<FolderData> subfolders;
+    public List<string> files; // Optional: if you want to show files too
+    
+    public FolderData(string name, string path)
     {
-        public string folderName;
-        public string folderPath;
-        public List<FolderData> subfolders;  // This needs System.Collections.Generic
-        public List<string> contentItems;    // This also needs it
-        
-        public bool HasContent => contentItems != null && contentItems.Count > 0;
-        public bool HasSubfolders => subfolders != null && subfolders.Count > 0;
-        public bool IsLeafFolder => !HasSubfolders;
-
-        public FolderData(string name, string path)
-        {
-            folderName = name;
-            folderPath = path;
-            subfolders = new List<FolderData>();
-            contentItems = new List<string>();
-        }
+        folderName = name;
+        folderPath = path;
+        subfolders = new List<FolderData>();
+        files = new List<string>();
     }
 }
