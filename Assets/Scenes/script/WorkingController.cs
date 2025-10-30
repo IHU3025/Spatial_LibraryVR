@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.XR;
+using System.Collections.Generic;
 
 namespace Scenes.script
 {
@@ -42,18 +43,23 @@ namespace Scenes.script
         void Update()
         {
             UpdateControllerTracking();
-    
+
             if (laser != null)
             {
                 DrawLaser();
             }
-            if (Input.GetKeyDown(KeyCode.T)) {
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
                 Vector3 camOrigin = Camera.main.transform.position;
-                Vector3 camDir = (new Vector3(0,4,10) - camOrigin).normalized; // point at your mesh
+                Vector3 camDir = (new Vector3(0, 4, 10) - camOrigin).normalized; 
                 Debug.DrawRay(camOrigin, camDir * 30f, Color.blue, 2f);
-                if (Physics.Raycast(camOrigin, camDir, out RaycastHit h, 30f)) {
+                if (Physics.Raycast(camOrigin, camDir, out RaycastHit h, 30f))
+                {
                     Debug.Log("Camera ray hit: " + h.collider.name);
-                } else {
+                }
+                else
+                {
                     Debug.Log("Camera ray hit nothing");
                 }
             }
@@ -91,10 +97,8 @@ namespace Scenes.script
             {
                 transform.localPosition =
                     isLeftController ? new Vector3(-0.2f, -0.1f, 0.5f) : new Vector3(0.2f, -0.1f, 0.5f);
-               
             }
         }
-
 
         void DrawLaser()
         {
@@ -129,13 +133,13 @@ namespace Scenes.script
                 // Also check trigger value (analog)
                 if (device.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
                 {
-                    if (triggerValue > 0.1f) // Lower threshold
+                    if (triggerValue > 0.1f) 
                     {
                         Debug.Log((isLeftController ? "Left" : "Right") + " TRIGGER VALUE: " + triggerValue);
                     }
                 }
 
-                // Check other buttons too
+               
                 if (device.TryGetFeatureValue(CommonUsages.primaryButton, out bool primary) && primary)
                 {
                     Debug.Log((isLeftController ? "Left" : "Right") + " PRIMARY BUTTON!");
@@ -150,46 +154,122 @@ namespace Scenes.script
         void ShootRaycast()
         {
             Vector3 origin = transform.position;
-            Vector3 dir = Camera.main.transform.forward;
+            Vector3 dir = Camera.main.transform.forward; 
             float maxDist = 50f;
 
             Debug.DrawRay(origin, dir * maxDist, Color.red, 1f);
             Debug.Log($"[Ray] origin={origin}, forward={dir}, maxDist={maxDist}");
 
             RaycastHit[] hits = Physics.RaycastAll(origin, dir, maxDist, ~0, QueryTriggerInteraction.Collide);
-            System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
-
-            if (hits.Length == 0) { Debug.Log("RaycastAll: no hits"); return; }
-
+            
+            if (hits.Length == 0)
+            {
+                Debug.Log("RaycastAll: no hits");
+                return;
+            }
+            
+            List<RaycastHit> validHits = new List<RaycastHit>();
             for (int i = 0; i < hits.Length; i++)
             {
                 var h = hits[i];
                 var go = h.collider.gameObject;
+                
+                if (go.name.Contains("Controller") || go.name.Contains("Hand")) 
+                {
+                    continue;
+                }
+                
                 Debug.Log($"hit[{i}] name={go.name}, dist={h.distance}, hitPoint={h.point}, layer={LayerMask.LayerToName(go.layer)}, isTrigger={h.collider.isTrigger}");
-                Debug.Log($"   transform.pos={go.transform.position}, transform.parent={(go.transform.parent?go.transform.parent.name:"null")}");
-                var col = h.collider;
-                Debug.Log($"   collider.bounds.center={col.bounds.center}, bounds.size={col.bounds.size}");
+                Debug.Log($"   transform.pos={go.transform.position}, transform.parent={(go.transform.parent ? go.transform.parent.name : "null")}");
+                
+                validHits.Add(h);
+
                 GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
                 marker.transform.position = h.point;
                 marker.transform.localScale = Vector3.one * 0.05f;
-                Destroy(marker.GetComponent<Collider>()); Destroy(marker, 2f);
-
-                GameObject centerMark = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                centerMark.transform.position = col.bounds.center;
-                centerMark.transform.localScale = Vector3.one * 0.05f;
-                Destroy(centerMark.GetComponent<Collider>()); Destroy(centerMark, 2f);
+                Destroy(marker.GetComponent<Collider>());
+                Destroy(marker, 2f);
             }
 
-            RaycastHit chosen = hits[0];
-            MeshController mc = chosen.collider.GetComponent<MeshController>();
-            if (mc != null) mc.TriggerInteraction();
-            else Debug.LogWarning("Closest hit has no MeshController: " + chosen.collider.name);
-        }
+            if (validHits.Count == 0)
+            {
+                Debug.Log("No valid hits after filtering");
+                return;
+            }
 
+            validHits.Sort((a, b) => a.distance.CompareTo(b.distance));
+            RaycastHit chosen = validHits[0];
+            GameObject hitObject = chosen.collider.gameObject;
+
+            Debug.Log($"Processing interaction with: {hitObject.name}");
+
+            // moved the subpanel handleing logic here 
+            SubPanelController subPanel = hitObject.GetComponent<SubPanelController>();
+            if (subPanel != null)
+            {
+                subPanel.SelectPanel();
+
+                MeshController mainPanel = FindMainPanel(hitObject.transform);
+                if (mainPanel != null)
+                {
+                    string subpanelPath = subPanel.GetFolderPath();
+                    Debug.Log($"Subpanel path: '{subpanelPath}', Main panel current path: '{mainPanel.folderPath}'");
+                    
+                    if (!mainPanel.hasChild)
+                    {
+                        mainPanel.folderPath = subpanelPath;
+                        Debug.Log($"Setting main panel path to: {subpanelPath}");
+                        mainPanel.SpawnChildPlane();
+                    }
+                    else
+                    {
+                        mainPanel.RemoveChildPlane();
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("No main panel found for subpanel");
+                }
+                return;
+            }
+
+            // Handle main panel
+            MeshController meshController = hitObject.GetComponent<MeshController>();
+            if (meshController != null)
+            {
+                if (!meshController.hasChild)
+                {
+                    Debug.Log("Select a subpanel to proceed");
+                }
+                else
+                {
+                    meshController.RemoveChildPlane();
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"No MeshController found on {hitObject.name}");
+            }
+        }
 
         InputDevice GetInputDevice()
         {
             return InputDevices.GetDeviceAtXRNode(isLeftController ? XRNode.LeftHand : XRNode.RightHand);
+        }
+
+        MeshController FindMainPanel(Transform start)
+        {
+            Transform current = start;
+            while (current != null)
+            {
+                MeshController mc = current.GetComponent<MeshController>();
+                if (mc != null && mc.GetComponent<SubPanelController>() == null)
+                {
+                    return mc;
+                }
+                current = current.parent;
+            }
+            return null;
         }
     }
 }
