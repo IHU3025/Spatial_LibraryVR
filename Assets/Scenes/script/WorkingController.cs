@@ -8,6 +8,7 @@ namespace Scenes.script
     {
         public bool isLeftController = true;
         private LineRenderer laser;
+        private bool triggerWasPressed = false;
 
         void Start()
         {
@@ -42,27 +43,32 @@ namespace Scenes.script
 
         void Update()
         {
-            UpdateControllerTracking();
+            /* 
+             * Let XR Interaction Toolkit handle controller tracking instead of doing it manually 
+             * ActionBasedController already does this.
+             */
+            // UpdateControllerTracking();
 
             if (laser != null)
             {
                 DrawLaser();
             }
 
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                Vector3 camOrigin = Camera.main.transform.position;
-                Vector3 camDir = (new Vector3(0, 4, 10) - camOrigin).normalized; 
-                Debug.DrawRay(camOrigin, camDir * 30f, Color.blue, 2f);
-                if (Physics.Raycast(camOrigin, camDir, out RaycastHit h, 30f))
-                {
-                    Debug.Log("Camera ray hit: " + h.collider.name);
-                }
-                else
-                {
-                    Debug.Log("Camera ray hit nothing");
-                }
-            }
+            /* Caused program to crash with VIVE Focus Vision */
+            // if (Input.GetKeyDown(KeyCode.T))
+            // {
+            //     Vector3 camOrigin = Camera.main.transform.position;
+            //     Vector3 camDir = (new Vector3(0, 4, 10) - camOrigin).normalized; 
+            //     Debug.DrawRay(camOrigin, camDir * 30f, Color.blue, 2f);
+            //     if (Physics.Raycast(camOrigin, camDir, out RaycastHit h, 30f))
+            //     {
+            //         Debug.Log("Camera ray hit: " + h.collider.name);
+            //     }
+            //     else
+            //     {
+            //         Debug.Log("Camera ray hit nothing");
+            //     }
+            // }
 
             CheckForInput();
         }
@@ -123,22 +129,23 @@ namespace Scenes.script
                 // Check for trigger press
                 if (device.TryGetFeatureValue(CommonUsages.triggerButton, out bool triggerPressed))
                 {
-                    if (triggerPressed)
+                    if (triggerPressed && !triggerWasPressed)
                     {
                         Debug.Log((isLeftController ? "Left" : "Right") + " TRIGGER PRESSED!");
                         ShootRaycast();
                     }
+                    triggerWasPressed = triggerPressed;
                 }
 
+                /* Unneeded */
                 // Also check trigger value (analog)
-                if (device.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
-                {
-                    if (triggerValue > 0.1f) 
-                    {
-                        Debug.Log((isLeftController ? "Left" : "Right") + " TRIGGER VALUE: " + triggerValue);
-                    }
-                }
-
+                // if (device.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
+                // {
+                //     if (triggerValue > 0.1f) 
+                //     {
+                //         Debug.Log((isLeftController ? "Left" : "Right") + " TRIGGER VALUE: " + triggerValue);
+                //     }
+                // }
                
                 if (device.TryGetFeatureValue(CommonUsages.primaryButton, out bool primary) && primary)
                 {
@@ -154,7 +161,7 @@ namespace Scenes.script
         void ShootRaycast()
         {
             Vector3 origin = transform.position;
-            Vector3 dir = Camera.main.transform.forward; 
+            Vector3 dir = transform.forward; 
             float maxDist = 50f;
 
             Debug.DrawRay(origin, dir * maxDist, Color.red, 1f);
