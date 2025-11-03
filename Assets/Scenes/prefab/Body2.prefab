@@ -1102,6 +1102,7 @@ GameObject:
   - component: {fileID: 6261455902404193935}
   - component: {fileID: 322780791643335950}
   - component: {fileID: 1607978918217929701}
+  - component: {fileID: 2737892943103092634}
   m_Layer: 0
   m_Name: Body45
   m_TagString: Untagged
@@ -1210,6 +1211,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   folderPath: 
   isSelected: 0
+--- !u!114 &2737892943103092634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4232796765412913903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2bfade9a5c55b499b9628fda995e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
+    type: 3}
+  imageTexture: {fileID: 2800000, guid: 7ed0db5a1ea7c0341bea381c992c6735, type: 3}
+  worldOffset: -0.001
+  rotaionZ: -10
+  scaleMultiplier: 4.5
 --- !u!1 &4717274878089085487
 GameObject:
   m_ObjectHideFlags: 0
