@@ -10,11 +10,9 @@ public class CardQuadSpawner : MonoBehaviour
     public float worldOffset = -0.001f;
     private Camera targetCamera;
 
-    [Tooltip("Hard coded the rotation and scaling cuz i couldn't figure out the correct calculation")]
+    //Hard coded the rotation and scaling 
     public float rotaionZ = -10.0f; 
     public float scaleMultiplier = 4.5f; 
-
-
     GameObject spawnedQuad;
 
     void Start()
@@ -32,9 +30,6 @@ public class CardQuadSpawner : MonoBehaviour
                 targetCamera = Camera.main;
             }
         }
-
-
-
           if (targetCamera == null)
         {
             Debug.LogError("[CardQuadSpawner] No camera found for spawning quad.");
@@ -48,13 +43,11 @@ public class CardQuadSpawner : MonoBehaviour
     
     public GameObject SpawnQuadInFrontOfCard(GameObject quadPrefab, Texture tex, Camera cam, float offsetWorld)
     {
-        if (quadPrefab == null) { Debug.LogError("[CardQuadSpawner] quadPrefab is null."); return null; }
-        if (cam == null) cam = Camera.main;
-        if (cam == null) { Debug.LogError("[CardQuadSpawner] No camera available."); return null; }
-        Renderer r = GetComponent<Renderer>();
-        if (r == null) { Debug.LogError("[CardQuadSpawner] No Renderer on card object."); return null; }
-
+        if (quadPrefab == null || cam == null) return null;
         //get 8 corner of boundng box
+        var r = GetComponent<Renderer>();
+        if (r == null) return null;
+
         Bounds b = r.bounds;
         Vector3 c = b.center;
         Vector3 e = b.extents;
@@ -64,7 +57,6 @@ public class CardQuadSpawner : MonoBehaviour
                 for (int sz = -1; sz <= 1; sz += 2)
                     corners.Add(c + new Vector3(sx * e.x, sy * e.y, sz * e.z));
 
-        // pick top-4 corners visible to camera (closest along camera forward)
         var cornerScores = new List<(Vector3 pos, float score)>(8);
         for (int i = 0; i < corners.Count; i++)
         {
@@ -75,12 +67,18 @@ public class CardQuadSpawner : MonoBehaviour
         var front4 = new List<Vector3>(4);
         for (int i = 0; i < 4; i++) front4.Add(cornerScores[i].pos);
 
-        // center of the 4 corners (world)
+        foreach (var v in front4)
+            Debug.DrawLine(v, v + Vector3.up * 0.05f, Color.green, 20f);
+
+        
+
+
+
         Vector3 frontCenterWorld = Vector3.zero;
         foreach (var v in front4) frontCenterWorld += v;
         frontCenterWorld /= front4.Count;
 
-        // compute world width/height by projecting onto card's right/up axes
+
         Vector3 worldRight = transform.right;
         Vector3 worldUp = transform.up;
 
@@ -90,9 +88,9 @@ public class CardQuadSpawner : MonoBehaviour
 
         foreach (var v in front4)
         {
-            Vector3 rel = v - frontCenterWorld;               // project relative to center
-            float rProj = Vector3.Dot(rel, worldRight);      // local-right coordinate
-            float uProj = Vector3.Dot(rel, worldUp);         // local-up coordinate
+            Vector3 rel = v - frontCenterWorld;               
+            float rProj = Vector3.Dot(rel, worldRight);      
+            float uProj = Vector3.Dot(rel, worldUp);       
             rProjs.Add(rProj); uProjs.Add(uProj);
 
             if (rProj < minR) minR = rProj;
@@ -103,44 +101,41 @@ public class CardQuadSpawner : MonoBehaviour
 
         float worldWidth = Mathf.Max(0.0001f, maxR - minR);
         float worldHeight = Mathf.Max(0.0001f, maxU - minU);
-        Debug.Log($"Calculated world size: {worldWidth}x{worldHeight}");
 
-        // FIX 1: Correct outward direction - quad should be BETWEEN card and camera
+        if (worldWidth < 0.01f && worldHeight > 0.1f)
+        {
+            Debug.LogWarning($"Degenerate width detected on '{name}' — falling back to bounds.size.x");
+            worldWidth = r.bounds.size.x;
+        }
+        Debug.DrawLine(frontCenterWorld, worldRight * 0.1f, Color.red, 10f);
+        Debug.DrawLine(frontCenterWorld, worldUp * 0.1f, Color.blue, 10f);
+
         Vector3 toCamera = (cam.transform.position - frontCenterWorld).normalized;
         
         Debug.Log($"toCamera: {toCamera.magnitude}");
 
 
-        // Use the card's forward direction that points TOWARD the camera
         float dotForward = Vector3.Dot(transform.forward, toCamera);
         float dotBackward = Vector3.Dot(-transform.forward, toCamera);
         
         Vector3 outwardTowardCamera = (dotForward > dotBackward) ? transform.forward : -transform.forward;
-        
-        // FIX 2: Position quad BETWEEN card and camera
         Vector3 quadWorldPos = frontCenterWorld + outwardTowardCamera * offsetWorld;
 
       
 
-        // instantiate quad (destroy any old)
         if (spawnedQuad != null) Destroy(spawnedQuad);
         spawnedQuad = Instantiate(quadPrefab);
         spawnedQuad.name = $"{name}_FrontQuad";
-
-        // Parent to card but we'll compute local transforms explicitly
         spawnedQuad.transform.SetParent(transform, false);
-
-        // set local position/rotation
         spawnedQuad.transform.localPosition = transform.InverseTransformPoint(quadWorldPos);
 
-        // FIX 4: Better scale calculation - use world size directly
         Vector3 lossy = transform.lossyScale;
         
-        // Calculate what local scale would give us the desired world size
-        // Since quad is 1x1 units by default, we need to scale it to match our calculated size
         float localScaleX = worldWidth / Mathf.Max(1e-8f, lossy.x);
         float localScaleY = worldHeight / Mathf.Max(1e-8f, lossy.y);
         
+    
+
         float uniformLocal = Mathf.Max(localScaleX, localScaleY);
         
         uniformLocal *= scaleMultiplier;
@@ -154,6 +149,9 @@ public class CardQuadSpawner : MonoBehaviour
 
         float scaledOffset = Mathf.Clamp(0.00094f * (4f / safeDist), 0.001f, 0.2f);
         child.localPosition = new Vector3(0f, scaledOffset, 0f);
+        if(rotaionZ == 0){
+            child.localPosition += new Vector3(0f, -0.014f, 0f);
+        }
 
         Debug.Log($"Final local scale: {uniformLocal} (from world size {worldWidth}x{worldHeight})");
       
