@@ -1,11 +1,10 @@
 using UnityEngine;
 using UnityEngine.XR;
-// using UnityEngine.XR.Hands;
 using System.Collections.Generic;
 
 namespace Scenes.script
 {
-    public class GazePinchController : MonoBehaviour
+    public class GazeGripController : MonoBehaviour
     {
         [Header("Gaze Settings")]
         public Camera gazeCamera;
@@ -37,7 +36,7 @@ namespace Scenes.script
             SetupGazeIndicator();
             SetupReticle();
             
-            Debug.Log("GazePinchController initialized");
+            Debug.Log("GazeGripController initialized");
         }
 
         void SetupGazeIndicator()
