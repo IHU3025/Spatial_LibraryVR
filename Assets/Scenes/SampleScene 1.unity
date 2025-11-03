@@ -884,6 +884,7 @@ GameObject:
   - component: {fileID: 308484595}
   - component: {fileID: 308484594}
   - component: {fileID: 308484593}
+  - component: {fileID: 308484597}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1118,6 +1119,26 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &308484597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308484591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a05ee6ef970f409abb46d0b68015435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gazeCamera: {fileID: 308484596}
+  gazeMaxDistance: 50
+  gazeIndicator: {fileID: 0}
+  handNode: 5
+  pinchThreshold: 0.7
+  gazeReticle: {fileID: 0}
+  reticleDistance: 2
+  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &407861027
 GameObject:
   m_ObjectHideFlags: 0
