@@ -1126,7 +1126,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308484591}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b5eebc75ee1c4d76af85e00dd30c65d, type: 3}
   m_Name: 
@@ -1548,6 +1548,7 @@ GameObject:
   - component: {fileID: 1808708884}
   - component: {fileID: 1808708883}
   - component: {fileID: 1808708882}
+  - component: {fileID: 1808708890}
   m_Layer: 7
   m_Name: XR Origin
   m_TagString: Untagged
@@ -1744,6 +1745,26 @@ Transform:
   - {fileID: 235099505}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1808708890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808708881}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bbaacd8a830e4f4ea942a744e752702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useLeftHand: 0
+  useRightHand: 1
+  rayDistance: 5
+  rayOffset: 0.05
+  pinchThreshold: 0.03
+  showHandRay: 1
+  rayColor: {r: 0, g: 1, b: 1, a: 1}
+  verboseLogging: 1
 --- !u!1 &1839885509
 GameObject:
   m_ObjectHideFlags: 0
