@@ -1076,8 +1076,8 @@ Camera:
   m_GameObject: {fileID: 308484591}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.49803925, g: 0.49803925, b: 0.49803925, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1421,6 +1421,37 @@ MonoBehaviour:
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
+--- !u!1 &1107115358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1107115360}
+  m_Layer: 0
+  m_Name: PlaneMotionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1107115360
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107115358}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.89, y: 3.9281354, z: -2.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1234382665
 GameObject:
   m_ObjectHideFlags: 0
@@ -3069,7 +3100,7 @@ Transform:
   m_GameObject: {fileID: 5460375835596774006}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -4.46, y: -1.91, z: 16.17}
+  m_LocalPosition: {x: -4.46, y: -1.9, z: 16.17}
   m_LocalScale: {x: 100.00004, y: 100.00002, z: 100.00002}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3881,7 +3912,7 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 2800000, guid: 7709fa15c4cfe7c44a2d0523cc3eefe2, type: 3}
-  worldOffset: -0.001
+  worldOffset: -0.17
   rotaionZ: -5
   scaleMultiplier: 4.5
 --- !u!33 &7350635618703766467
@@ -3943,7 +3974,7 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 2800000, guid: 10a828b87e5618645922800cba7c88cc, type: 3}
-  worldOffset: -0.001
+  worldOffset: -0.17
   rotaionZ: 5
   scaleMultiplier: 4.5
 --- !u!33 &7537473765841091157
@@ -4269,7 +4300,7 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 2800000, guid: c698aa83761bbdb48b624a30c5d4399b, type: 3}
-  worldOffset: -0.001
+  worldOffset: -0.17
   rotaionZ: -5
   scaleMultiplier: 4.5
 --- !u!4 &7984056546595103825
@@ -4423,8 +4454,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 0}
   imageTexture: {fileID: 0}
-  worldOffset: 0.01
-  rotaionZ: -5
+  worldOffset: -0.001
+  rotaionZ: -10
   scaleMultiplier: 4
 --- !u!4 &8317399691084982829
 Transform:
@@ -4683,7 +4714,7 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 2800000, guid: ca78d12301d17314e9c4de3084118770, type: 3}
-  worldOffset: 0
+  worldOffset: -0.17
   rotaionZ: 0
   scaleMultiplier: 4.5
 --- !u!1 &8679023187569240829
@@ -5096,3 +5127,4 @@ SceneRoots:
   - {fileID: 991394196}
   - {fileID: 1234382667}
   - {fileID: 3249780812612270903}
+  - {fileID: 1107115360}

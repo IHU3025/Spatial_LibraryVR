@@ -7,7 +7,7 @@ public class CardQuadSpawner : MonoBehaviour
 {
     public GameObject quadPrefab;
     public Texture imageTexture;
-    public float worldOffset = -0.001f;
+    public float worldOffset = -0.167f;
     private Camera targetCamera;
 
     //Hard coded the rotation and scaling 
@@ -37,142 +37,125 @@ public class CardQuadSpawner : MonoBehaviour
         }
 
 
-        SpawnQuadInFrontOfCard(quadPrefab, imageTexture, targetCamera, worldOffset);
+        SpawnQuadInFrontOfCard(quadPrefab, imageTexture, 0.01f);
     }
 
     
-    public GameObject SpawnQuadInFrontOfCard(GameObject quadPrefab, Texture tex, Camera cam, float offsetWorld)
+    public GameObject SpawnQuadInFrontOfCard(GameObject quadPrefab, Texture tex, float localZOffset = 0.01f)
     {
-        if (quadPrefab == null || cam == null) return null;
-        //get 8 corner of boundng box
+        if (quadPrefab == null) return null;
+        
         var r = GetComponent<Renderer>();
         if (r == null) return null;
 
         Bounds b = r.bounds;
         Vector3 c = b.center;
         Vector3 e = b.extents;
+        
+        // Get the 8 corners of the bounding box
         var corners = new List<Vector3>(8);
         for (int sx = -1; sx <= 1; sx += 2)
             for (int sy = -1; sy <= 1; sy += 2)
                 for (int sz = -1; sz <= 1; sz += 2)
                     corners.Add(c + new Vector3(sx * e.x, sy * e.y, sz * e.z));
 
+        // plane's foward direction
+        Vector3 outwardDirection = transform.forward;
+        
+        // Find the front face corners 
         var cornerScores = new List<(Vector3 pos, float score)>(8);
         for (int i = 0; i < corners.Count; i++)
         {
-            float score = Vector3.Dot(corners[i] - cam.transform.position, -cam.transform.forward);
+            // Score by how much they're in the outward direction from center
+            // Score by how much they're in the outward direction from center
+            Vector3 toCorner = (corners[i] - c).normalized;
+            float score = Vector3.Dot(toCorner, outwardDirection);
             cornerScores.Add((corners[i], score));
         }
+        
+        // Sort by highest score (most outward)
         cornerScores.Sort((a, b) => b.score.CompareTo(a.score));
+        
+        // Take the front 4 corners
         var front4 = new List<Vector3>(4);
         for (int i = 0; i < 4; i++) front4.Add(cornerScores[i].pos);
-
-        foreach (var v in front4)
-            Debug.DrawLine(v, v + Vector3.up * 0.05f, Color.green, 20f);
-
-        
-
-
 
         Vector3 frontCenterWorld = Vector3.zero;
         foreach (var v in front4) frontCenterWorld += v;
         frontCenterWorld /= front4.Count;
 
+        Vector3 localRight = Vector3.right;
+        Vector3 localUp = Vector3.up;
 
-        Vector3 worldRight = transform.right;
-        Vector3 worldUp = transform.up;
+        Vector3 frontCenterLocal = transform.InverseTransformPoint(frontCenterWorld);
 
         float minR = float.PositiveInfinity, maxR = float.NegativeInfinity;
         float minU = float.PositiveInfinity, maxU = float.NegativeInfinity;
-        List<float> rProjs = new List<float>(4), uProjs = new List<float>(4);
 
-        foreach (var v in front4)
+        foreach (var worldCorner in front4)
         {
-            Vector3 rel = v - frontCenterWorld;               
-            float rProj = Vector3.Dot(rel, worldRight);      
-            float uProj = Vector3.Dot(rel, worldUp);       
-            rProjs.Add(rProj); uProjs.Add(uProj);
-
+            Vector3 localCorner = transform.InverseTransformPoint(worldCorner);
+            Vector3 rel = localCorner - frontCenterLocal;
+            
+            float rProj = Vector3.Dot(rel, localRight);
+            float uProj = Vector3.Dot(rel, localUp);
+            
             if (rProj < minR) minR = rProj;
             if (rProj > maxR) maxR = rProj;
             if (uProj < minU) minU = uProj;
             if (uProj > maxU) maxU = uProj;
         }
 
-        float worldWidth = Mathf.Max(0.0001f, maxR - minR);
-        float worldHeight = Mathf.Max(0.0001f, maxU - minU);
+        float localWidth = Mathf.Max(0.0001f, maxR - minR);
+        float localHeight = Mathf.Max(0.0001f, maxU - minU);
 
-        if (worldWidth < 0.01f && worldHeight > 0.1f)
+        if (localWidth < 0.01f && localHeight > 0.1f)
         {
-            Debug.LogWarning($"Degenerate width detected on '{name}' — falling back to bounds.size.x");
-            worldWidth = r.bounds.size.x;
+            Debug.LogWarning($"Degenerate width detected on '{name}' — falling back to local bounds");
+            localWidth = transform.localScale.x * 0.1f; 
         }
-        Debug.DrawLine(frontCenterWorld, worldRight * 0.1f, Color.red, 10f);
-        Debug.DrawLine(frontCenterWorld, worldUp * 0.1f, Color.blue, 10f);
 
-        Vector3 toCamera = (cam.transform.position - frontCenterWorld).normalized;
-        
-        Debug.Log($"toCamera: {toCamera.magnitude}");
+        Vector3 quadLocalPos = frontCenterLocal + new Vector3(0, 0, localZOffset);
 
-
-        float dotForward = Vector3.Dot(transform.forward, toCamera);
-        float dotBackward = Vector3.Dot(-transform.forward, toCamera);
-        
-        Vector3 outwardTowardCamera = (dotForward > dotBackward) ? transform.forward : -transform.forward;
-        Vector3 quadWorldPos = frontCenterWorld + outwardTowardCamera * offsetWorld;
-
-      
-
+        // spawning
         if (spawnedQuad != null) Destroy(spawnedQuad);
+        
         spawnedQuad = Instantiate(quadPrefab);
         spawnedQuad.name = $"{name}_FrontQuad";
         spawnedQuad.transform.SetParent(transform, false);
-        spawnedQuad.transform.localPosition = transform.InverseTransformPoint(quadWorldPos);
+        spawnedQuad.transform.localPosition = quadLocalPos;
 
-        Vector3 lossy = transform.lossyScale;
-        
-        float localScaleX = worldWidth / Mathf.Max(1e-8f, lossy.x);
-        float localScaleY = worldHeight / Mathf.Max(1e-8f, lossy.y);
-        
-    
-
-        float uniformLocal = Mathf.Max(localScaleX, localScaleY);
-        
-        uniformLocal *= scaleMultiplier;
-        
-        spawnedQuad.transform.localScale = new Vector3(uniformLocal, uniformLocal, uniformLocal);
+        // Calculate scale 
+        float uniformLocalScale = Mathf.Max(localWidth, localHeight) * scaleMultiplier;
+        spawnedQuad.transform.localScale = new Vector3(uniformLocalScale, uniformLocalScale, uniformLocalScale);
         spawnedQuad.transform.localRotation = Quaternion.Euler(0f, 0f, rotaionZ);
 
         Transform child = spawnedQuad.transform.GetChild(0);
-
-        float safeDist = Mathf.Max(0.01f, toCamera.magnitude);
-
-        float scaledOffset = Mathf.Clamp(0.00094f * (4f / safeDist), 0.001f, 0.2f);
-        child.localPosition = new Vector3(0f, scaledOffset, 0f);
-        if(rotaionZ == 0){
-            child.localPosition += new Vector3(0f, -0.014f, 0f);
+        if (child != null)
+        {
+            //offset between quad and card
+            float childYOffset = -0.014f; 
+            child.localPosition = new Vector3(0f, childYOffset, worldOffset);
         }
 
-        Debug.Log($"Final local scale: {uniformLocal} (from world size {worldWidth}x{worldHeight})");
-      
-        // set material/texture
-        Renderer quadR = spawnedQuad.GetComponentInChildren<Renderer>();
+        Debug.Log($"Quad local position: {quadLocalPos}, scale: {uniformLocalScale}");
 
-        if (quadR != null)
+        // Set material/texture
+        Renderer quadR = spawnedQuad.GetComponentInChildren<Renderer>();
+        if (quadR != null && tex != null)
         {
-            Material mat = quadR.sharedMaterial != null ? new Material(quadR.sharedMaterial) : new Material(Shader.Find("Standard"));
-            if (tex != null) { 
-                
-                mat.mainTexture = tex; 
-                mat.mainTextureScale = new Vector2(-1f, -1f); 
-                mat.mainTextureOffset = Vector2.zero; 
-            }
+            Material mat = quadR.sharedMaterial != null ? 
+                new Material(quadR.sharedMaterial) : 
+                new Material(Shader.Find("Standard"));
+            
+            mat.mainTexture = tex;
+            mat.mainTextureScale = new Vector2(-1f, -1f);
             quadR.material = mat;
         }
 
-
         return spawnedQuad;
     }
+
 
 
 
