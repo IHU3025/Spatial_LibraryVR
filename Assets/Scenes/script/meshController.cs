@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.IO;
 
 namespace Scenes.script
 {
@@ -9,15 +10,20 @@ namespace Scenes.script
         public float offsetDistance = 3f;
         public Vector3 scaleReduction = new Vector3(0.8f, 1f, 0.8f);
         
-        [Header("SubPanel Settings")]
+        [Header("Data Settings")]
         public string folderPath; //passed from selected subpanel
+        private string myPath; 
+        public bool isLeafNode = false;
 
+        [Header("Subpanel Settings")]
         public Vector3 spawnDirection = Vector3.down;
         public GameObject currentChildPlane;
         public bool hasChild = false;
 
         void Start()
         {
+            myPath = folderPath; 
+            SetupPlaneVisuals();
             
         }
 
@@ -53,8 +59,99 @@ namespace Scenes.script
         }
         */
 
+        //data loading setup 
+        void SetupPlaneVisuals()
+        {
+            
+            Debug.Log("=== PATH DEBUG INFO ===");
+            Debug.Log($"Raw folderPath: '{folderPath}'");
+
+            if (IsLeafNode())
+            {
+                //SetupAsImagePlane();
+            }
+            else
+            {
+                SetupAsFolderPlane();
+            }
+        }
+
+        bool IsEmptyFolder()
+        {
+            if (string.IsNullOrEmpty(folderPath)) {
+            Debug.LogWarning("Current folder path is null or empty");
+            return false;}
+            if (IsFilePath(folderPath))
+            {
+                return false; 
+            }
+            bool hasNoSubfolders = Directory.GetDirectories(folderPath).Length == 0;
+            bool hasImageFiles = Directory.GetFiles(folderPath, "*.jpg").Length > 0;
+            return hasNoSubfolders && !hasImageFiles;
+        }
+
+        //deal with folders with no child 
+        bool IsLeafNode()
+        {
+            if (string.IsNullOrEmpty(folderPath)) {
+                Debug.LogWarning("Folder path is null or empty");
+                return false;}
+
+             if (IsFilePath(folderPath))
+            {
+                Debug.Log($"Path is a file, treating as leaf node: {folderPath}");
+                return true;
+            }
+            
+            
+            bool hasNoSubfolders = Directory.GetDirectories(folderPath).Length == 0;
+            bool hasImageFiles = Directory.GetFiles(folderPath, "*.jpg").Length > 0;
+            isLeafNode = hasNoSubfolders && hasImageFiles;
+            return isLeafNode;
+        
+        }
+
+        bool IsFilePath(string path)
+        {
+            if (string.IsNullOrEmpty(path)) return false;
+            
+            string extension = Path.GetExtension(path).ToLower();
+            return !string.IsNullOrEmpty(extension) && 
+                (extension == ".jpg" || extension == ".jpeg" || extension == ".png");
+        }
+
+
+        void SetupAsFolderPlane()
+        {
+            //need to get the image from image collage 
+            //no need to change file path
+        }
+
+        //this deal with the last level (image level)
+         void SetupAsImagePlane()
+        {
+            if (!string.IsNullOrEmpty(folderPath))
+            {
+                string[] imageFiles = System.IO.Directory.GetFiles(folderPath, "*.jpg");
+                if (imageFiles.Length > 0)
+                {
+                    //in this case the path will be image1.jpg 
+                    //set this to the image_texture for the card script 
+                }
+            }
+        }
+
+
+
         public void SpawnChildPlane()
         {
+
+            if (IsEmptyFolder())
+            {
+                Debug.Log("This is a empty folder - cannot spawn children");
+                return;
+            }
+
             if (planePrefab == null)
             {
                 currentChildPlane = GameObject.CreatePrimitive(PrimitiveType.Plane);
@@ -84,9 +181,6 @@ namespace Scenes.script
                 desiredWorldScale.z / parentWorldScale.z
             );
 
-            Debug.Log($"ACTUAL POSITIONS:");
-            Debug.Log($"- Parent center: {transform.position}");
-            Debug.Log($"- Child center: {currentChildPlane.transform.position}");
 
             currentChildPlane.transform.localScale = requiredLocalScale;
             
@@ -126,8 +220,7 @@ namespace Scenes.script
             Vector3 spawnPos = transform.position + direction * actualOffset;
             spawnPos.y += heightAdjustment;
 
-            Debug.Log($"Height adjustment: {heightAdjustment}");
-            Debug.Log($"Adjusted position: {spawnPos}");
+
 
             return spawnPos;
         }
@@ -173,6 +266,7 @@ namespace Scenes.script
                 Destroy(currentChildPlane);
                 hasChild = false;
                 Debug.Log("Removed child plane");
+                folderPath = myPath; 
             }
         }
 

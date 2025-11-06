@@ -119,8 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 20_2
+  dataPath: 
   isSelected: 0
+  index: 19
+  setImage: 0
 --- !u!1 &592649133794533953
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,8 +242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 24_2
+  dataPath: 
   isSelected: 0
+  index: 15
+  setImage: 0
 --- !u!1 &1266103882753658456
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,8 +366,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 30_2
+  dataPath: 
   isSelected: 0
+  index: 6
+  setImage: 0
 --- !u!114 &9015353734962676904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,8 +507,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 25_2
+  dataPath: 
   isSelected: 0
+  index: 10
+  setImage: 0
 --- !u!1 &2471898281214525883
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,8 +630,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 29_2
+  dataPath: 
   isSelected: 0
+  index: 5
+  setImage: 0
 --- !u!1 &2897225919837943431
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,8 +753,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 23_2
+  dataPath: 
   isSelected: 0
+  index: 16
+  setImage: 0
 --- !u!1 &3560677574838520791
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,8 +877,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 33
+  dataPath: 
   isSelected: 0
+  index: 0
+  setImage: 0
 --- !u!114 &3147874098739830650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1004,8 +1018,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 28_2
+  dataPath: 
   isSelected: 0
+  index: 14
+  setImage: 0
 --- !u!1 &4712503434760262005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,8 +1141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 34
+  dataPath: 
   isSelected: 0
+  index: 1
+  setImage: 0
 --- !u!1 &4769704772811918553
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,8 +1264,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 22_2
+  dataPath: 
   isSelected: 0
+  index: 17
+  setImage: 0
 --- !u!1 &5625816272624599177
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,8 +1387,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 26_2
+  dataPath: 
   isSelected: 0
+  index: 11
+  setImage: 0
 --- !u!1 &5768575569376069814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,8 +1510,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 36
+  dataPath: 
   isSelected: 0
+  index: 4
+  setImage: 0
 --- !u!1 &5915737303388545935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1609,8 +1633,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 21_2
+  dataPath: 
   isSelected: 0
+  index: 18
+  setImage: 0
 --- !u!1 &5997193067642759388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,6 +1781,7 @@ MonoBehaviour:
   offsetDistance: 3
   scaleReduction: {x: 0.8, y: 1, z: 0.8}
   folderPath: 
+  isLeafNode: 0
   spawnDirection: {x: 0, y: -1, z: 0}
   currentChildPlane: {fileID: 0}
   hasChild: 0
@@ -1877,8 +1904,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 37
+  dataPath: 
   isSelected: 0
+  index: 12
+  setImage: 0
 --- !u!1 &6394406057224856417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1998,8 +2027,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 39
+  dataPath: 
   isSelected: 0
+  index: 2
+  setImage: 0
 --- !u!1 &6677820736413769046
 GameObject:
   m_ObjectHideFlags: 0
@@ -2119,8 +2150,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 27_2
+  dataPath: 
   isSelected: 0
+  index: 13
+  setImage: 0
 --- !u!1 &7101581856696706555
 GameObject:
   m_ObjectHideFlags: 0
@@ -2240,8 +2273,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 31
+  dataPath: 
   isSelected: 0
+  index: 8
+  setImage: 0
 --- !u!1 &8551947854234812954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2361,8 +2396,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 35
+  dataPath: 
   isSelected: 0
+  index: 3
+  setImage: 0
 --- !u!1 &8679789368400836155
 GameObject:
   m_ObjectHideFlags: 0
@@ -2482,8 +2519,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 32
+  dataPath: 
   isSelected: 0
+  index: 9
+  setImage: 0
 --- !u!1 &9079582079216743707
 GameObject:
   m_ObjectHideFlags: 0
@@ -2603,5 +2642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 38
+  dataPath: 
   isSelected: 0
+  index: 7
+  setImage: 0

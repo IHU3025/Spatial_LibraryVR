@@ -3598,7 +3598,8 @@ MonoBehaviour:
     type: 3}
   offsetDistance: 3
   scaleReduction: {x: 0.8, y: 0.8, z: 0.8}
-  folderPath: 
+  folderPath: C:/Users/isabe/Unity/custom_folder
+  isLeafNode: 0
   spawnDirection: {x: 0, y: -1, z: 0}
   currentChildPlane: {fileID: 0}
   hasChild: 0
@@ -3651,8 +3652,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 8
+  dataPath: 
   isSelected: 0
+  index: 14
+  setImage: 0
 --- !u!33 &5763292745450147466
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -3735,8 +3738,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 2
+  dataPath: 
   isSelected: 0
+  index: 17
+  setImage: 0
 --- !u!4 &6038315133956916676
 Transform:
   m_ObjectHideFlags: 0
@@ -3895,8 +3900,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 14
+  dataPath: 
   isSelected: 0
+  index: 1
+  setImage: 0
 --- !u!114 &7121217280093377863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3957,8 +3964,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 15
+  dataPath: 
   isSelected: 0
+  index: 3
+  setImage: 0
 --- !u!114 &7350635618703766470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4019,8 +4028,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 5
+  dataPath: 
   isSelected: 0
+  index: 10
+  setImage: 0
 --- !u!23 &7767345631237177201
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4105,8 +4116,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 12
+  dataPath: 
   isSelected: 0
+  index: 9
+  setImage: 0
 --- !u!23 &7863152705663157372
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4183,8 +4196,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 17
+  dataPath: 
   isSelected: 0
+  index: 12
+  setImage: 0
 --- !u!1 &7884647683593955076
 GameObject:
   m_ObjectHideFlags: 0
@@ -4239,8 +4254,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 7
+  dataPath: 
   isSelected: 0
+  index: 13
+  setImage: 0
 --- !u!33 &7917241064340130305
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4283,8 +4300,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 3
+  dataPath: 
   isSelected: 0
+  index: 16
+  setImage: 0
 --- !u!114 &7917241064340130308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4352,8 +4371,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 13
+  dataPath: 
   isSelected: 0
+  index: 0
+  setImage: 0
 --- !u!23 &8094613769346458459
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4438,8 +4459,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 10
+  dataPath: 
   isSelected: 0
+  index: 6
+  setImage: 0
 --- !u!114 &8280100926759495225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4506,8 +4529,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 1
+  dataPath: 
   isSelected: 0
+  index: 18
+  setImage: 0
 --- !u!23 &8415502549868280306
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4584,8 +4609,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 16
+  dataPath: 
   isSelected: 0
+  index: 4
+  setImage: 0
 --- !u!1 &8444295993157993230
 GameObject:
   m_ObjectHideFlags: 0
@@ -4697,8 +4724,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 19
+  dataPath: 
   isSelected: 0
+  index: 2
+  setImage: 0
 --- !u!114 &8577476647267915101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4813,8 +4842,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 11
+  dataPath: 
   isSelected: 0
+  index: 8
+  setImage: 0
 --- !u!33 &8781440569785176648
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4857,8 +4888,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 9
+  dataPath: 
   isSelected: 0
+  index: 5
+  setImage: 0
 --- !u!33 &8905546835947508044
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4901,8 +4934,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 4
+  dataPath: 
   isSelected: 0
+  index: 15
+  setImage: 0
 --- !u!23 &8922478164754158452
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4979,8 +5014,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 60
+  dataPath: 
   isSelected: 0
+  index: 19
+  setImage: 0
 --- !u!23 &8923708867205329551
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5057,8 +5094,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 18
+  dataPath: 
   isSelected: 0
+  index: 7
+  setImage: 0
 --- !u!1 &8949479022744537376
 GameObject:
   m_ObjectHideFlags: 0
@@ -5113,8 +5152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e84432097aaa0646aeff72640ca5eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: 
+  dataPath: 
   isSelected: 0
+  index: 11
+  setImage: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

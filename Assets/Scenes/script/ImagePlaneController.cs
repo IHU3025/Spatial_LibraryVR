@@ -5,8 +5,7 @@ using Scenes.script;
 using System.IO;
 
 
-
-public class CardQuadSpawner : MonoBehaviour
+public class ImagePlaneController : MonoBehaviour
 {
     public GameObject quadPrefab;
     public Texture imageTexture;
@@ -15,7 +14,7 @@ public class CardQuadSpawner : MonoBehaviour
 
     //Hard coded the rotation and scaling 
     public float rotaionZ = -10.0f; 
-    public float scaleMultiplier = 4.5f; 
+    public float scaleMultiplier = 6.5f; 
     GameObject spawnedQuad;
 
     void Start()
@@ -49,21 +48,14 @@ public class CardQuadSpawner : MonoBehaviour
     }
 
      void LoadImageTexture(){
-            var subPanelController = GetComponent<SubPanelController>();
-            if (subPanelController == null)
+            GameObject panel = transform.parent.gameObject;
+            var meshController = panel.GetComponent<MeshController>();
+            if (meshController == null)
             {
-                Debug.LogError("Parent does not have a subPanelController component.");
+                Debug.LogError("Parent does not have a MeshController component.");
                 return;
             }
-            string path = subPanelController.dataPath;
-            bool setImage = subPanelController.setImage;
-            if (setImage){
-                if (!File.Exists(path))
-                {
-                    Debug.LogError("Image file not found at path: " + path);
-                    return;
-                }
-
+            string path = meshController.folderPath;
                 byte[] imageData = File.ReadAllBytes(path);
                 Texture2D tex = new Texture2D(2, 2); 
                 if (tex.LoadImage(imageData))
@@ -78,7 +70,6 @@ public class CardQuadSpawner : MonoBehaviour
                 }
 
             }
-        }
 
     
     public GameObject SpawnQuadInFrontOfCard(GameObject quadPrefab, Texture tex, float localZOffset = 0.01f)
