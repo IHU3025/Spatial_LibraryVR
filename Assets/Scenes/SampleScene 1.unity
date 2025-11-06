@@ -166,7 +166,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203113280}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
   m_Name: 
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203113280}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e988983f96fe1dd48800bcdfc82f23e9, type: 3}
   m_Name: 
@@ -816,7 +816,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203113280}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b00c4dc00dc09549a9fc024a0677bca, type: 3}
   m_Name: 
@@ -885,6 +885,7 @@ GameObject:
   - component: {fileID: 308484594}
   - component: {fileID: 308484593}
   - component: {fileID: 308484597}
+  - component: {fileID: 308484598}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1139,6 +1140,31 @@ MonoBehaviour:
   gazeReticle: {fileID: 0}
   reticleDistance: 2
   highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+--- !u!114 &308484598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308484591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6d3a403dcf34d46b91869002daeedc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gazeCamera: {fileID: 0}
+  rayDistance: 30
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  pinchThreshold: 0.7
+  requireBothHands: 0
+  showGazeRay: 1
+  gazeRayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  rayWidth: 0.003
+  highlightGazedObject: 1
+  highlightTexture: {fileID: 0}
+  verboseLogging: 0
 --- !u!1 &407861027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1790,7 +1816,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002069071}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6803edce0201f574f923fd9d10e5b30a, type: 3}
   m_Name: 
@@ -2186,7 +2212,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002069071}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e988983f96fe1dd48800bcdfc82f23e9, type: 3}
   m_Name: 
@@ -2440,7 +2466,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002069071}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b00c4dc00dc09549a9fc024a0677bca, type: 3}
   m_Name: 
@@ -2453,7 +2479,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002069071}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fd48a475b1784ff3bec4e953bb0903e, type: 3}
   m_Name: 
