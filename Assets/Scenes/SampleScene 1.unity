@@ -1157,13 +1157,13 @@ MonoBehaviour:
   raycastMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  pinchThreshold: 0.7
+  pinchThreshold: 0.8
   requireBothHands: 0
   showGazeRay: 1
   gazeRayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   rayWidth: 0.003
   highlightGazedObject: 1
-  highlightTexture: {fileID: 0}
+  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   verboseLogging: 0
 --- !u!1 &407861027
 GameObject:

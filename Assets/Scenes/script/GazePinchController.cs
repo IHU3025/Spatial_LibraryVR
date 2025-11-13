@@ -19,7 +19,7 @@ namespace Scenes.script
         public Color gazeRayColor = Color.yellow;
         public float rayWidth = 0.003f;
         public bool highlightGazedObject = true;
-        public Texture highlightTexture;
+        public Color highlightColor = Color.yellow;
         
         [Header("Debug")]
         public bool verboseLogging = false;
@@ -32,7 +32,7 @@ namespace Scenes.script
         private LineRenderer gazeRay;
         private GameObject currentGazedObject;
         private Renderer currentGazedRenderer;
-        private Texture originalTexture;
+        private Material originalMaterial;
         
         private bool wasLeftPinching = false;
         private bool wasRightPinching = false;
@@ -196,10 +196,14 @@ namespace Scenes.script
             if (highlightGazedObject)
             {
                 currentGazedRenderer = obj.GetComponent<Renderer>();
-                if (currentGazedRenderer != null && highlightTexture != null)
+                
+                if (currentGazedRenderer != null)
                 {
-                    originalTexture = currentGazedRenderer.material.mainTexture;
-                    currentGazedRenderer.material.mainTexture = highlightTexture;
+                    originalMaterial = currentGazedRenderer.material;
+                    
+                    Material highlightMat = new Material(originalMaterial);
+                    highlightMat.color = highlightColor;
+                    currentGazedRenderer.material = highlightMat;
                 }
             }
             
@@ -211,14 +215,14 @@ namespace Scenes.script
 
         void ClearGazedObject()
         {
-            if (currentGazedRenderer != null && originalTexture != null)
+            if (currentGazedRenderer != null && originalMaterial != null)
             {
-                currentGazedRenderer.material.mainTexture = originalTexture;
+                currentGazedRenderer.material = originalMaterial;
             }
             
             currentGazedObject = null;
             currentGazedRenderer = null;
-            originalTexture = null;
+            originalMaterial = null;
         }
 
         void CheckPinchGestures()
