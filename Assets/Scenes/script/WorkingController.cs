@@ -220,12 +220,15 @@ namespace Scenes.script
                 if (mainPanel != null)
                 {
                     string subpanelPath = subPanel.GetFolderPath();
+                    string subDisplayPath = subPanel.GetDisplayPath();   
                     Debug.Log($"Subpanel path: '{subpanelPath}', Main panel current path: '{mainPanel.folderPath}'");
                     
                     if (!mainPanel.hasChild)
                     {
                         mainPanel.folderPath = subpanelPath;
+                        mainPanel.displayPath = subDisplayPath;
                         Debug.Log($"Setting main panel path to: {subpanelPath}");
+                        Debug.Log($"Setting main display path to: {subDisplayPath}");
                         mainPanel.SpawnChildPlane();
                     }
                     else

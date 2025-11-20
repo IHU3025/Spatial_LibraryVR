@@ -55,7 +55,15 @@ public class CardQuadSpawner : MonoBehaviour
                 Debug.LogError("Parent does not have a subPanelController component.");
                 return;
             }
-            string path = subPanelController.dataPath;
+            bool level2 = subPanelController.isLevel2;
+            string path = null; 
+            if (level2) {
+                Debug.LogError("Setting path to displaypath in cardQuadSpawner");
+                path = subPanelController.displayPath;
+            }
+            else{
+                path = subPanelController.dataPath;
+            }
             bool setImage = subPanelController.setImage;
             if (setImage){
                 if (!File.Exists(path))

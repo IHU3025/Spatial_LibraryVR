@@ -2750,6 +2750,7 @@ GameObject:
   - component: {fileID: 3308525973253628285}
   - component: {fileID: 8415502549868280306}
   - component: {fileID: 8415502549868280307}
+  - component: {fileID: 8415502549868280309}
   - component: {fileID: 8415502549868280308}
   m_Layer: 0
   m_Name: Body16
@@ -2945,6 +2946,7 @@ GameObject:
   - component: {fileID: 3674023243601306795}
   - component: {fileID: 1078403116314086896}
   - component: {fileID: 7984056546595103826}
+  - component: {fileID: 7984056546595103828}
   - component: {fileID: 7984056546595103827}
   m_Layer: 0
   m_Name: Body13
@@ -3069,6 +3071,7 @@ GameObject:
   - component: {fileID: 7840277637682265963}
   - component: {fileID: 2996413872701776305}
   - component: {fileID: 7840277637682265964}
+  - component: {fileID: 7840277637682265966}
   - component: {fileID: 7840277637682265965}
   m_Layer: 0
   m_Name: Body12
@@ -3447,6 +3450,7 @@ GameObject:
   - component: {fileID: 8905546835947508044}
   - component: {fileID: 3414078627027321381}
   - component: {fileID: 8905546835947508045}
+  - component: {fileID: 8905546835947508047}
   - component: {fileID: 8905546835947508046}
   m_Layer: 0
   m_Name: Body4
@@ -3539,6 +3543,7 @@ GameObject:
   - component: {fileID: 690492858401802049}
   - component: {fileID: 8923708867205329551}
   - component: {fileID: 8923708867205329552}
+  - component: {fileID: 8923708867205329554}
   - component: {fileID: 8923708867205329553}
   m_Layer: 0
   m_Name: Body18
@@ -3654,7 +3659,8 @@ MonoBehaviour:
     type: 3}
   offsetDistance: 3
   scaleReduction: {x: 0.8, y: 0.8, z: 0.8}
-  folderPath: C:/Users/isabe/Unity/custom_folder
+  folderPath: C:/Users/isabe/Unity/collage_images
+  displayPath: 
   isLeafNode: 0
   spawnDirection: {x: 0, y: -1, z: 0}
   currentChildPlane: {fileID: 0}
@@ -3709,7 +3715,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_new/baroque
   isSelected: 0
+  isLevel2: 0
   index: 14
   setImage: 0
 --- !u!33 &5763292745450147466
@@ -3732,6 +3740,7 @@ GameObject:
   - component: {fileID: 7537473765841091157}
   - component: {fileID: 2580655204503994164}
   - component: {fileID: 7537473765841091158}
+  - component: {fileID: 7537473765841091160}
   - component: {fileID: 7537473765841091159}
   m_Layer: 0
   m_Name: Body5
@@ -3795,7 +3804,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_new/baroque
   isSelected: 0
+  isLevel2: 0
   index: 17
   setImage: 0
 --- !u!4 &6038315133956916676
@@ -3957,7 +3968,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  isSelected: 0
+  displayPath: C:/Users/isabe/Unity/collages_fixed/baroque
+  isSelected: 1
+  isLevel2: 0
   index: 1
   setImage: 0
 --- !u!114 &7121217280093377863
@@ -3974,7 +3987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
-  imageTexture: {fileID: 2800000, guid: 7709fa15c4cfe7c44a2d0523cc3eefe2, type: 3}
+  imageTexture: {fileID: 2800000, guid: 4c78ebe8f19cd2e45975c961085312c8, type: 3}
   worldOffset: -0.17
   rotaionZ: -5
   scaleMultiplier: 4.5
@@ -4021,7 +4034,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_fixed/impressionism
   isSelected: 0
+  isLevel2: 0
   index: 3
   setImage: 0
 --- !u!114 &7350635618703766470
@@ -4038,7 +4053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
-  imageTexture: {fileID: 2800000, guid: 10a828b87e5618645922800cba7c88cc, type: 3}
+  imageTexture: {fileID: 2800000, guid: fe0b7f14279636d4492a0cf5cc36e9b6, type: 3}
   worldOffset: -0.17
   rotaionZ: 5
   scaleMultiplier: 4.5
@@ -4085,9 +4100,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_new/baroque
   isSelected: 0
+  isLevel2: 0
   index: 10
   setImage: 0
+--- !u!114 &7537473765841091160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5822829523747545422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2bfade9a5c55b499b9628fda995e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quadPrefab: {fileID: 0}
+  imageTexture: {fileID: 0}
+  worldOffset: -0.167
+  rotaionZ: -10
+  scaleMultiplier: 4.5
 --- !u!23 &7767345631237177201
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4173,9 +4207,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_fixed/ukiyo_e
   isSelected: 0
+  isLevel2: 0
   index: 9
   setImage: 0
+--- !u!114 &7840277637682265966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2636073397010266107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2bfade9a5c55b499b9628fda995e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
+    type: 3}
+  imageTexture: {fileID: 2800000, guid: ec9e42e7f6343a643890429091c2e530, type: 3}
+  worldOffset: -0.167
+  rotaionZ: 10
+  scaleMultiplier: 4.5
 --- !u!23 &7863152705663157372
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4253,7 +4307,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_new/baroque
   isSelected: 0
+  isLevel2: 0
   index: 12
   setImage: 0
 --- !u!1 &7884647683593955076
@@ -4311,7 +4367,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_new/baroque
   isSelected: 0
+  isLevel2: 0
   index: 13
   setImage: 0
 --- !u!33 &7917241064340130305
@@ -4357,7 +4415,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_new/baroque
   isSelected: 0
+  isLevel2: 0
   index: 16
   setImage: 0
 --- !u!114 &7917241064340130308
@@ -4428,9 +4488,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_fixed/art_nouveau
   isSelected: 0
+  isLevel2: 0
   index: 0
   setImage: 0
+--- !u!114 &7984056546595103828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2263268505801217253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2bfade9a5c55b499b9628fda995e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
+    type: 3}
+  imageTexture: {fileID: 2800000, guid: 2954589232f45d74f83c48d469e16866, type: 3}
+  worldOffset: -0.167
+  rotaionZ: -10
+  scaleMultiplier: 4.5
 --- !u!23 &8094613769346458459
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4516,7 +4596,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_fixed/renaissance
   isSelected: 0
+  isLevel2: 0
   index: 6
   setImage: 0
 --- !u!114 &8280100926759495225
@@ -4531,11 +4613,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2bfade9a5c55b499b9628fda995e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quadPrefab: {fileID: 0}
-  imageTexture: {fileID: 0}
-  worldOffset: -0.001
-  rotaionZ: -10
-  scaleMultiplier: 4
+  quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
+    type: 3}
+  imageTexture: {fileID: 2800000, guid: a31563c6002e2714996cda9b8d5df1f2, type: 3}
+  worldOffset: -0.167
+  rotaionZ: -5
+  scaleMultiplier: 4.5
 --- !u!4 &8317399691084982829
 Transform:
   m_ObjectHideFlags: 0
@@ -4586,7 +4669,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_new/baroque
   isSelected: 0
+  isLevel2: 0
   index: 18
   setImage: 0
 --- !u!23 &8415502549868280306
@@ -4666,9 +4751,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_fixed/post_impressionism
   isSelected: 0
+  isLevel2: 0
   index: 4
   setImage: 0
+--- !u!114 &8415502549868280309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256397262600264969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2bfade9a5c55b499b9628fda995e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
+    type: 3}
+  imageTexture: {fileID: 2800000, guid: dabffeff952d7844fa6cffbfc8dcc81c, type: 3}
+  worldOffset: -0.167
+  rotaionZ: 10
+  scaleMultiplier: 4.5
 --- !u!1 &8444295993157993230
 GameObject:
   m_ObjectHideFlags: 0
@@ -4681,6 +4786,7 @@ GameObject:
   - component: {fileID: 8781440569785176648}
   - component: {fileID: 7767345631237177201}
   - component: {fileID: 8781440569785176649}
+  - component: {fileID: 8781440569785176651}
   - component: {fileID: 8781440569785176650}
   m_Layer: 0
   m_Name: Body9
@@ -4781,7 +4887,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_fixed/expressionism
   isSelected: 0
+  isLevel2: 0
   index: 2
   setImage: 0
 --- !u!114 &8577476647267915101
@@ -4798,7 +4906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
-  imageTexture: {fileID: 2800000, guid: ca78d12301d17314e9c4de3084118770, type: 3}
+  imageTexture: {fileID: 2800000, guid: cd24c8f5288d7ca43a3cf12e0d2840c8, type: 3}
   worldOffset: -0.17
   rotaionZ: 0
   scaleMultiplier: 4.5
@@ -4814,6 +4922,7 @@ GameObject:
   - component: {fileID: 5116870303427561593}
   - component: {fileID: 8714736070864191723}
   - component: {fileID: 8714736070864191724}
+  - component: {fileID: 8714736070864191726}
   - component: {fileID: 8714736070864191725}
   m_Layer: 0
   m_Name: Body11
@@ -4899,9 +5008,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_fixed/surrealism
   isSelected: 0
+  isLevel2: 0
   index: 8
   setImage: 0
+--- !u!114 &8714736070864191726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8679023187569240829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2bfade9a5c55b499b9628fda995e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
+    type: 3}
+  imageTexture: {fileID: 2800000, guid: 621157d839c30ba488ad4b806081a4d5, type: 3}
+  worldOffset: -0.167
+  rotaionZ: 5
+  scaleMultiplier: 4.5
 --- !u!33 &8781440569785176648
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4945,9 +5074,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_fixed/realism
   isSelected: 0
+  isLevel2: 0
   index: 5
   setImage: 0
+--- !u!114 &8781440569785176651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8444295993157993230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2bfade9a5c55b499b9628fda995e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
+    type: 3}
+  imageTexture: {fileID: 2800000, guid: 551afb7b15ad0a844a529bfa84ac6ae6, type: 3}
+  worldOffset: -0.167
+  rotaionZ: -10
+  scaleMultiplier: 4.5
 --- !u!33 &8905546835947508044
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4991,9 +5140,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_new/baroque
   isSelected: 0
+  isLevel2: 0
   index: 15
   setImage: 0
+--- !u!114 &8905546835947508047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4587845852904672653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2bfade9a5c55b499b9628fda995e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quadPrefab: {fileID: 0}
+  imageTexture: {fileID: 0}
+  worldOffset: -0.167
+  rotaionZ: -10
+  scaleMultiplier: 4.5
 --- !u!23 &8922478164754158452
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5071,7 +5239,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_new/baroque
   isSelected: 0
+  isLevel2: 0
   index: 19
   setImage: 0
 --- !u!23 &8923708867205329551
@@ -5151,9 +5321,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_fixed/romanticism
   isSelected: 0
+  isLevel2: 0
   index: 7
   setImage: 0
+--- !u!114 &8923708867205329554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968515656101602994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f2bfade9a5c55b499b9628fda995e76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
+    type: 3}
+  imageTexture: {fileID: 2800000, guid: 812f4f9d8832f404fa7065185b92cf06, type: 3}
+  worldOffset: -0.167
+  rotaionZ: 0
+  scaleMultiplier: 4.5
 --- !u!1 &8949479022744537376
 GameObject:
   m_ObjectHideFlags: 0
@@ -5209,7 +5399,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: C:/Users/isabe/Unity/collages_new/baroque
   isSelected: 0
+  isLevel2: 0
   index: 11
   setImage: 0
 --- !u!1660057539 &9223372036854775807

@@ -12,6 +12,7 @@ namespace Scenes.script
         
         [Header("Data Settings")]
         public string folderPath; //passed from selected subpanel
+        public string displayPath;
         private string myPath; 
         public bool isLeafNode = false;
 
@@ -190,17 +191,19 @@ namespace Scenes.script
             if (childController != null)
             {
                 childController.folderPath = this.folderPath; 
+                childController.displayPath = this.displayPath; 
                 Debug.Log($"Passed folder path to child: {folderPath}");
+                Debug.Log($"Passed display path to child: {displayPath}");
             }
 
             Renderer childRenderer = currentChildPlane.GetComponent<Renderer>();
             if (childRenderer != null)
             {
-                childRenderer.material.color = GetNextColor(GetComponent<Renderer>().material.color);
+                //childRenderer.material.color = GetNextColor(GetComponent<Renderer>().material.color);
             }
 
             hasChild = true;
-            Debug.Log("Spawned child plane with path: " + folderPath);
+            Debug.Log("Spawned child plane with path: " + folderPath +  "display" + displayPath);
         }
         
         Vector3 CalculateChainPosition()
