@@ -199,7 +199,7 @@ namespace Scenes.script
             Renderer childRenderer = currentChildPlane.GetComponent<Renderer>();
             if (childRenderer != null)
             {
-                childRenderer.material.color = GetNextColor(GetComponent<Renderer>().material.color);
+                //childRenderer.material.color = GetNextColor(GetComponent<Renderer>().material.color);
             }
 
             hasChild = true;

@@ -3603,7 +3603,7 @@ MonoBehaviour:
     type: 3}
   offsetDistance: 3
   scaleReduction: {x: 0.8, y: 0.8, z: 0.8}
-  folderPath: C:/Users/isabe/Unity/SpatialVR_data
+  folderPath: C:/Users/isabe/Unity/collage_images
   displayPath: 
   isLeafNode: 0
   spawnDirection: {x: 0, y: -1, z: 0}
@@ -3978,7 +3978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: ty/collages_fixed/impressionism
+  displayPath: C:/Users/isabe/Unity/collages_fixed/impressionism
   isSelected: 0
   isLevel2: 0
   index: 3
@@ -4151,7 +4151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: ty/collages_fixed/ukiyo_e
+  displayPath: C:/Users/isabe/Unity/collages_fixed/ukiyo_e
   isSelected: 0
   isLevel2: 0
   index: 9
@@ -4540,7 +4540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: ty/collages_fixed/renaissance
+  displayPath: C:/Users/isabe/Unity/collages_fixed/renaissance
   isSelected: 0
   isLevel2: 0
   index: 6
@@ -4695,7 +4695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: ty/collages_fixed/post_impressionism
+  displayPath: C:/Users/isabe/Unity/collages_fixed/post_impressionism
   isSelected: 0
   isLevel2: 0
   index: 4
@@ -4831,7 +4831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: ty/collages_fixed/expressionism
+  displayPath: C:/Users/isabe/Unity/collages_fixed/expressionism
   isSelected: 0
   isLevel2: 0
   index: 2
@@ -4952,7 +4952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: ty/collages_fixed/surrealism
+  displayPath: C:/Users/isabe/Unity/collages_fixed/surrealism
   isSelected: 0
   isLevel2: 0
   index: 8
@@ -5018,7 +5018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: ty/collages_fixed/realism
+  displayPath: C:/Users/isabe/Unity/collages_fixed/realism
   isSelected: 0
   isLevel2: 0
   index: 5
@@ -5265,7 +5265,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: ty/collages_fixed/romanticism
+  displayPath: C:/Users/isabe/Unity/collages_fixed/romanticism
   isSelected: 0
   isLevel2: 0
   index: 7

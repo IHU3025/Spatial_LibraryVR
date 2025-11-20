@@ -285,7 +285,7 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
-  worldOffset: -0.167
+  worldOffset: -0.195
   rotaionZ: -10
   scaleMultiplier: 4.5
 --- !u!1 &1266103882753658456
@@ -573,7 +573,7 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
-  worldOffset: -0.167
+  worldOffset: -0.195
   rotaionZ: -10
   scaleMultiplier: 4.5
 --- !u!1 &2471898281214525883
@@ -717,7 +717,7 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
-  worldOffset: -0.167
+  worldOffset: -0.195
   rotaionZ: -10
   scaleMultiplier: 4.5
 --- !u!1 &2897225919837943431
