@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 8
   setImage: 0
@@ -263,6 +265,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 12
   setImage: 0
@@ -405,6 +409,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 2
   setImage: 0
@@ -547,6 +553,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 14
   setImage: 0
@@ -689,6 +697,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 16
   setImage: 0
@@ -831,6 +841,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 1
   setImage: 0
@@ -973,6 +985,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 4
   setImage: 0
@@ -1115,6 +1129,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 15
   setImage: 0
@@ -1257,6 +1273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 19
   setImage: 0
@@ -1399,6 +1417,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 10
   setImage: 0
@@ -1564,7 +1584,13 @@ MonoBehaviour:
   offsetDistance: 3
   scaleReduction: {x: 0.8, y: 1, z: 0.8}
   folderPath: 
-  isLeafNode: 0
+  baseCollagesPath: 
+  level2CollagesPath: 
+  baseCollagesPathReturn: 
+  level2CollagesPathReturn: 
+  isLeafNode: 1
+  isBasePlane: 0
+  isLevel2Plane: 0
   spawnDirection: {x: 0, y: -1, z: 0}
   currentChildPlane: {fileID: 0}
   hasChild: 0
@@ -1689,6 +1715,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 5
   setImage: 0
@@ -1831,6 +1859,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 11
   setImage: 0
@@ -1973,6 +2003,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 3
   setImage: 0
@@ -2115,6 +2147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 6
   setImage: 0
@@ -2257,6 +2291,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 0
   setImage: 0
@@ -2399,6 +2435,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 7
   setImage: 0
@@ -2541,6 +2579,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 18
   setImage: 0
@@ -2683,6 +2723,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 17
   setImage: 0
@@ -2825,6 +2867,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 9
   setImage: 0
@@ -2967,6 +3011,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  level2CollagesPathReturn: 
+  baseCollagesPathReturn: 
   isSelected: 0
   index: 13
   setImage: 0

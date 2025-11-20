@@ -216,16 +216,29 @@ namespace Scenes.script
             {
                 subPanel.SelectPanel();
 
-                MeshController mainPanel = FindMainPanel(hitObject.transform);
+               MeshController mainPanel = FindMainPanel(hitObject.transform);
                 if (mainPanel != null)
                 {
-                    string subpanelPath = subPanel.GetFolderPath();
-                    Debug.Log($"Subpanel path: '{subpanelPath}', Main panel current path: '{mainPanel.folderPath}'");
-                    
-                    if (!mainPanel.hasChild)
+                    // FIX: Update ALL paths, not just folderPath
+                    if (!string.IsNullOrEmpty(subPanel.dataPath))
                     {
-                        mainPanel.folderPath = subpanelPath;
-                        Debug.Log($"Setting main panel path to: {subpanelPath}");
+                        mainPanel.folderPath = subPanel.dataPath;
+                    }
+                    
+                    // ADD THESE: Update the collage paths too
+                    if (!string.IsNullOrEmpty(subPanel.baseCollagesPathReturn))
+                    {
+                        mainPanel.baseCollagesPathReturn = subPanel.baseCollagesPathReturn;
+                    }
+                    
+                    if (!string.IsNullOrEmpty(subPanel.level2CollagesPathReturn))
+                    {
+                        mainPanel.level2CollagesPathReturn = subPanel.level2CollagesPathReturn;
+                    }
+                    
+                    Debug.Log($"Updated paths - folder: {mainPanel.folderPath}, baseCollage: {mainPanel.baseCollagesPathReturn}, level2Collage: {mainPanel.level2CollagesPathReturn}");            
+                                if (!mainPanel.hasChild)
+                    {
                         mainPanel.SpawnChildPlane();
                     }
                     else

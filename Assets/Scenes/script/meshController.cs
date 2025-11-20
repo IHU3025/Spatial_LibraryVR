@@ -4,21 +4,32 @@ using System.IO;
 namespace Scenes.script
 {
     public class MeshController : MonoBehaviour
-    {
+{
         [Header("Plane Settings")] 
         public GameObject planePrefab;
         public float offsetDistance = 3f;
         public Vector3 scaleReduction = new Vector3(0.8f, 1f, 0.8f);
         
         [Header("Data Settings")]
-        public string folderPath; //passed from selected subpanel
-        private string myPath; 
+        public string folderPath; // Current data path
+        public string baseCollagesPath; // Pre-made collages for base plane
+        public string level2CollagesPath; // Pre-made collages for level 2 planes
+        
+        [Header("Return Paths from SubPanels")]
+        public string baseCollagesPathReturn; // Advanced path from base collages
+        public string level2CollagesPathReturn; // Advanced path from level 2 collages
+        
+        [Header("Plane Type")]
         public bool isLeafNode = false;
-
-        [Header("Subpanel Settings")]
+        public bool isBasePlane = false;
+        public bool isLevel2Plane = false;
+        
+        [Header("Child Management")]
         public Vector3 spawnDirection = Vector3.down;
         public GameObject currentChildPlane;
         public bool hasChild = false;
+
+        private string myPath; 
 
         void Start()
         {
@@ -278,6 +289,13 @@ namespace Scenes.script
             s = Mathf.Clamp(s - 0.1f, 0.3f, 1f);
             v = Mathf.Clamp(v - 0.1f, 0.7f, 1f);
             return Color.HSVToRGB(h, s, v);
+        }
+
+        public string GetCollagePath()
+        {
+            if (isBasePlane) return baseCollagesPath;
+            if (isLevel2Plane) return level2CollagesPath;
+            return folderPath; // Fallback
         }
     }
 }

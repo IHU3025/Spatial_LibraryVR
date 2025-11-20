@@ -55,28 +55,56 @@ public class CardQuadSpawner : MonoBehaviour
                 Debug.LogError("Parent does not have a subPanelController component.");
                 return;
             }
+            bool setImage = true;
+            Debug.Log($"setimage in loadImaege Texture {setImage}");
             string path = subPanelController.dataPath;
-            bool setImage = subPanelController.setImage;
             if (setImage){
-                if (!File.Exists(path))
+
+                
+                // if (!File.Exists(path))
+                // {
+                //     Debug.LogError("Image file not found at path: " + path);
+                //     return;
+                // }
+
+                // byte[] imageData = File.ReadAllBytes(path);
+                // Texture2D tex = new Texture2D(2, 2); 
+                // if (tex.LoadImage(imageData))
+                // {
+                //     imageTexture = tex;
+                //     Debug.Log($"setting image tex to {path}");
+
+                // }
+                // else
+                // {
+                //     Debug.LogError("Failed to load image from path: " + path);
+                // }
+                if (!string.IsNullOrEmpty(subPanelController.dataPath) && 
+                    File.Exists(subPanelController.dataPath))
                 {
-                    Debug.LogError("Image file not found at path: " + path);
-                    return;
+                    path = subPanelController.dataPath;
                 }
-
-                byte[] imageData = File.ReadAllBytes(path);
-                Texture2D tex = new Texture2D(2, 2); 
-                if (tex.LoadImage(imageData))
+                // Priority 2: baseCollagesPathReturn
+                else if (!string.IsNullOrEmpty(subPanelController.baseCollagesPathReturn) && 
+                        File.Exists(subPanelController.baseCollagesPathReturn))
                 {
-                    imageTexture = tex;
-                    Debug.Log($"setting image tex to {path}");
-
+                    path = subPanelController.baseCollagesPathReturn;
+                }
+                // Priority 3: level2CollagesPathReturn
+                else if (!string.IsNullOrEmpty(subPanelController.level2CollagesPathReturn) && 
+                        File.Exists(subPanelController.level2CollagesPathReturn))
+                {
+                    path = subPanelController.level2CollagesPathReturn;
+                }
+                
+                if (path != null)
+                {
+                    // Load the texture...
                 }
                 else
                 {
-                    Debug.LogError("Failed to load image from path: " + path);
+                    Debug.LogError("No valid image path found");
                 }
-
             }
         }
 
