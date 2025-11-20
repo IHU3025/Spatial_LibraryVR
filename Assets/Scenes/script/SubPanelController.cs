@@ -9,7 +9,10 @@ namespace Scenes.script
     {
         [Header("SubPanel Settings")]
         public string dataPath; 
+        public string displayPath; 
         public bool isSelected = false; 
+        public bool isLevel2 = false;
+
         public int index; 
         
         public bool setImage = false; 
@@ -30,7 +33,7 @@ namespace Scenes.script
                 gameObject.AddComponent<BoxCollider>();
             }
             PropagatePath();
-            Debug.Log($"SubPanel {name} initialized with path: '{dataPath}'");
+            Debug.Log($"SubPanel {name} initialized with path: '{dataPath}' and {displayPath}");
 
 
         }
@@ -45,6 +48,7 @@ namespace Scenes.script
             }
             string basePath = meshController.folderPath;
             bool isLeafNode = meshController.isLeafNode;
+
             Debug.Log($"isLeafNode{isLeafNode}");
             if (!isLeafNode){
                 string[] subfolders = Directory.GetDirectories(basePath);
@@ -54,12 +58,25 @@ namespace Scenes.script
             // if the folder has less child then cards, remaining card's path should be null and display nothing
             } else {
                 string[] images = Directory.GetFiles(basePath);
-                if (index >= 0 && index <= images.Length){
-                    dataPath = images[index];
+
+                int reversedIndex = images.Length - 1 - index;
+                if (reversedIndex >= 0 && reversedIndex < images.Length) {
+                    dataPath = images[reversedIndex];
                     Debug.Log($"has image on card{index}, setting setImage to True, isLeafNode{isLeafNode}");
-                    setImage = true; 
+                    setImage = true;
                 }
 
+
+            }
+            
+            if (isLevel2) {
+                displayPath = meshController.displayPath; 
+                Debug.Log($"card {index} isLevel2{isLevel2} doing display path logic, setting to image {index} in {displayPath}");
+                string[] images = Directory.GetFiles(displayPath);
+                if (index >= 0 && index <= images.Length){
+                    displayPath = images[index];
+                    setImage = true; 
+                }
             }
         }
 
@@ -100,6 +117,11 @@ namespace Scenes.script
         public string GetFolderPath()
         {
             return dataPath;
+        }
+
+        public string GetDisplayPath()
+        {
+            return displayPath; 
         }
     }
 }

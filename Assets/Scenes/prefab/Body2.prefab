@@ -121,7 +121,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 8
   setImage: 0
 --- !u!114 &1241707246914662546
@@ -263,7 +265,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 12
   setImage: 0
 --- !u!114 &7477212002577924993
@@ -405,7 +409,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 2
   setImage: 0
 --- !u!114 &7939152137190486849
@@ -547,7 +553,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 14
   setImage: 0
 --- !u!114 &8353369606338030733
@@ -689,7 +697,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 16
   setImage: 0
 --- !u!114 &2862297393532360612
@@ -831,7 +841,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 1
   setImage: 0
 --- !u!114 &2688049768504941886
@@ -973,7 +985,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 4
   setImage: 0
 --- !u!114 &676688449389170608
@@ -1115,7 +1129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 15
   setImage: 0
 --- !u!114 &884750957395117317
@@ -1257,7 +1273,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 19
   setImage: 0
 --- !u!114 &8802627658512650940
@@ -1399,7 +1417,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 10
   setImage: 0
 --- !u!114 &2737892943103092634
@@ -1564,8 +1584,10 @@ MonoBehaviour:
   offsetDistance: 3
   scaleReduction: {x: 0.8, y: 1, z: 0.8}
   folderPath: 
+  displayPath: 
   isLeafNode: 0
-  spawnDirection: {x: 0, y: -1, z: 0}
+  isLevel2: 0
+  spawnDirection: {x: 0, y: -1, z: 1}
   currentChildPlane: {fileID: 0}
   hasChild: 0
 --- !u!1 &4930037107612932025
@@ -1689,7 +1711,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 5
   setImage: 0
 --- !u!114 &825294577252436273
@@ -1831,7 +1855,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 11
   setImage: 0
 --- !u!114 &5759196557472788566
@@ -1973,7 +1999,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 3
   setImage: 0
 --- !u!114 &7835618553588506174
@@ -2115,7 +2143,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 6
   setImage: 0
 --- !u!114 &507425281641564542
@@ -2257,7 +2287,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 0
   setImage: 0
 --- !u!114 &1429648588643186649
@@ -2399,7 +2431,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 7
   setImage: 0
 --- !u!114 &3322283669473235136
@@ -2541,7 +2575,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 18
   setImage: 0
 --- !u!114 &5337946861443177169
@@ -2683,7 +2719,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 17
   setImage: 0
 --- !u!114 &4114130819584645251
@@ -2825,7 +2863,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 9
   setImage: 0
 --- !u!114 &6151040268479452900
@@ -2967,7 +3007,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
+  displayPath: 
   isSelected: 0
+  isLevel2: 0
   index: 13
   setImage: 0
 --- !u!114 &1878516135110782506
