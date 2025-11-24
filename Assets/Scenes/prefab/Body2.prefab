@@ -141,7 +141,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: 5
   scaleMultiplier: 4.5
 --- !u!1 &568494622852014106
@@ -285,7 +289,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: 0
   scaleMultiplier: 4.5
 --- !u!1 &1596153722950953001
@@ -429,7 +437,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: 0
   scaleMultiplier: 4.5
 --- !u!1 &2457891540780252123
@@ -573,7 +585,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: 10
   scaleMultiplier: 4.5
 --- !u!1 &3173704730478044199
@@ -717,7 +733,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: -5
   scaleMultiplier: 4.5
 --- !u!1 &3296410809156926870
@@ -861,7 +881,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: -5
   scaleMultiplier: 4.5
 --- !u!1 &3313454034357536834
@@ -1005,7 +1029,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: 10
   scaleMultiplier: 4.5
 --- !u!1 &3675389144950547482
@@ -1149,7 +1177,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: -10
   scaleMultiplier: 4.5
 --- !u!1 &3810927127788571433
@@ -1293,7 +1325,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: 10
   scaleMultiplier: 4.5
 --- !u!1 &4232796765412913903
@@ -1437,7 +1473,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 2800000, guid: 7ed0db5a1ea7c0341bea381c992c6735, type: 3}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: -10
   scaleMultiplier: 4.5
 --- !u!1 &4717274878089085487
@@ -1583,10 +1623,12 @@ MonoBehaviour:
     type: 3}
   offsetDistance: 3
   scaleReduction: {x: 0.8, y: 1, z: 0.8}
+  relativePath: 
+  relDisplayPath: 
+  isLeafNode: 0
+  isBasePlane: 0
   folderPath: 
   displayPath: 
-  isLeafNode: 0
-  isLevel2: 0
   spawnDirection: {x: 0, y: -1, z: 1}
   currentChildPlane: {fileID: 0}
   hasChild: 0
@@ -1731,7 +1773,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: -10
   scaleMultiplier: 4.5
 --- !u!1 &5573160125386419204
@@ -1875,7 +1921,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: -5
   scaleMultiplier: 4.5
 --- !u!1 &5767162633923498964
@@ -2019,7 +2069,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: 5
   scaleMultiplier: 4.5
 --- !u!1 &5921746024914579399
@@ -2163,7 +2217,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: -5
   scaleMultiplier: 4.5
 --- !u!1 &6939582250655398609
@@ -2196,7 +2254,7 @@ Transform:
   m_GameObject: {fileID: 6939582250655398609}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.0011, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2307,7 +2365,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: -10
   scaleMultiplier: 4.5
 --- !u!1 &7213744939410604291
@@ -2451,7 +2513,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: 0
   scaleMultiplier: 4.5
 --- !u!1 &7338532697595613806
@@ -2595,7 +2661,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: 5
   scaleMultiplier: 4.5
 --- !u!1 &7720003169522909450
@@ -2739,7 +2809,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: 0
   scaleMultiplier: 4.5
 --- !u!1 &7736849566702331475
@@ -2883,7 +2957,11 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: 10
   scaleMultiplier: 4.5
 --- !u!1 &7929267580599799844
@@ -3027,6 +3105,10 @@ MonoBehaviour:
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
   imageTexture: {fileID: 0}
+  textLabel: 
   worldOffset: -0.22
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
   rotaionZ: 5
   scaleMultiplier: 4.5

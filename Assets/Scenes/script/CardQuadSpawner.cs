@@ -3,20 +3,27 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using Scenes.script;
 using System.IO;
+using UnityEngine.UI;
 
+using TMPro;
 
 
 public class CardQuadSpawner : MonoBehaviour
 {
     public GameObject quadPrefab;
     public Texture imageTexture;
+    public string textLabel;
     public float worldOffset = -0.167f;
     private Camera targetCamera;
+    public GameObject textLabelPrefab;
+    private string imageFileName; 
+    public Material glassMaterial;
 
     //Hard coded the rotation and scaling 
     public float rotaionZ = -10.0f; 
     public float scaleMultiplier = 4.5f; 
     GameObject spawnedQuad;
+    GameObject spawnedLabel;
 
     void Start()
     {
@@ -71,7 +78,7 @@ public class CardQuadSpawner : MonoBehaviour
                     Debug.LogError("Image file not found at path: " + path);
                     return;
                 }
-
+                imageFileName = Path.GetFileNameWithoutExtension(path);
                 byte[] imageData = File.ReadAllBytes(path);
                 Texture2D tex = new Texture2D(2, 2); 
                 if (tex.LoadImage(imageData))
@@ -87,7 +94,17 @@ public class CardQuadSpawner : MonoBehaviour
 
             }
         }
-
+    
+      private string GetImageTitle(string path)
+    {
+        if (string.IsNullOrEmpty(path)) return "Untitled";
+        
+        string fileName = Path.GetFileNameWithoutExtension(path);
+        fileName = System.Text.RegularExpressions.Regex.Replace(fileName, @"[\d_-]", " ").Trim();
+        fileName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(fileName.ToLower());
+        
+        return fileName;
+    }
     
     public GameObject SpawnQuadInFrontOfCard(GameObject quadPrefab, Texture tex, float localZOffset = 0.01f)
     {
@@ -201,10 +218,98 @@ public class CardQuadSpawner : MonoBehaviour
             quadR.material = mat;
         }
 
+        SpawnTextLabel(quadLocalPos, uniformLocalScale);
         return spawnedQuad;
     }
 
+     private void SpawnTextLabel(Vector3 quadLocalPos, float quadScale)
+    {
+        string imageTitle; 
+        if (textLabel == "") {
+            var subPanelController = GetComponent<SubPanelController>();
+            string imgName = imageFileName; 
+            Debug.Log($"imageFileName {imageFileName}");
+            imageTitle = imageFileName;
+        } else {
+            imageTitle = textLabel;
+        }
+
+        spawnedLabel = Instantiate(textLabelPrefab);
+        spawnedLabel.name = $"{name}_ImageLabel";
+        spawnedLabel.transform.SetParent(transform, false);
+
+        
+        float labelZOffset = -0.018f; // Slightly in front of the quad
+        
+        Vector3 labelLocalPos = quadLocalPos + new Vector3(0f, -0.005f, labelZOffset);
+        spawnedLabel.transform.localPosition = labelLocalPos;
+        spawnedLabel.transform.localRotation = Quaternion.Euler(-90f + rotaionZ, 0f, 180f);
+
+        // Scale the label relative to the quad
+        float labelScale = quadScale * 0.03f; // Adjust this multiplier to get the right size
+        spawnedLabel.transform.localScale = new Vector3(labelScale, labelScale, labelScale);
 
 
+        // Set the text
+        var tmp = spawnedLabel.GetComponentInChildren<TextMeshPro>();
+        if (tmp == null)
+        {
+            Debug.LogError("TextMeshPro component not found!");
+            return;
+        }
+
+        tmp.text = imageTitle;
+        tmp.color = Color.white;
+        tmp.fontSize = 8;
+        tmp.alignment = TextAlignmentOptions.Center;
+
+        tmp.ForceMeshUpdate();
+        Bounds textBounds = tmp.textBounds;
+
+        // --- Make a safe instance of the TMP material (do NOT modify shared material) ---
+        if (tmp.fontMaterial != null)
+        {
+            Material instMat = new Material(tmp.fontMaterial);
+            instMat.SetInt("_ZWrite", 1);                                  // write depth
+            instMat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry + 1; // render after opaque geometry
+            tmp.fontMaterial = instMat; // assign instance back to this TMP object
+        }
+
+        Transform oldBg = tmp.transform.Find("TMP_Background");
+        if (oldBg != null) GameObject.Destroy(oldBg.gameObject);
+
+        GameObject bg = GameObject.CreatePrimitive(PrimitiveType.Quad);
+        bg.name = "TMP_Background";
+        bg.transform.SetParent(tmp.transform, false);
+
+        
+        float zOffset = 0.02f; 
+        bg.transform.localPosition = new Vector3(0f, 0f, zOffset);
+        bg.transform.localRotation = Quaternion.identity;
+
+        var col = bg.GetComponent<Collider>();
+        if (col != null) GameObject.Destroy(col);
+
+        float padX = 1.10f; 
+        float padY = 1.40f; 
+        Vector3 bgScale = new Vector3(Mathf.Max(0.001f, textBounds.size.x * padX),
+                                    Mathf.Max(0.001f, textBounds.size.y * padY),
+                                    1f);
+        bg.transform.localScale = bgScale;
+
+        var bgRenderer = bg.GetComponent<MeshRenderer>();
+        bgRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        bgRenderer.receiveShadows = false;
+        bgRenderer.material.SetInt("_ZWrite", 0);
+        bgRenderer.material = glassMaterial;
+        bgRenderer.material.SetColor("_BaseColor", new Color(0f, 0f, 0f, 0.3f));
+        bgRenderer.material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
+        bgRenderer.material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
+        bgRenderer.material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;
+
+        // Text setup
+        tmp.fontMaterial.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent + 1;
+
+    }
 
 }
