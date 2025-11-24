@@ -1131,19 +1131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70f20e2613644ffbbe8c850e66148e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gazeCamera: {fileID: 0}
-  rayDistance: 30
-  raycastMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  pinchThreshold: 0.7
-  requireBothHands: 0
-  showGazeRay: 1
-  gazeRayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  rayWidth: 0.003
-  highlightGazedObject: 1
-  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  verboseLogging: 0
 --- !u!1 &407861027
 GameObject:
   m_ObjectHideFlags: 0
@@ -3659,9 +3646,12 @@ MonoBehaviour:
     type: 3}
   offsetDistance: 3
   scaleReduction: {x: 0.8, y: 0.8, z: 0.8}
-  folderPath: C:/Users/isabe/Unity/collage_images
-  displayPath: 
+  relativePath: collage_images
+  relDisplayPath: collages_fixed
   isLeafNode: 0
+  isBasePlane: 1
+  folderPath: 
+  displayPath: 
   spawnDirection: {x: 0, y: -1, z: 0}
   currentChildPlane: {fileID: 0}
   hasChild: 0
@@ -3968,7 +3958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: C:/Users/isabe/Unity/collages_fixed/baroque
+  displayPath: 
   isSelected: 1
   isLevel2: 0
   index: 1
@@ -4034,7 +4024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: C:/Users/isabe/Unity/collages_fixed/impressionism
+  displayPath: 
   isSelected: 0
   isLevel2: 0
   index: 3
@@ -4488,7 +4478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: C:/Users/isabe/Unity/collages_fixed/art_nouveau
+  displayPath: 
   isSelected: 0
   isLevel2: 0
   index: 0
@@ -4596,7 +4586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: C:/Users/isabe/Unity/collages_fixed/renaissance
+  displayPath: 
   isSelected: 0
   isLevel2: 0
   index: 6
@@ -4751,7 +4741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: C:/Users/isabe/Unity/collages_fixed/post_impressionism
+  displayPath: 
   isSelected: 0
   isLevel2: 0
   index: 4
@@ -4887,7 +4877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: C:/Users/isabe/Unity/collages_fixed/expressionism
+  displayPath: 
   isSelected: 0
   isLevel2: 0
   index: 2
@@ -5008,7 +4998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: C:/Users/isabe/Unity/collages_fixed/surrealism
+  displayPath: 
   isSelected: 0
   isLevel2: 0
   index: 8
@@ -5074,7 +5064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataPath: 
-  displayPath: C:/Users/isabe/Unity/collages_fixed/realism
+  displayPath: 
   isSelected: 0
   isLevel2: 0
   index: 5

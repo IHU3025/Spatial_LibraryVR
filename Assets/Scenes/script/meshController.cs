@@ -11,10 +11,14 @@ namespace Scenes.script
         public Vector3 scaleReduction = new Vector3(0.8f, 1f, 0.8f);
         
         [Header("Data Settings")]
-        public string folderPath; //passed from selected subpanel
-        public string displayPath;
-        private string myPath; 
+        public string relativePath; //passed from selected subpanel
+        public string relDisplayPath;
+        private string myPath;
+        private string myDisplayPath;  
         public bool isLeafNode = false;
+        public bool isBasePlane= false;
+        public string folderPath; 
+        public string displayPath; 
 
         [Header("Subpanel Settings")]
         public Vector3 spawnDirection = Vector3.down;
@@ -22,43 +26,18 @@ namespace Scenes.script
         public bool hasChild = false;
 
         void Start()
-        {
+        {   
+            if (isBasePlane) {
+                folderPath = Path.Combine(Application.streamingAssetsPath, relativePath);
+                displayPath = Path.Combine(Application.streamingAssetsPath, relDisplayPath);
+                };
+            myDisplayPath = displayPath;
             myPath = folderPath; 
             SetupPlaneVisuals();
             
         }
 
-        /*
-        public void TriggerInteraction()
-        {
-            Debug.Log("PLANE INTERACTION TRIGGERED");
-
-            SubPanelController subPanel = GetComponent<SubPanelController>();
-            if (subPanel != null)
-            {
-                Debug.Log($"This is a subpanel: {name}");
-                HandleSubPanelInteraction(subPanel);
-                
-            }
-
-            if (!hasChild)
-            {
-                Debug.Log("Select a subpanel to proceed");
-            }
-            else
-            {
-                RemoveChildPlane();
-            }
-        }
-
-        void HandleSubPanelInteraction(SubPanelController subPanel)
-        {
-            subPanel.SelectPanel();
-            
-            folderPath = subPanel.GetFolderPath();
-            Debug.Log($"Updated folder path to: {folderPath}");
-        }
-        */
+        
 
         //data loading setup 
         void SetupPlaneVisuals()
@@ -203,7 +182,7 @@ namespace Scenes.script
             }
 
             hasChild = true;
-            Debug.Log("Spawned child plane with path: " + folderPath +  "display" + displayPath);
+            Debug.Log("Spawned child plane with path: " + folderPath +  " display: " + displayPath);
         }
         
         Vector3 CalculateChainPosition()
@@ -270,6 +249,8 @@ namespace Scenes.script
                 hasChild = false;
                 Debug.Log("Removed child plane");
                 folderPath = myPath; 
+                displayPath =myDisplayPath; 
+
             }
         }
 
