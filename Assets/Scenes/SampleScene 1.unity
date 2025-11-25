@@ -3216,7 +3216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
-  imageTexture: {fileID: 2800000, guid: 4c78ebe8f19cd2e45975c961085312c8, type: 3}
+  imageTexture: {fileID: 2800000, guid: b5f77e4f3401ec642aa723ce6cf96171, type: 3}
   textLabel: baroque
   worldOffset: -0.17
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
@@ -3286,7 +3286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
-  imageTexture: {fileID: 2800000, guid: fe0b7f14279636d4492a0cf5cc36e9b6, type: 3}
+  imageTexture: {fileID: 2800000, guid: 602caf04d2460b646a806666fd95fbe3, type: 3}
   textLabel: impressionism
   worldOffset: -0.17
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
@@ -3398,7 +3398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
-  imageTexture: {fileID: 2800000, guid: ec9e42e7f6343a643890429091c2e530, type: 3}
+  imageTexture: {fileID: 2800000, guid: adf357e63aca303499987f5d66f17600, type: 3}
   textLabel: ukiyo_e
   worldOffset: -0.167
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
@@ -3475,7 +3475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
-  imageTexture: {fileID: 2800000, guid: 2954589232f45d74f83c48d469e16866, type: 3}
+  imageTexture: {fileID: 2800000, guid: 0265747227702c544b98c941dadd63a2, type: 3}
   textLabel: art nouveau
   worldOffset: -0.167
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
@@ -3587,7 +3587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
-  imageTexture: {fileID: 2800000, guid: a31563c6002e2714996cda9b8d5df1f2, type: 3}
+  imageTexture: {fileID: 2800000, guid: 6ac1e0cc7fd2d664ca80ae156d03e8ed, type: 3}
   textLabel: renaissance
   worldOffset: -0.167
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
@@ -3691,7 +3691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
-  imageTexture: {fileID: 2800000, guid: dabffeff952d7844fa6cffbfc8dcc81c, type: 3}
+  imageTexture: {fileID: 2800000, guid: 8945efcbdd9d1934d9b877024dfeeec1, type: 3}
   textLabel: post impressionism
   worldOffset: -0.167
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
@@ -3816,7 +3816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
-  imageTexture: {fileID: 2800000, guid: cd24c8f5288d7ca43a3cf12e0d2840c8, type: 3}
+  imageTexture: {fileID: 2800000, guid: dc5329f28a106e14181c978e5ca33c36, type: 3}
   textLabel: expressionism
   worldOffset: -0.17
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
@@ -3941,7 +3941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
-  imageTexture: {fileID: 2800000, guid: 621157d839c30ba488ad4b806081a4d5, type: 3}
+  imageTexture: {fileID: 2800000, guid: c6e40fd7bc1cd17428b8c8df80265076, type: 3}
   textLabel: surrealism
   worldOffset: -0.167
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
@@ -4011,7 +4011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
-  imageTexture: {fileID: 2800000, guid: 551afb7b15ad0a844a529bfa84ac6ae6, type: 3}
+  imageTexture: {fileID: 2800000, guid: a04602fcab13a3948858d58a0993ee70, type: 3}
   textLabel: realism
   worldOffset: -0.167
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
@@ -4115,7 +4115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quadPrefab: {fileID: 919132149155446097, guid: 3d3a9ad2e914b844db985bb732fb56bd,
     type: 3}
-  imageTexture: {fileID: 2800000, guid: 812f4f9d8832f404fa7065185b92cf06, type: 3}
+  imageTexture: {fileID: 2800000, guid: 435d8606294ed5749accee9c551a2fa4, type: 3}
   textLabel: renaissance
   worldOffset: -0.167
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,

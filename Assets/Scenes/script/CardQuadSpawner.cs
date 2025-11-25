@@ -18,6 +18,7 @@ public class CardQuadSpawner : MonoBehaviour
     public GameObject textLabelPrefab;
     private string imageFileName; 
     public Material glassMaterial;
+    public float labelsize = 0.027f;
 
     //Hard coded the rotation and scaling 
     public float rotaionZ = -10.0f; 
@@ -246,7 +247,7 @@ public class CardQuadSpawner : MonoBehaviour
         spawnedLabel.transform.localRotation = Quaternion.Euler(-90f + rotaionZ, 0f, 180f);
 
         // Scale the label relative to the quad
-        float labelScale = quadScale * 0.03f; // Adjust this multiplier to get the right size
+        float labelScale = quadScale * labelsize; // Adjust this multiplier to get the right size
         spawnedLabel.transform.localScale = new Vector3(labelScale, labelScale, labelScale);
 
 
@@ -311,5 +312,6 @@ public class CardQuadSpawner : MonoBehaviour
         tmp.fontMaterial.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent + 1;
 
     }
+    
 
 }

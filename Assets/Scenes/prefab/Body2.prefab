@@ -146,6 +146,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: 5
   scaleMultiplier: 4.5
 --- !u!1 &568494622852014106
@@ -294,6 +295,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: 0
   scaleMultiplier: 4.5
 --- !u!1 &1596153722950953001
@@ -442,6 +444,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: 0
   scaleMultiplier: 4.5
 --- !u!1 &2457891540780252123
@@ -590,6 +593,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: 10
   scaleMultiplier: 4.5
 --- !u!1 &3173704730478044199
@@ -738,6 +742,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: -5
   scaleMultiplier: 4.5
 --- !u!1 &3296410809156926870
@@ -886,6 +891,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: -5
   scaleMultiplier: 4.5
 --- !u!1 &3313454034357536834
@@ -1034,6 +1040,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: 10
   scaleMultiplier: 4.5
 --- !u!1 &3675389144950547482
@@ -1182,6 +1189,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: -10
   scaleMultiplier: 4.5
 --- !u!1 &3810927127788571433
@@ -1330,6 +1338,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: 10
   scaleMultiplier: 4.5
 --- !u!1 &4232796765412913903
@@ -1478,6 +1487,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: -10
   scaleMultiplier: 4.5
 --- !u!1 &4717274878089085487
@@ -1782,6 +1792,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: -10
   scaleMultiplier: 4.5
 --- !u!1 &5573160125386419204
@@ -1930,6 +1941,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: -5
   scaleMultiplier: 4.5
 --- !u!1 &5767162633923498964
@@ -2078,6 +2090,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: 5
   scaleMultiplier: 4.5
 --- !u!1 &5921746024914579399
@@ -2226,6 +2239,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: -5
   scaleMultiplier: 4.5
 --- !u!1 &6939582250655398609
@@ -2374,6 +2388,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: -10
   scaleMultiplier: 4.5
 --- !u!1 &7213744939410604291
@@ -2522,6 +2537,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: 0
   scaleMultiplier: 4.5
 --- !u!1 &7338532697595613806
@@ -2670,6 +2686,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: 5
   scaleMultiplier: 4.5
 --- !u!1 &7720003169522909450
@@ -2818,6 +2835,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: 0
   scaleMultiplier: 4.5
 --- !u!1 &7736849566702331475
@@ -2966,6 +2984,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: 10
   scaleMultiplier: 4.5
 --- !u!1 &7929267580599799844
@@ -3114,5 +3133,6 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.017
   rotaionZ: 5
   scaleMultiplier: 4.5
