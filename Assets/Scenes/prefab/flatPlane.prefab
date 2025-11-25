@@ -102,3 +102,5 @@ MonoBehaviour:
   worldOffset: -0.1
   rotaionZ: 0
   scaleMultiplier: 3.5
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}

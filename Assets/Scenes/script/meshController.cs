@@ -25,6 +25,11 @@ namespace Scenes.script
         public GameObject currentChildPlane;
         public bool hasChild = false;
 
+         [Header("Label Settings")]
+        public GameObject textLabelPrefab; 
+        public float labelHeight = -0.008f;
+        public float labelz = 0.07f;
+
         void Start()
         {   
             if (isBasePlane) {
@@ -49,11 +54,14 @@ namespace Scenes.script
             if (IsLeafNode())
             {
                 //SetupAsImagePlane();
+                
             }
             else
             {
                 SetupAsFolderPlane();
             }
+            SpawnFolderLabel();
+
         }
 
         bool IsEmptyFolder()
@@ -119,6 +127,7 @@ namespace Scenes.script
                     //set this to the image_texture for the card script 
                 }
             }
+            SpawnFolderLabel();
         }
 
 
@@ -263,5 +272,77 @@ namespace Scenes.script
             v = Mathf.Clamp(v - 0.1f, 0.7f, 1f);
             return Color.HSVToRGB(h, s, v);
         }
+
+        private void SpawnFolderLabel()
+        {
+            if (textLabelPrefab == null)
+            {
+                Debug.LogWarning("[MeshController] textLabelPrefab is not assigned. Cannot create folder label.");
+                return;
+            }
+
+            string folderName = "Unknown";
+            if (!string.IsNullOrEmpty(folderPath))
+            {
+                folderName = Path.GetFileName(folderPath.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar));
+                if (string.IsNullOrEmpty(folderName)) folderName = folderPath; 
+            }
+
+            Transform existing = transform.Find($"{gameObject.name}_FolderLabel");
+            if (existing != null) Destroy(existing.gameObject);
+
+            GameObject spawnedLabel = Instantiate(textLabelPrefab);
+            spawnedLabel.name = $"{gameObject.name}_FolderLabel";
+            spawnedLabel.transform.SetParent(transform, false);
+
+           
+            
+            spawnedLabel.transform.localPosition = new Vector3(-0.06f, labelHeight, labelz);
+
+            spawnedLabel.transform.localRotation = Quaternion.Euler(-90f, 0f, 180f);
+
+
+            Renderer planeR = GetComponent<Renderer>();
+            Vector3 baseScale = Vector3.one;
+            if (planeR != null)
+            {
+                Vector3 bounds = planeR.bounds.size;
+                float uniform = Mathf.Max(bounds.x, bounds.y);
+                baseScale = new Vector3(uniform, uniform, uniform);
+            }
+            float localLabelScale = 0.0003f;            
+            spawnedLabel.transform.localScale = baseScale * localLabelScale;
+
+            // Find TMP inside the prefab
+            var tmp = spawnedLabel.GetComponentInChildren<TMPro.TextMeshPro>();
+            if (tmp == null)
+            {
+                Debug.LogError("[MeshController] TextMeshPro component not found in textLabelPrefab!");
+                return;
+            }
+
+            tmp.text = folderName;
+            tmp.color = Color.white;
+            tmp.fontSize = 10; 
+            tmp.alignment = TMPro.TextAlignmentOptions.Center;
+
+            tmp.ForceMeshUpdate();
+            Bounds textBounds = tmp.textBounds;
+
+            if (tmp.fontMaterial != null)
+            {
+                Material instMat = new Material(tmp.fontMaterial);
+
+                // Do not write to depth buffer
+                instMat.SetInt("_ZWrite", 0);
+
+                // Render after everything else (Overlay queue)
+                instMat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Overlay;
+
+                tmp.fontMaterial = instMat; // assign instance back
+            }
+
+        }
+
     }
 }

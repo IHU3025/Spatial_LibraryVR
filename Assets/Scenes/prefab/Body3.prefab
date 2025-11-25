@@ -2076,6 +2076,10 @@ MonoBehaviour:
   spawnDirection: {x: 0, y: -1, z: 0}
   currentChildPlane: {fileID: 0}
   hasChild: 0
+  textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
+    type: 3}
+  labelHeight: -0.04
+  labelz: 0.065
 --- !u!1 &6072809562711953378
 GameObject:
   m_ObjectHideFlags: 0

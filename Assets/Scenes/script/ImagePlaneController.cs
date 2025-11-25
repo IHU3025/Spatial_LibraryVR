@@ -17,6 +17,9 @@ public class ImagePlaneController : MonoBehaviour
     public float scaleMultiplier = 6.5f; 
     GameObject spawnedQuad;
 
+    [Header("Label Settings")]
+    public GameObject textLabelPrefab; 
+
     void Start()
     {
        if (targetCamera == null)
@@ -40,11 +43,13 @@ public class ImagePlaneController : MonoBehaviour
 
         LoadImageTexture();
         Debug.Log($"Image texture is null: {imageTexture == null}");
+        
 
         if(imageTexture != null){
             Debug.Log($"has image Texture, spawn quad");
             SpawnQuadInFrontOfCard(quadPrefab, imageTexture, 0.01f);
         }
+        SpawnFolderLabel();
     }
 
      void LoadImageTexture(){
@@ -187,7 +192,87 @@ public class ImagePlaneController : MonoBehaviour
         return spawnedQuad;
     }
 
+    private void SpawnFolderLabel()
+        {
+            if (textLabelPrefab == null)
+            {
+                Debug.LogWarning("[MeshController] textLabelPrefab is not assigned. Cannot create folder label.");
+                return;
+            }
 
+            string sourcePath = "";
+            if (transform.parent != null)
+            {
+                var parentMeshController = transform.parent.GetComponent<MeshController>();
+                if (parentMeshController != null && !string.IsNullOrEmpty(parentMeshController.folderPath))
+                {
+                    sourcePath = parentMeshController.folderPath;
+                }
+            }
+
+              string folderName = "Unknown";
+            if (!string.IsNullOrEmpty(sourcePath))
+            {
+                folderName = Path.GetFileName(sourcePath.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar));
+                if (string.IsNullOrEmpty(folderName)) folderName = sourcePath;
+            }
+
+            Transform existing = transform.Find($"{gameObject.name}_FolderLabel");
+            if (existing != null) Destroy(existing.gameObject);
+
+            GameObject spawnedLabel = Instantiate(textLabelPrefab);
+            spawnedLabel.name = $"{gameObject.name}_FolderLabel";
+            spawnedLabel.transform.SetParent(transform, false);
+
+           
+            
+            spawnedLabel.transform.localPosition = new Vector3(-0.0631f, -0.1051f, 0.0382f);
+
+            spawnedLabel.transform.localRotation = Quaternion.Euler(-90f, 0f, 180f);
+
+
+            Renderer planeR = GetComponent<Renderer>();
+            Vector3 baseScale = Vector3.one;
+            if (planeR != null)
+            {
+                Vector3 bounds = planeR.bounds.size;
+                float uniform = Mathf.Max(bounds.x, bounds.y);
+                baseScale = new Vector3(uniform, uniform, uniform);
+            }
+            float localLabelScale = 0.0003f;            
+            spawnedLabel.transform.localScale = baseScale * localLabelScale;
+
+            // Find TMP inside the prefab
+            var tmp = spawnedLabel.GetComponentInChildren<TMPro.TextMeshPro>();
+            if (tmp == null)
+            {
+                Debug.LogError("[MeshController] TextMeshPro component not found in textLabelPrefab!");
+                return;
+            }
+
+            tmp.text = folderName;
+            tmp.color = Color.white;
+            tmp.fontSize = 10; 
+            tmp.alignment = TMPro.TextAlignmentOptions.Center;
+
+            tmp.ForceMeshUpdate();
+            Bounds textBounds = tmp.textBounds;
+
+            if (tmp.fontMaterial != null)
+            {
+                Material instMat = new Material(tmp.fontMaterial);
+
+                // Do not write to depth buffer
+                instMat.SetInt("_ZWrite", 0);
+
+                // Render after everything else (Overlay queue)
+                instMat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Overlay;
+
+                tmp.fontMaterial = instMat; // assign instance back
+            }
+
+        
+        }
 
 
 }
