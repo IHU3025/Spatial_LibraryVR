@@ -290,10 +290,12 @@ namespace Scenes.script
                 if (mainPanel != null)
                 {
                     string subpanelPath = subPanel.GetFolderPath();
+                    string subpanelDisplayPath = subPanel.GetDisplayPath();
                     
                     if (!mainPanel.hasChild)
                     {
                         mainPanel.folderPath = subpanelPath;
+                        mainPanel.displayPath = subpanelDisplayPath;
                         mainPanel.SpawnChildPlane();
                     }
                     else
