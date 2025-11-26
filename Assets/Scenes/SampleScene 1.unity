@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 203113286}
   - component: {fileID: 203113285}
   - component: {fileID: 203113287}
+  - component: {fileID: 203113288}
   m_Layer: 0
   m_Name: LeftHandController
   m_TagString: LeftHand
@@ -822,6 +823,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLeftController: 1
+--- !u!114 &203113288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203113280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5b9cf54c47f40ee9c3eb30ea8eb89b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Handedness: 1
+  m_UpdateType: 1
+  m_PoseUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_JointsUpdated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_TrackingAcquired:
+    m_PersistentCalls:
+      m_Calls: []
+  m_TrackingLost:
+    m_PersistentCalls:
+      m_Calls: []
+  m_TrackingChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &235099504
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,6 +914,7 @@ GameObject:
   - component: {fileID: 308484595}
   - component: {fileID: 308484594}
   - component: {fileID: 308484593}
+  - component: {fileID: 308484598}
   - component: {fileID: 308484597}
   m_Layer: 0
   m_Name: Main Camera
@@ -1128,9 +1159,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 308484591}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d70f20e2613644ffbbe8c850e66148e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 9af670488835a49fdac968ad40f52fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeCamera: {fileID: 0}
+  rayDistance: 30
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  controllerNode: 5
+  gripThreshold: 0.7
+  useTrigger: 0
+  showGazeRay: 1
+  gazeRayColor: {r: 0, g: 1, b: 1, a: 1}
+  rayWidth: 0.003
+  highlightGazedObject: 1
+  highlightColor: {r: 0, g: 1, b: 1, a: 1}
+  verboseLogging: 0
+--- !u!114 &308484598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308484591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 905f01a13bb4045df84b2b4856dc98a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gazeCamera: {fileID: 0}
+  rayDistance: 30
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  pinchThreshold: 0.7
+  requireBothHands: 0
+  showGazeRay: 0
+  gazeRayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  rayWidth: 0.003
+  highlightGazedObject: 0
+  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  verboseLogging: 0
 --- !u!1 &407861027
 GameObject:
   m_ObjectHideFlags: 0
@@ -3222,6 +3292,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.027
   rotaionZ: -5
   scaleMultiplier: 4.5
 --- !u!33 &7350635618703766467
@@ -3292,6 +3363,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.027
   rotaionZ: 5
   scaleMultiplier: 4.5
 --- !u!23 &7767345631237177201
@@ -3404,6 +3476,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.027
   rotaionZ: 10
   scaleMultiplier: 4.5
 --- !u!4 &7984056546595103825
@@ -3481,6 +3554,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.027
   rotaionZ: -10
   scaleMultiplier: 4.5
 --- !u!23 &8094613769346458459
@@ -3593,6 +3667,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.027
   rotaionZ: -5
   scaleMultiplier: 4.5
 --- !u!23 &8415502549868280306
@@ -3697,6 +3772,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.027
   rotaionZ: 10
   scaleMultiplier: 4.5
 --- !u!1 &8444295993157993230
@@ -3822,6 +3898,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.027
   rotaionZ: 0
   scaleMultiplier: 4.5
 --- !u!1 &8679023187569240829
@@ -3947,6 +4024,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.027
   rotaionZ: 5
   scaleMultiplier: 4.5
 --- !u!33 &8781440569785176648
@@ -4017,6 +4095,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.027
   rotaionZ: -10
   scaleMultiplier: 4.5
 --- !u!23 &8923708867205329551
@@ -4121,6 +4200,7 @@ MonoBehaviour:
   textLabelPrefab: {fileID: 404967491556930805, guid: f1cfb935f190bc84ca494dee8f83ed03,
     type: 3}
   glassMaterial: {fileID: 2100000, guid: 083b980c68a6df04398ba32ffb16b2b2, type: 2}
+  labelsize: 0.027
   rotaionZ: 0
   scaleMultiplier: 4.5
 --- !u!1660057539 &9223372036854775807
