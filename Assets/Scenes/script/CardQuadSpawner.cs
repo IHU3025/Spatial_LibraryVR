@@ -215,7 +215,7 @@ public class CardQuadSpawner : MonoBehaviour
                 new Material(Shader.Find("Standard"));
             
             mat.mainTexture = tex;
-            mat.mainTextureScale = new Vector2(-1f, -1f);
+            mat.mainTextureScale = new Vector2(1f, -1f);
             quadR.material = mat;
         }
 
@@ -303,7 +303,7 @@ public class CardQuadSpawner : MonoBehaviour
         bgRenderer.receiveShadows = false;
         bgRenderer.material.SetInt("_ZWrite", 0);
         bgRenderer.material = glassMaterial;
-        bgRenderer.material.SetColor("_BaseColor", new Color(0f, 0f, 0f, 0.3f));
+        bgRenderer.material.SetColor("_BaseColor", new Color(0f, 0f, 0f, 1f));
         bgRenderer.material.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
         bgRenderer.material.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
         bgRenderer.material.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Transparent;

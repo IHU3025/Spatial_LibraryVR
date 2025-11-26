@@ -79,9 +79,8 @@ namespace Scenes.script
             } else {
                 string[] images = GetFilteredFiles(basePath);
 
-                int reversedIndex = images.Length - 1 - index;
-                if (reversedIndex >= 0 && reversedIndex < images.Length) {
-                    dataPath = images[reversedIndex];
+                if (index >= 0 && index < images.Length) {
+                    dataPath = images[index];
                     Debug.Log($"has image on card{index}, setting setImage to True, isLeafNode{isLeafNode}");
                     setImage = true;
                 }
