@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using Scenes.script;
 using System.IO;
-
+using UnityEngine.Networking;
 
 public class ImagePlaneController : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class ImagePlaneController : MonoBehaviour
     public float worldOffset = -0.167f;
     private Camera targetCamera;
 
-    //Hard coded the rotation and scaling 
+    // Hard coded the rotation and scaling 
     public float rotaionZ = -10.0f; 
     public float scaleMultiplier = 6.5f; 
     GameObject spawnedQuad;
@@ -22,7 +22,7 @@ public class ImagePlaneController : MonoBehaviour
 
     void Start()
     {
-       if (targetCamera == null)
+        if (targetCamera == null)
         {
             GameObject xrOriginGO = GameObject.Find("XR Origin");
             if (xrOriginGO != null)
@@ -35,24 +35,18 @@ public class ImagePlaneController : MonoBehaviour
                 targetCamera = Camera.main;
             }
         }
-          if (targetCamera == null)
+
+        if (targetCamera == null)
         {
-            Debug.LogError("[CardQuadSpawner] No camera found for spawning quad.");
+            Debug.LogError("[ImagePlaneController] No camera found for spawning quad.");
             return;
         }
 
+        // Just start async load – no immediate spawn here
         LoadImageTexture();
-        Debug.Log($"Image texture is null: {imageTexture == null}");
-        
-
-        if(imageTexture != null){
-            Debug.Log($"has image Texture, spawn quad");
-            SpawnQuadInFrontOfCard(quadPrefab, imageTexture, 0.01f);
-        }
-        SpawnFolderLabel();
     }
 
-     void LoadImageTexture()
+    void LoadImageTexture()
     {
         if (transform.parent == null)
         {
@@ -74,44 +68,74 @@ public class ImagePlaneController : MonoBehaviour
         Debug.Log($"[ImagePlaneController] displayPath='{display}', folderPath='{folder}'");
 
         string path = null;
-        if (!string.IsNullOrEmpty(display) && File.Exists(display))
-        {
-            path = display;
-        }
-        else if (!string.IsNullOrEmpty(folder) && File.Exists(folder))
+
+        // Leaf planes: folderPath is usually the full file
+        if (!string.IsNullOrEmpty(folder) && File.Exists(folder))
         {
             path = folder;
+        }
+        else if (!string.IsNullOrEmpty(display) && File.Exists(display))
+        {
+            path = display;
         }
 
         if (string.IsNullOrEmpty(path))
         {
-            Debug.LogError("[ImagePlaneController] No valid image file found. " +
-                        "Neither displayPath nor folderPath points to an existing file.");
+            Debug.LogError(
+                "[ImagePlaneController] No valid image file found. " +
+                $"displayPath='{display}', folderPath='{folder}'"
+            );
             return;
         }
 
-        try
+        string url = path;
+        if (!url.StartsWith("file://"))
+            url = "file://" + url;
+
+        Debug.Log($"[ImagePlaneController] Loading texture via URL: {url}");
+        StartCoroutine(LoadImageTextureFromPath(url));
+    }
+
+    private System.Collections.IEnumerator LoadImageTextureFromPath(string url)
+    {
+        using (UnityWebRequest req = UnityWebRequestTexture.GetTexture(url))
         {
-            byte[] imageData = File.ReadAllBytes(path);
-            Texture2D tex = new Texture2D(2, 2);
-            if (tex.LoadImage(imageData))
+            yield return req.SendWebRequest();
+
+#if UNITY_2020_2_OR_NEWER
+            if (req.result != UnityWebRequest.Result.Success)
+#else
+            if (req.isNetworkError || req.isHttpError)
+#endif
             {
-                imageTexture = tex;
-                Debug.Log($"[ImagePlaneController] Loaded image texture from: {path}");
+                Debug.LogError($"[ImagePlaneController] Failed to load texture from '{url}': {req.error}");
+                yield break;
+            }
+
+            var tex = DownloadHandlerTexture.GetContent(req);
+            if (tex == null)
+            {
+                Debug.LogError($"[ImagePlaneController] Downloaded texture was null from '{url}'");
+                yield break;
+            }
+
+            imageTexture = tex;
+            Debug.Log($"[ImagePlaneController] Successfully loaded texture from '{url}'");
+
+            // ✅ Now that the texture is loaded, spawn the quad + label
+            if (quadPrefab != null)
+            {
+                Debug.Log("[ImagePlaneController] Spawning quad with loaded texture.");
+                SpawnQuadInFrontOfCard(quadPrefab, imageTexture, 0.01f);
+                SpawnFolderLabel();
             }
             else
             {
-                Debug.LogError("[ImagePlaneController] Failed to decode image from path: " + path);
+                Debug.LogError("[ImagePlaneController] quadPrefab is not assigned.");
             }
-        }
-        catch (System.Exception ex)
-        {
-            Debug.LogError("[ImagePlaneController] Exception reading image from '" + path + "': " + ex.Message);
         }
     }
 
-
-    
     public GameObject SpawnQuadInFrontOfCard(GameObject quadPrefab, Texture tex, float localZOffset = 0.01f)
     {
         if (quadPrefab == null) return null;
@@ -123,21 +147,17 @@ public class ImagePlaneController : MonoBehaviour
         Vector3 c = b.center;
         Vector3 e = b.extents;
         
-        // Get the 8 corners of the bounding box
         var corners = new List<Vector3>(8);
         for (int sx = -1; sx <= 1; sx += 2)
             for (int sy = -1; sy <= 1; sy += 2)
                 for (int sz = -1; sz <= 1; sz += 2)
                     corners.Add(c + new Vector3(sx * e.x, sy * e.y, sz * e.z));
 
-        // plane's foward direction
         Vector3 outwardDirection = transform.forward;
         
-        // Find the front face corners 
         var cornerScores = new List<(Vector3 pos, float score)>(8);
         for (int i = 0; i < corners.Count; i++)
         {
-          
             Vector3 toCorner = (corners[i] - c).normalized;
             float score = Vector3.Dot(toCorner, outwardDirection);
             cornerScores.Add((corners[i], score));
@@ -145,7 +165,6 @@ public class ImagePlaneController : MonoBehaviour
         
         cornerScores.Sort((a, b) => b.score.CompareTo(a.score));
         
-        // Take the front 4 corners
         var front4 = new List<Vector3>(4);
         for (int i = 0; i < 4; i++) front4.Add(cornerScores[i].pos);
 
@@ -213,8 +232,11 @@ public class ImagePlaneController : MonoBehaviour
                 new Material(quadR.sharedMaterial) : 
                 new Material(Shader.Find("Standard"));
             
-            mat.mainTexture = tex;
+            // If you still see horizontal flip, change X to -1f:
+            // mat.mainTextureScale = new Vector2(-1f, -1f);
             mat.mainTextureScale = new Vector2(1f, -1f);
+
+            mat.mainTexture = tex;
             quadR.material = mat;
         }
 
@@ -222,86 +244,71 @@ public class ImagePlaneController : MonoBehaviour
     }
 
     private void SpawnFolderLabel()
+    {
+        if (textLabelPrefab == null)
         {
-            if (textLabelPrefab == null)
-            {
-                Debug.LogWarning("[MeshController] textLabelPrefab is not assigned. Cannot create folder label.");
-                return;
-            }
-
-            string sourcePath = "";
-            if (transform.parent != null)
-            {
-                var parentMeshController = transform.parent.GetComponent<MeshController>();
-                if (parentMeshController != null && !string.IsNullOrEmpty(parentMeshController.folderPath))
-                {
-                    sourcePath = parentMeshController.folderPath;
-                }
-            }
-
-              string folderName = "Unknown";
-            if (!string.IsNullOrEmpty(sourcePath))
-            {
-                folderName = Path.GetFileName(sourcePath.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar));
-                if (string.IsNullOrEmpty(folderName)) folderName = sourcePath;
-            }
-
-            Transform existing = transform.Find($"{gameObject.name}_FolderLabel");
-            if (existing != null) Destroy(existing.gameObject);
-
-            GameObject spawnedLabel = Instantiate(textLabelPrefab);
-            spawnedLabel.name = $"{gameObject.name}_FolderLabel";
-            spawnedLabel.transform.SetParent(transform, false);
-
-           
-            
-            spawnedLabel.transform.localPosition = new Vector3(-0.0631f, -0.1051f, 0.0382f);
-
-            spawnedLabel.transform.localRotation = Quaternion.Euler(-90f, 0f, 180f);
-
-
-            Renderer planeR = GetComponent<Renderer>();
-            Vector3 baseScale = Vector3.one;
-            if (planeR != null)
-            {
-                Vector3 bounds = planeR.bounds.size;
-                float uniform = Mathf.Max(bounds.x, bounds.y);
-                baseScale = new Vector3(uniform, uniform, uniform);
-            }
-            float localLabelScale = 0.0003f;            
-            spawnedLabel.transform.localScale = baseScale * localLabelScale;
-
-            // Find TMP inside the prefab
-            var tmp = spawnedLabel.GetComponentInChildren<TMPro.TextMeshPro>();
-            if (tmp == null)
-            {
-                Debug.LogError("[MeshController] TextMeshPro component not found in textLabelPrefab!");
-                return;
-            }
-
-            tmp.text = folderName;
-            tmp.color = Color.white;
-            tmp.fontSize = 10; 
-            tmp.alignment = TMPro.TextAlignmentOptions.Center;
-
-            tmp.ForceMeshUpdate();
-            Bounds textBounds = tmp.textBounds;
-
-            if (tmp.fontMaterial != null)
-            {
-                Material instMat = new Material(tmp.fontMaterial);
-
-                // Do not write to depth buffer
-                instMat.SetInt("_ZWrite", 0);
-
-                // Render after everything else (Overlay queue)
-                instMat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Overlay;
-
-                tmp.fontMaterial = instMat; // assign instance back
-            }
-
-        
+            Debug.LogWarning("[ImagePlaneController] textLabelPrefab is not assigned. Cannot create folder label.");
+            return;
         }
 
+        string sourcePath = "";
+        if (transform.parent != null)
+        {
+            var parentMeshController = transform.parent.GetComponent<MeshController>();
+            if (parentMeshController != null && !string.IsNullOrEmpty(parentMeshController.folderPath))
+            {
+                sourcePath = parentMeshController.folderPath;
+            }
+        }
 
+        string folderName = "Unknown";
+        if (!string.IsNullOrEmpty(sourcePath))
+        {
+            folderName = Path.GetFileName(sourcePath.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar));
+            if (string.IsNullOrEmpty(folderName)) folderName = sourcePath;
+        }
+
+        Transform existing = transform.Find($"{gameObject.name}_FolderLabel");
+        if (existing != null) Destroy(existing.gameObject);
+
+        GameObject spawnedLabel = Instantiate(textLabelPrefab);
+        spawnedLabel.name = $"{gameObject.name}_FolderLabel";
+        spawnedLabel.transform.SetParent(transform, false);
+
+        spawnedLabel.transform.localPosition = new Vector3(-0.0631f, -0.1051f, 0.0382f);
+        spawnedLabel.transform.localRotation = Quaternion.Euler(-90f, 0f, 180f);
+
+        Renderer planeR = GetComponent<Renderer>();
+        Vector3 baseScale = Vector3.one;
+        if (planeR != null)
+        {
+            Vector3 bounds = planeR.bounds.size;
+            float uniform = Mathf.Max(bounds.x, bounds.y);
+            baseScale = new Vector3(uniform, uniform, uniform);
+        }
+        float localLabelScale = 0.0003f;            
+        spawnedLabel.transform.localScale = baseScale * localLabelScale;
+
+        var tmp = spawnedLabel.GetComponentInChildren<TMPro.TextMeshPro>();
+        if (tmp == null)
+        {
+            Debug.LogError("[ImagePlaneController] TextMeshPro component not found in textLabelPrefab!");
+            return;
+        }
+
+        tmp.text = folderName;
+        tmp.color = Color.white;
+        tmp.fontSize = 10; 
+        tmp.alignment = TMPro.TextAlignmentOptions.Center;
+
+        tmp.ForceMeshUpdate();
+
+        if (tmp.fontMaterial != null)
+        {
+            Material instMat = new Material(tmp.fontMaterial);
+            instMat.SetInt("_ZWrite", 0);
+            instMat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Overlay;
+            tmp.fontMaterial = instMat;
+        }
+    }
 }

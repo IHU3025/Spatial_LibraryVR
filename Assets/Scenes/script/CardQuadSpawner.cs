@@ -4,6 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 using Scenes.script;
 using System.IO;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 using TMPro;
 
@@ -49,8 +50,9 @@ public class CardQuadSpawner : MonoBehaviour
 
         LoadImageTexture();
         Debug.Log($"Image texture is null: {imageTexture == null}");
+        var meshController = GetComponent<MeshController>();
 
-        if(imageTexture != null){
+        if(imageTexture != null || meshController.isBasePlane){
             Debug.Log($"has image Texture, spawn quad");
             SpawnQuadInFrontOfCard(quadPrefab, imageTexture, 0.01f);
         }
@@ -59,9 +61,13 @@ public class CardQuadSpawner : MonoBehaviour
     void LoadImageTexture()
     {
         var subPanelController = GetComponent<SubPanelController>();
+
+        // =========================================================
+        // 1) SUBPANEL CARDS (layer 1 / layer 2) – use SubPanelController
+        // =========================================================
         if (subPanelController == null)
         {
-            Debug.LogError("[CardQuadSpawner] No SubPanelController found on this object.");
+            Debug.LogError("[CardQuadSpawner] Non-base plane but no SubPanelController found.");
             return;
         }
 
@@ -71,38 +77,71 @@ public class CardQuadSpawner : MonoBehaviour
             return;
         }
 
-        // Prefer displayPath; fallback to dataPath if needed
-        string path = !string.IsNullOrEmpty(subPanelController.displayPath)
-            ? subPanelController.displayPath
-            : subPanelController.dataPath;
+        string display = subPanelController.displayPath;
+        string data    = subPanelController.dataPath;
+
+        // On Android StreamingAssets, File.Exists is unreliable, so just pick a priority.
+        // Prefer displayPath if it’s set, fall back to dataPath.
+        string path = !string.IsNullOrEmpty(display) ? display : data;
 
         if (string.IsNullOrEmpty(path))
         {
-            Debug.LogError("[CardQuadSpawner] Both displayPath and dataPath are empty.");
+            Debug.LogError(
+                "[CardQuadSpawner] No valid image path. " +
+                $"displayPath='{display}', dataPath='{data}'"
+            );
             return;
         }
 
-        if (!File.Exists(path))
+        imageFileName = System.IO.Path.GetFileNameWithoutExtension(path);
+
+        // Build URL for UnityWebRequest (works for Windows + Android)
+        string url = path;
+        if (!url.StartsWith("file://") &&
+            !url.StartsWith("jar:")   &&   // in case StreamingAssets are inside jar on Android
+            !url.StartsWith("http"))
         {
-            Debug.LogError("[CardQuadSpawner] Image file not found at path: " + path);
-            return;
+            url = "file://" + url;
         }
 
-        imageFileName = Path.GetFileNameWithoutExtension(path);
+        Debug.Log($"[CardQuadSpawner] Loading texture via URL: {url}");
+        StartCoroutine(LoadImageTextureFromPath(url));
+    }
 
-        byte[] imageData = File.ReadAllBytes(path);
-        Texture2D tex = new Texture2D(2, 2);
 
-        if (tex.LoadImage(imageData))
+    private System.Collections.IEnumerator LoadImageTextureFromPath(string url)
+    {
+        using (UnityWebRequest req = UnityWebRequestTexture.GetTexture(url))
         {
+            yield return req.SendWebRequest();
+
+    #if UNITY_2020_2_OR_NEWER
+            if (req.result != UnityWebRequest.Result.Success)
+    #else
+            if (req.isNetworkError || req.isHttpError)
+    #endif
+            {
+                Debug.LogError($"[CardQuadSpawner] Failed to load texture from '{url}': {req.error}");
+                yield break;
+            }
+
+            var tex = DownloadHandlerTexture.GetContent(req);
+            if (tex == null)
+            {
+                Debug.LogError($"[CardQuadSpawner] Downloaded texture was null from '{url}'");
+                yield break;
+            }
+
             imageTexture = tex;
-            Debug.Log($"[CardQuadSpawner] Loaded texture from {path}");
-        }
-        else
-        {
-            Debug.LogError("[CardQuadSpawner] Failed to load image from path: " + path);
+            Debug.Log($"[CardQuadSpawner] Successfully loaded texture from '{url}'");
+            var meshController = GetComponent<MeshController>();
+            if (quadPrefab != null && true)
+            {
+                SpawnQuadInFrontOfCard(quadPrefab, imageTexture, 0.01f);
+            }
         }
     }
+
     
       private string GetImageTitle(string path)
     {
