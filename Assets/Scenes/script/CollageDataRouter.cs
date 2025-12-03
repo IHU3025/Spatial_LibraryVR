@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public static class CollageDataRouter
 {
     //----------------------------------------------------------------------
@@ -18,6 +19,7 @@ public static class CollageDataRouter
 
         return result;
     }
+    
 
     //----------------------------------------------------------------------
     // 2. Get artist list for a movement  (Level 1 planes)
