@@ -1162,20 +1162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af670488835a49fdac968ad40f52fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gazeCamera: {fileID: 0}
-  rayDistance: 30
-  raycastMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  controllerNode: 5
-  gripThreshold: 0.7
-  useTrigger: 0
-  showGazeRay: 1
-  gazeRayColor: {r: 0, g: 1, b: 1, a: 1}
-  rayWidth: 0.003
-  highlightGazedObject: 1
-  highlightColor: {r: 0, g: 1, b: 1, a: 1}
-  verboseLogging: 0
 --- !u!114 &308484598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1188,19 +1174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 905f01a13bb4045df84b2b4856dc98a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gazeCamera: {fileID: 0}
-  rayDistance: 30
-  raycastMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  pinchThreshold: 0.7
-  requireBothHands: 0
-  showGazeRay: 0
-  gazeRayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  rayWidth: 0.003
-  highlightGazedObject: 0
-  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  verboseLogging: 0
 --- !u!1 &407861027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,6 +1598,96 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1430960965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1430960967}
+  - component: {fileID: 1430960968}
+  m_Layer: 0
+  m_Name: CollageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1430960967
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430960965}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8751967, y: -0.6430782, z: 5.4543858}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1430960968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1430960965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a28d249cb3c415f4995371ace910c211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manifestFileName: my_manifest_collage_with_folders.json
+--- !u!1 &1638553715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1638553717}
+  - component: {fileID: 1638553718}
+  m_Layer: 0
+  m_Name: CollageFolderManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1638553717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638553715}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.1932857, y: -0.11415076, z: 5.1550403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1638553718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1638553715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe63ba20fe8bb646afad59377251952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manifestFileName: my_manifest_collage_images.json
 --- !u!1 &1808708881
 GameObject:
   m_ObjectHideFlags: 0
@@ -4216,3 +4279,5 @@ SceneRoots:
   - {fileID: 1234382667}
   - {fileID: 3249780812612270903}
   - {fileID: 1107115360}
+  - {fileID: 1430960967}
+  - {fileID: 1638553717}

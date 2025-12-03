@@ -11,7 +11,7 @@ namespace Scenes.script
         public Vector3 scaleReduction = new Vector3(0.8f, 1f, 0.8f);
         
         [Header("Data Settings")]
-        public string relativePath; //passed from selected subpanel
+        public string relativePath; 
         public string relDisplayPath;
         private string myPath;
         private string myDisplayPath;  
@@ -41,10 +41,37 @@ namespace Scenes.script
             SetupPlaneVisuals();
             
         }
+        
+        //=========================== For Collage Loading==========================
+        string GetFolderKey()
+        {
+            if (string.IsNullOrEmpty(folderPath))
+                return null;
 
+            string key = Path.GetFileName(
+                folderPath.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)
+            );
+            return key;
+        }
+    
+
+        ImageFolderEntry GetMyFolderEntry()
+        {
+            if (CollageImagesManifestDatabase.Instance == null ||
+                CollageImagesManifestDatabase.Instance.Manifest == null)
+                return null;
+
+            string key = GetFolderKey();
+            if (string.IsNullOrEmpty(key))
+                return null;
+
+            // Uses the new images manifest:
+            // CollageImagesManifestDatabase + ImageFolderEntry
+            return CollageImagesManifestDatabase.Instance.GetFolderByName(key);
+        }
+        //====================================================
         
 
-        //data loading setup 
         void SetupPlaneVisuals()
         {
             
@@ -64,39 +91,35 @@ namespace Scenes.script
 
         }
 
-        bool IsEmptyFolder()
+       bool IsEmptyFolder()
         {
-            if (string.IsNullOrEmpty(folderPath)) {
-            Debug.LogWarning("Current folder path is null or empty");
-            return false;}
-            if (IsFilePath(folderPath))
+            var entry = GetMyFolderEntry();
+            if (entry == null)
             {
-                return false; 
+                Debug.LogWarning($"[MeshController] No entry in manifest for path '{folderPath}'");
+                return false;
             }
-            bool hasNoSubfolders = Directory.GetDirectories(folderPath).Length == 0;
-            bool hasImageFiles = Directory.GetFiles(folderPath, "*.jpg").Length > 0;
-            return hasNoSubfolders && !hasImageFiles;
+
+            bool hasImages = entry.images != null && entry.images.Count > 0;
+            bool hasSubfolders = false;
+
+            return !hasSubfolders && !hasImages;
         }
 
-        //deal with folders with no child 
         bool IsLeafNode()
         {
-            if (string.IsNullOrEmpty(folderPath)) {
-                Debug.LogWarning("Folder path is null or empty");
-                return false;}
-
-             if (IsFilePath(folderPath))
+            var entry = GetMyFolderEntry();
+            if (entry == null)
             {
-                Debug.Log($"Path is a file, treating as leaf node: {folderPath}");
-                return true;
+                Debug.LogWarning($"[MeshController] No entry in manifest for path '{folderPath}'");
+                return false;
             }
-            
-            
-            bool hasNoSubfolders = Directory.GetDirectories(folderPath).Length == 0;
-            bool hasImageFiles = Directory.GetFiles(folderPath, "*.jpg").Length > 0;
-            isLeafNode = hasNoSubfolders && hasImageFiles;
+
+            bool hasImages = entry.images != null && entry.images.Count > 0;
+            bool hasSubfolders = false; 
+
+            isLeafNode = hasImages && !hasSubfolders;
             return isLeafNode;
-        
         }
 
         bool IsFilePath(string path)
@@ -118,15 +141,15 @@ namespace Scenes.script
         //this deal with the last level (image level)
          void SetupAsImagePlane()
         {
-            if (!string.IsNullOrEmpty(folderPath))
-            {
-                string[] imageFiles = System.IO.Directory.GetFiles(folderPath, "*.jpg");
-                if (imageFiles.Length > 0)
-                {
-                    //in this case the path will be image1.jpg 
-                    //set this to the image_texture for the card script 
-                }
-            }
+            // if (!string.IsNullOrEmpty(folderPath))
+            // {
+            //     // string[] imageFiles = System.IO.Directory.GetFiles(folderPath, "*.jpg");
+            //     // if (imageFiles.Length > 0)
+            //     // {
+            //     //     //in this case the path will be image1.jpg 
+            //     //     //set this to the image_texture for the card script 
+            //     // }
+            // }
             SpawnFolderLabel();
         }
 

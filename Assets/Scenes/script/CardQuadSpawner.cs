@@ -56,45 +56,53 @@ public class CardQuadSpawner : MonoBehaviour
         }
     }
 
-     void LoadImageTexture(){
-            var subPanelController = GetComponent<SubPanelController>();
-            if (subPanelController == null)
-            {
-                Debug.LogError("Parent does not have a subPanelController component.");
-                return;
-            }
-            bool level2 = subPanelController.isLevel2;
-            string path = null; 
-            if (level2) {
-                Debug.LogError("Setting path to displaypath in cardQuadSpawner");
-                path = subPanelController.displayPath;
-            }
-            else{
-                path = subPanelController.dataPath;
-            }
-            bool setImage = subPanelController.setImage;
-            if (setImage){
-                if (!File.Exists(path))
-                {
-                    Debug.LogError("Image file not found at path: " + path);
-                    return;
-                }
-                imageFileName = Path.GetFileNameWithoutExtension(path);
-                byte[] imageData = File.ReadAllBytes(path);
-                Texture2D tex = new Texture2D(2, 2); 
-                if (tex.LoadImage(imageData))
-                {
-                    imageTexture = tex;
-                    Debug.Log($"setting image tex to {path}");
-
-                }
-                else
-                {
-                    Debug.LogError("Failed to load image from path: " + path);
-                }
-
-            }
+    void LoadImageTexture()
+    {
+        var subPanelController = GetComponent<SubPanelController>();
+        if (subPanelController == null)
+        {
+            Debug.LogError("[CardQuadSpawner] No SubPanelController found on this object.");
+            return;
         }
+
+        if (!subPanelController.setImage)
+        {
+            Debug.Log("[CardQuadSpawner] setImage is false; skipping texture load.");
+            return;
+        }
+
+        // Prefer displayPath; fallback to dataPath if needed
+        string path = !string.IsNullOrEmpty(subPanelController.displayPath)
+            ? subPanelController.displayPath
+            : subPanelController.dataPath;
+
+        if (string.IsNullOrEmpty(path))
+        {
+            Debug.LogError("[CardQuadSpawner] Both displayPath and dataPath are empty.");
+            return;
+        }
+
+        if (!File.Exists(path))
+        {
+            Debug.LogError("[CardQuadSpawner] Image file not found at path: " + path);
+            return;
+        }
+
+        imageFileName = Path.GetFileNameWithoutExtension(path);
+
+        byte[] imageData = File.ReadAllBytes(path);
+        Texture2D tex = new Texture2D(2, 2);
+
+        if (tex.LoadImage(imageData))
+        {
+            imageTexture = tex;
+            Debug.Log($"[CardQuadSpawner] Loaded texture from {path}");
+        }
+        else
+        {
+            Debug.LogError("[CardQuadSpawner] Failed to load image from path: " + path);
+        }
+    }
     
       private string GetImageTitle(string path)
     {

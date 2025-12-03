@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR;
 using System.Collections.Generic;
+using System.IO;   
 
 namespace Scenes.script
 {
@@ -14,7 +15,12 @@ namespace Scenes.script
         {
             try
             {
-                laser = gameObject.AddComponent<LineRenderer>();
+                laser = GetComponent<LineRenderer>();
+                if (laser == null)
+                {
+                    laser = gameObject.AddComponent<LineRenderer>();
+                }
+
                 if (laser != null)
                 {
                     laser.startWidth = 0.01f;
@@ -25,7 +31,7 @@ namespace Scenes.script
                         shader = Shader.Find("Standard");
 
                     laser.material = new Material(shader);
-                    laser.startColor = Color.green;
+                    laser.startColor = Color.green;  
                     laser.endColor = Color.red;
 
                     Debug.Log((isLeftController ? "Left" : "Right") + " Working Controller Ready with Laser");
@@ -43,32 +49,13 @@ namespace Scenes.script
 
         void Update()
         {
-            /* 
-             * Let XR Interaction Toolkit handle controller tracking instead of doing it manually 
-             * ActionBasedController already does this.
-             */
+            // Let XR Interaction Toolkit handle tracking; your comment already said this
             // UpdateControllerTracking();
 
             if (laser != null)
             {
                 DrawLaser();
             }
-
-            /* Caused program to crash with VIVE Focus Vision */
-            // if (Input.GetKeyDown(KeyCode.T))
-            // {
-            //     Vector3 camOrigin = Camera.main.transform.position;
-            //     Vector3 camDir = (new Vector3(0, 4, 10) - camOrigin).normalized; 
-            //     Debug.DrawRay(camOrigin, camDir * 30f, Color.blue, 2f);
-            //     if (Physics.Raycast(camOrigin, camDir, out RaycastHit h, 30f))
-            //     {
-            //         Debug.Log("Camera ray hit: " + h.collider.name);
-            //     }
-            //     else
-            //     {
-            //         Debug.Log("Camera ray hit nothing");
-            //     }
-            // }
 
             CheckForInput();
         }
@@ -137,16 +124,6 @@ namespace Scenes.script
                     triggerWasPressed = triggerPressed;
                 }
 
-                /* Unneeded */
-                // Also check trigger value (analog)
-                // if (device.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
-                // {
-                //     if (triggerValue > 0.1f) 
-                //     {
-                //         Debug.Log((isLeftController ? "Left" : "Right") + " TRIGGER VALUE: " + triggerValue);
-                //     }
-                // }
-               
                 if (device.TryGetFeatureValue(CommonUsages.primaryButton, out bool primary) && primary)
                 {
                     Debug.Log((isLeftController ? "Left" : "Right") + " PRIMARY BUTTON!");
@@ -161,41 +138,41 @@ namespace Scenes.script
         void ShootRaycast()
         {
             Vector3 origin = transform.position;
-            Vector3 dir = transform.forward; 
+            Vector3 dir = transform.forward;
             float maxDist = 50f;
 
             Debug.DrawRay(origin, dir * maxDist, Color.red, 1f);
             Debug.Log($"[Ray] origin={origin}, forward={dir}, maxDist={maxDist}");
 
             RaycastHit[] hits = Physics.RaycastAll(origin, dir, maxDist, ~0, QueryTriggerInteraction.Collide);
-            
+
             if (hits.Length == 0)
             {
                 Debug.Log("RaycastAll: no hits");
                 return;
             }
-            
+
             List<RaycastHit> validHits = new List<RaycastHit>();
             for (int i = 0; i < hits.Length; i++)
             {
                 var h = hits[i];
                 var go = h.collider.gameObject;
-                
-                if (go.name.Contains("Controller") || go.name.Contains("Hand")) 
+
+                if (go.name.Contains("Controller") || go.name.Contains("Hand"))
                 {
                     continue;
                 }
-                
+
                 Debug.Log($"hit[{i}] name={go.name}, dist={h.distance}, hitPoint={h.point}, layer={LayerMask.LayerToName(go.layer)}, isTrigger={h.collider.isTrigger}");
                 Debug.Log($"   transform.pos={go.transform.position}, transform.parent={(go.transform.parent ? go.transform.parent.name : "null")}");
-                
+
                 validHits.Add(h);
 
-                GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                marker.transform.position = h.point;
-                marker.transform.localScale = Vector3.one * 0.05f;
-                Destroy(marker.GetComponent<Collider>());
-                Destroy(marker, 2f);
+                // GameObject marker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                // marker.transform.position = h.point;
+                // marker.transform.localScale = Vector3.one * 0.05f;
+                // Destroy(marker.GetComponent<Collider>());
+                // Destroy(marker, 2f);
             }
 
             if (validHits.Count == 0)
@@ -210,7 +187,7 @@ namespace Scenes.script
 
             Debug.Log($"Processing interaction with: {hitObject.name}");
 
-            // moved the subpanel handleing logic here 
+           
             SubPanelController subPanel = hitObject.GetComponent<SubPanelController>();
             if (subPanel != null)
             {
@@ -220,15 +197,42 @@ namespace Scenes.script
                 if (mainPanel != null)
                 {
                     string subpanelPath = subPanel.GetFolderPath();
-                    string subDisplayPath = subPanel.GetDisplayPath();   
+                    string subDisplayPath = subPanel.GetDisplayPath();
                     Debug.Log($"Subpanel path: '{subpanelPath}', Main panel current path: '{mainPanel.folderPath}'");
-                    
+
                     if (!mainPanel.hasChild)
                     {
-                        mainPanel.folderPath = subpanelPath;
-                        mainPanel.displayPath = subDisplayPath;
-                        Debug.Log($"Setting main panel path to: {subpanelPath}");
-                        Debug.Log($"Setting main display path to: {subDisplayPath}");
+                        if (!string.IsNullOrEmpty(subpanelPath))
+                        {
+                            mainPanel.folderPath = subpanelPath;
+                            Debug.Log($"Setting main panel path to: {subpanelPath}");
+                        }
+
+                        if (mainPanel.isBasePlane)
+                        {
+                            string movementName = Path.GetFileName(subpanelPath); 
+                            if (!string.IsNullOrEmpty(movementName))
+                            {
+                                string collagesFixedRoot = Path.Combine(Application.streamingAssetsPath, "collages_fixed");
+                                string movementDisplayRoot = Path.Combine(collagesFixedRoot, movementName);
+                                mainPanel.displayPath = movementDisplayRoot;
+
+                                Debug.Log($"[BasePlane] Setting main display path (movement root) to: {movementDisplayRoot}");
+                            }
+                        }
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(subDisplayPath))
+                            {
+                                string displayDir = Path.GetDirectoryName(subDisplayPath);
+                                if (!string.IsNullOrEmpty(displayDir))
+                                {
+                                    mainPanel.displayPath = displayDir;
+                                    Debug.Log($"Setting main display path to dir: {displayDir}");
+                                }
+                            }
+                        }
+
                         mainPanel.SpawnChildPlane();
                     }
                     else
@@ -243,7 +247,7 @@ namespace Scenes.script
                 return;
             }
 
-            // Handle main panel
+         
             MeshController meshController = hitObject.GetComponent<MeshController>();
             if (meshController != null)
             {

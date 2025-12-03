@@ -1,0 +1,1084 @@
+{
+  "folders": [
+    {
+      "name": "art_nouveau",
+      "displayName": "Art Nouveau",
+      "subfolders": [
+        {
+          "name": "a-y-jackson",
+          "displayName": "A Y Jackson"
+        },
+        {
+          "name": "achille-beltrame",
+          "displayName": "Achille Beltrame"
+        },
+        {
+          "name": "albert-lynch",
+          "displayName": "Albert Lynch"
+        },
+        {
+          "name": "alexandre-benois",
+          "displayName": "Alexandre Benois"
+        },
+        {
+          "name": "alphonse-mucha",
+          "displayName": "Alphonse Mucha"
+        },
+        {
+          "name": "anna-ostroumova-lebedeva",
+          "displayName": "Anna Ostroumova Lebedeva"
+        },
+        {
+          "name": "arthur-rackham",
+          "displayName": "Arthur Rackham"
+        },
+        {
+          "name": "artus-scheiner",
+          "displayName": "Artus Scheiner"
+        },
+        {
+          "name": "aubrey-beardsley",
+          "displayName": "Aubrey Beardsley"
+        },
+        {
+          "name": "beatrix-potter",
+          "displayName": "Beatrix Potter"
+        },
+        {
+          "name": "boris-kustodiev",
+          "displayName": "Boris Kustodiev"
+        },
+        {
+          "name": "byam-shaw",
+          "displayName": "Byam Shaw"
+        },
+        {
+          "name": "carl-larsson",
+          "displayName": "Carl Larsson"
+        },
+        {
+          "name": "carlos-saenz-de-tejada",
+          "displayName": "Carlos Saenz De Tejada"
+        },
+        {
+          "name": "carlos-schwabe",
+          "displayName": "Carlos Schwabe"
+        },
+        {
+          "name": "charles-rennie-mackintosh",
+          "displayName": "Charles Rennie Mackintosh"
+        },
+        {
+          "name": "charles-robinson",
+          "displayName": "Charles Robinson"
+        },
+        {
+          "name": "dorothy-lathrop",
+          "displayName": "Dorothy Lathrop"
+        },
+        {
+          "name": "edmund-dulac",
+          "displayName": "Edmund Dulac"
+        },
+        {
+          "name": "egon-schiele",
+          "displayName": "Egon Schiele"
+        }
+      ],
+      "images": [
+        "a-y-jackson.jpg",
+        "achille-beltrame.jpg",
+        "albert-lynch.jpg",
+        "alexandre-benois.jpg",
+        "alphonse-mucha.jpg",
+        "anna-ostroumova-lebedeva.jpg",
+        "arthur-rackham.jpg",
+        "artus-scheiner.jpg",
+        "aubrey-beardsley.jpg",
+        "beatrix-potter.jpg",
+        "boris-kustodiev.jpg",
+        "byam-shaw.jpg",
+        "carl-larsson.jpg",
+        "carlos-saenz-de-tejada.jpg",
+        "carlos-schwabe.jpg",
+        "charles-rennie-mackintosh.jpg",
+        "charles-robinson.jpg",
+        "dorothy-lathrop.jpg",
+        "edmund-dulac.jpg",
+        "egon-schiele.jpg"
+      ]
+    },
+    {
+      "name": "baroque",
+      "displayName": "Baroque",
+      "subfolders": [
+        {
+          "name": "abraham-storck",
+          "displayName": "Abraham Storck"
+        },
+        {
+          "name": "adam-elsheimer",
+          "displayName": "Adam Elsheimer"
+        },
+        {
+          "name": "adam-van-der-meulen",
+          "displayName": "Adam Van Der Meulen"
+        },
+        {
+          "name": "adriaen-brouwer",
+          "displayName": "Adriaen Brouwer"
+        },
+        {
+          "name": "adriaen-van-de-velde",
+          "displayName": "Adriaen Van De Velde"
+        },
+        {
+          "name": "adriaen-van-de-venne",
+          "displayName": "Adriaen Van De Venne"
+        },
+        {
+          "name": "adriaen-van-ostade",
+          "displayName": "Adriaen Van Ostade"
+        },
+        {
+          "name": "aelbert-cuyp",
+          "displayName": "Aelbert Cuyp"
+        },
+        {
+          "name": "agostino-carracci",
+          "displayName": "Agostino Carracci"
+        },
+        {
+          "name": "aleksey-antropov",
+          "displayName": "Aleksey Antropov"
+        },
+        {
+          "name": "alonzo-cano",
+          "displayName": "Alonzo Cano"
+        },
+        {
+          "name": "annibale-carracci",
+          "displayName": "Annibale Carracci"
+        },
+        {
+          "name": "anthony-van-dyck",
+          "displayName": "Anthony Van Dyck"
+        },
+        {
+          "name": "bartolome-esteban-murillo",
+          "displayName": "Bartolome Esteban Murillo"
+        },
+        {
+          "name": "bernardo-strozzi",
+          "displayName": "Bernardo Strozzi"
+        },
+        {
+          "name": "canaletto",
+          "displayName": "Canaletto"
+        },
+        {
+          "name": "caravaggio",
+          "displayName": "Caravaggio"
+        },
+        {
+          "name": "charles-le-brun",
+          "displayName": "Charles Le Brun"
+        },
+        {
+          "name": "cornelis-de-vos",
+          "displayName": "Cornelis De Vos"
+        },
+        {
+          "name": "cornelis-van-noorde",
+          "displayName": "Cornelis Van Noorde"
+        }
+      ],
+      "images": [
+        "abraham-storck.jpg",
+        "adam-elsheimer.jpg",
+        "adam-van-der-meulen.jpg",
+        "adriaen-brouwer.jpg",
+        "adriaen-van-de-velde.jpg",
+        "adriaen-van-de-venne.jpg",
+        "adriaen-van-ostade.jpg",
+        "aelbert-cuyp.jpg",
+        "agostino-carracci.jpg",
+        "aleksey-antropov.jpg",
+        "alonzo-cano.jpg",
+        "annibale-carracci.jpg",
+        "anthony-van-dyck.jpg",
+        "bartolome-esteban-murillo.jpg",
+        "bernardo-strozzi.jpg",
+        "canaletto.jpg",
+        "caravaggio.jpg",
+        "charles-le-brun.jpg",
+        "cornelis-de-vos.jpg",
+        "cornelis-van-noorde.jpg"
+      ]
+    },
+    {
+      "name": "expressionism",
+      "displayName": "Expressionism",
+      "subfolders": [
+        {
+          "name": "albert-bloch",
+          "displayName": "Albert Bloch"
+        },
+        {
+          "name": "albin-egger-lienz",
+          "displayName": "Albin Egger Lienz"
+        },
+        {
+          "name": "alexander-calder",
+          "displayName": "Alexander Calder"
+        },
+        {
+          "name": "alexandre-jacovleff",
+          "displayName": "Alexandre Jacovleff"
+        },
+        {
+          "name": "alexej-von-jawlensky",
+          "displayName": "Alexej Von Jawlensky"
+        },
+        {
+          "name": "alexis-gritchenko",
+          "displayName": "Alexis Gritchenko"
+        },
+        {
+          "name": "amedeo-modigliani",
+          "displayName": "Amedeo Modigliani"
+        },
+        {
+          "name": "andre-derain",
+          "displayName": "Andre Derain"
+        },
+        {
+          "name": "antonietta-raphael",
+          "displayName": "Antonietta Raphael"
+        },
+        {
+          "name": "arturo-souto",
+          "displayName": "Arturo Souto"
+        },
+        {
+          "name": "august-macke",
+          "displayName": "August Macke"
+        },
+        {
+          "name": "avigdor-arikha",
+          "displayName": "Avigdor Arikha"
+        },
+        {
+          "name": "bahman-mohasses",
+          "displayName": "Bahman Mohasses"
+        },
+        {
+          "name": "balthus",
+          "displayName": "Balthus"
+        },
+        {
+          "name": "beauford-delaney",
+          "displayName": "Beauford Delaney"
+        },
+        {
+          "name": "ben-shahn",
+          "displayName": "Ben Shahn"
+        },
+        {
+          "name": "benny-andrews",
+          "displayName": "Benny Andrews"
+        },
+        {
+          "name": "bernard-buffet",
+          "displayName": "Bernard Buffet"
+        },
+        {
+          "name": "boris-grigoriev",
+          "displayName": "Boris Grigoriev"
+        },
+        {
+          "name": "bozoky-maria",
+          "displayName": "Bozoky Maria"
+        }
+      ],
+      "images": [
+        "albert-bloch.jpg",
+        "albin-egger-lienz.jpg",
+        "alexander-calder.jpg",
+        "alexandre-jacovleff.jpg",
+        "alexej-von-jawlensky.jpg",
+        "alexis-gritchenko.jpg",
+        "amedeo-modigliani.jpg",
+        "andre-derain.jpg",
+        "antonietta-raphael.jpg",
+        "arturo-souto.jpg",
+        "august-macke.jpg",
+        "avigdor-arikha.jpg",
+        "bahman-mohasses.jpg",
+        "balthus.jpg",
+        "beauford-delaney.jpg",
+        "ben-shahn.jpg",
+        "benny-andrews.jpg",
+        "bernard-buffet.jpg",
+        "boris-grigoriev.jpg",
+        "bozoky-maria.jpg"
+      ]
+    },
+    {
+      "name": "impressionism",
+      "displayName": "Impressionism",
+      "subfolders": [
+        {
+          "name": "adam-baltatu",
+          "displayName": "Adam Baltatu"
+        },
+        {
+          "name": "albert-julius-olsson",
+          "displayName": "Albert Julius Olsson"
+        },
+        {
+          "name": "alfred-sisley",
+          "displayName": "Alfred Sisley"
+        },
+        {
+          "name": "alfredo-andersen",
+          "displayName": "Alfredo Andersen"
+        },
+        {
+          "name": "algernon-talmage",
+          "displayName": "Algernon Talmage"
+        },
+        {
+          "name": "anders-zorn",
+          "displayName": "Anders Zorn"
+        },
+        {
+          "name": "andre-dunoyer-de-segonzac",
+          "displayName": "Andre Dunoyer De Segonzac"
+        },
+        {
+          "name": "antoine-blanchard",
+          "displayName": "Antoine Blanchard"
+        },
+        {
+          "name": "arkhip-kuindzhi",
+          "displayName": "Arkhip Kuindzhi"
+        },
+        {
+          "name": "armand-guillaumin",
+          "displayName": "Armand Guillaumin"
+        },
+        {
+          "name": "auguste-rodin",
+          "displayName": "Auguste Rodin"
+        },
+        {
+          "name": "benjamin-brown",
+          "displayName": "Benjamin Brown"
+        },
+        {
+          "name": "berthe-morisot",
+          "displayName": "Berthe Morisot"
+        },
+        {
+          "name": "camille-pissarro",
+          "displayName": "Camille Pissarro"
+        },
+        {
+          "name": "childe-hassam",
+          "displayName": "Childe Hassam"
+        },
+        {
+          "name": "clarence-gagnon",
+          "displayName": "Clarence Gagnon"
+        },
+        {
+          "name": "claude-monet",
+          "displayName": "Claude Monet"
+        },
+        {
+          "name": "constantin-artachino",
+          "displayName": "Constantin Artachino"
+        },
+        {
+          "name": "cornelis-vreedenburgh",
+          "displayName": "Cornelis Vreedenburgh"
+        },
+        {
+          "name": "edgar-degas",
+          "displayName": "Edgar Degas"
+        }
+      ],
+      "images": [
+        "adam-baltatu.jpg",
+        "albert-julius-olsson.jpg",
+        "alfred-sisley.jpg",
+        "alfredo-andersen.jpg",
+        "algernon-talmage.jpg",
+        "anders-zorn.jpg",
+        "andre-dunoyer-de-segonzac.jpg",
+        "antoine-blanchard.jpg",
+        "arkhip-kuindzhi.jpg",
+        "armand-guillaumin.jpg",
+        "auguste-rodin.jpg",
+        "benjamin-brown.jpg",
+        "berthe-morisot.jpg",
+        "camille-pissarro.jpg",
+        "childe-hassam.jpg",
+        "clarence-gagnon.jpg",
+        "claude-monet.jpg",
+        "constantin-artachino.jpg",
+        "cornelis-vreedenburgh.jpg",
+        "edgar-degas.jpg"
+      ]
+    },
+    {
+      "name": "post_impressionism",
+      "displayName": "Post Impressionism",
+      "subfolders": [
+        {
+          "name": "abraham-manievich",
+          "displayName": "Abraham Manievich"
+        },
+        {
+          "name": "adalbert-erdeli",
+          "displayName": "Adalbert Erdeli"
+        },
+        {
+          "name": "albert-marquet",
+          "displayName": "Albert Marquet"
+        },
+        {
+          "name": "anita-malfatti",
+          "displayName": "Anita Malfatti"
+        },
+        {
+          "name": "antonio-sicurezza",
+          "displayName": "Antonio Sicurezza"
+        },
+        {
+          "name": "arshile-gorky",
+          "displayName": "Arshile Gorky"
+        },
+        {
+          "name": "arturo-souto",
+          "displayName": "Arturo Souto"
+        },
+        {
+          "name": "augustus-john",
+          "displayName": "Augustus John"
+        },
+        {
+          "name": "christopher-wood",
+          "displayName": "Christopher Wood"
+        },
+        {
+          "name": "constantin-piliuta",
+          "displayName": "Constantin Piliuta"
+        },
+        {
+          "name": "cuno-amiet",
+          "displayName": "Cuno Amiet"
+        },
+        {
+          "name": "david-burliuk",
+          "displayName": "David Burliuk"
+        },
+        {
+          "name": "edouard-cortes",
+          "displayName": "Edouard Cortes"
+        },
+        {
+          "name": "edouard-vuillard",
+          "displayName": "Edouard Vuillard"
+        },
+        {
+          "name": "emily-carr",
+          "displayName": "Emily Carr"
+        },
+        {
+          "name": "felix-vallotton",
+          "displayName": "Felix Vallotton"
+        },
+        {
+          "name": "ferdinand-hodler",
+          "displayName": "Ferdinand Hodler"
+        },
+        {
+          "name": "francisc-sirato",
+          "displayName": "Francisc Sirato"
+        },
+        {
+          "name": "fujishima-takeji",
+          "displayName": "Fujishima Takeji"
+        },
+        {
+          "name": "georges-seurat",
+          "displayName": "Georges Seurat"
+        }
+      ],
+      "images": [
+        "abraham-manievich.jpg",
+        "adalbert-erdeli.jpg",
+        "albert-marquet.jpg",
+        "anita-malfatti.jpg",
+        "antonio-sicurezza.jpg",
+        "arshile-gorky.jpg",
+        "arturo-souto.jpg",
+        "augustus-john.jpg",
+        "christopher-wood.jpg",
+        "constantin-piliuta.jpg",
+        "cuno-amiet.jpg",
+        "david-burliuk.jpg",
+        "edouard-cortes.jpg",
+        "edouard-vuillard.jpg",
+        "emily-carr.jpg",
+        "felix-vallotton.jpg",
+        "ferdinand-hodler.jpg",
+        "francisc-sirato.jpg",
+        "fujishima-takeji.jpg",
+        "georges-seurat.jpg"
+      ]
+    },
+    {
+      "name": "realism",
+      "displayName": "Realism",
+      "subfolders": [
+        {
+          "name": "abbott-handerson-thayer",
+          "displayName": "Abbott Handerson Thayer"
+        },
+        {
+          "name": "adolph-menzel",
+          "displayName": "Adolph Menzel"
+        },
+        {
+          "name": "albert-anker",
+          "displayName": "Albert Anker"
+        },
+        {
+          "name": "aleksey-ivanovich-korzukhin",
+          "displayName": "Aleksey Ivanovich Korzukhin"
+        },
+        {
+          "name": "aleksey-savrasov",
+          "displayName": "Aleksey Savrasov"
+        },
+        {
+          "name": "alexandre-antigna",
+          "displayName": "Alexandre Antigna"
+        },
+        {
+          "name": "alexei-harlamoff",
+          "displayName": "Alexei Harlamoff"
+        },
+        {
+          "name": "alexey-bogolyubov",
+          "displayName": "Alexey Bogolyubov"
+        },
+        {
+          "name": "alexey-venetsianov",
+          "displayName": "Alexey Venetsianov"
+        },
+        {
+          "name": "anders-zorn",
+          "displayName": "Anders Zorn"
+        },
+        {
+          "name": "anton-romako",
+          "displayName": "Anton Romako"
+        },
+        {
+          "name": "antonietta-brandeis",
+          "displayName": "Antonietta Brandeis"
+        },
+        {
+          "name": "antonio-jacobsen",
+          "displayName": "Antonio Jacobsen"
+        },
+        {
+          "name": "arkhip-kuindzhi",
+          "displayName": "Arkhip Kuindzhi"
+        },
+        {
+          "name": "august-von-pettenkofen",
+          "displayName": "August Von Pettenkofen"
+        },
+        {
+          "name": "basuki-abdullah",
+          "displayName": "Basuki Abdullah"
+        },
+        {
+          "name": "boris-kustodiev",
+          "displayName": "Boris Kustodiev"
+        },
+        {
+          "name": "briton-riviere",
+          "displayName": "Briton Riviere"
+        },
+        {
+          "name": "camille-corot",
+          "displayName": "Camille Corot"
+        },
+        {
+          "name": "camille-pissarro",
+          "displayName": "Camille Pissarro"
+        }
+      ],
+      "images": [
+        "abbott-handerson-thayer.jpg",
+        "adolph-menzel.jpg",
+        "albert-anker.jpg",
+        "aleksey-ivanovich-korzukhin.jpg",
+        "aleksey-savrasov.jpg",
+        "alexandre-antigna.jpg",
+        "alexei-harlamoff.jpg",
+        "alexey-bogolyubov.jpg",
+        "alexey-venetsianov.jpg",
+        "anders-zorn.jpg",
+        "anton-romako.jpg",
+        "antonietta-brandeis.jpg",
+        "antonio-jacobsen.jpg",
+        "arkhip-kuindzhi.jpg",
+        "august-von-pettenkofen.jpg",
+        "basuki-abdullah.jpg",
+        "boris-kustodiev.jpg",
+        "briton-riviere.jpg",
+        "camille-corot.jpg",
+        "camille-pissarro.jpg"
+      ]
+    },
+    {
+      "name": "renaissance",
+      "displayName": "Renaissance",
+      "subfolders": [
+        {
+          "name": "agnolo-bronzino",
+          "displayName": "Agnolo Bronzino"
+        },
+        {
+          "name": "albrecht-altdorfer",
+          "displayName": "Albrecht Altdorfer"
+        },
+        {
+          "name": "albrecht-durer",
+          "displayName": "Albrecht Durer"
+        },
+        {
+          "name": "alessandro-allori",
+          "displayName": "Alessandro Allori"
+        },
+        {
+          "name": "ambrogio-bergognone",
+          "displayName": "Ambrogio Bergognone"
+        },
+        {
+          "name": "andrea-del-sarto",
+          "displayName": "Andrea Del Sarto"
+        },
+        {
+          "name": "andrea-mantegna",
+          "displayName": "Andrea Mantegna"
+        },
+        {
+          "name": "bartholomaus-spranger",
+          "displayName": "Bartholomaus Spranger"
+        },
+        {
+          "name": "bartolomeo-passerotti",
+          "displayName": "Bartolomeo Passerotti"
+        },
+        {
+          "name": "bartolomeo-veneto",
+          "displayName": "Bartolomeo Veneto"
+        },
+        {
+          "name": "bernard-van-orley",
+          "displayName": "Bernard Van Orley"
+        },
+        {
+          "name": "bernardino-luini",
+          "displayName": "Bernardino Luini"
+        },
+        {
+          "name": "bernhard-strigel",
+          "displayName": "Bernhard Strigel"
+        },
+        {
+          "name": "carlo-urbino",
+          "displayName": "Carlo Urbino"
+        },
+        {
+          "name": "cima-da-conegliano",
+          "displayName": "Cima Da Conegliano"
+        },
+        {
+          "name": "correggio",
+          "displayName": "Correggio"
+        },
+        {
+          "name": "dirk-bouts",
+          "displayName": "Dirk Bouts"
+        },
+        {
+          "name": "domenico-beccafumi",
+          "displayName": "Domenico Beccafumi"
+        },
+        {
+          "name": "domenico-tintoretto",
+          "displayName": "Domenico Tintoretto"
+        },
+        {
+          "name": "dosso-dossi",
+          "displayName": "Dosso Dossi"
+        }
+      ],
+      "images": [
+        "agnolo-bronzino.jpg",
+        "albrecht-altdorfer.jpg",
+        "albrecht-durer.jpg",
+        "alessandro-allori.jpg",
+        "ambrogio-bergognone.jpg",
+        "andrea-del-sarto.jpg",
+        "andrea-mantegna.jpg",
+        "bartholomaus-spranger.jpg",
+        "bartolomeo-passerotti.jpg",
+        "bartolomeo-veneto.jpg",
+        "bernard-van-orley.jpg",
+        "bernardino-luini.jpg",
+        "bernhard-strigel.jpg",
+        "carlo-urbino.jpg",
+        "cima-da-conegliano.jpg",
+        "correggio.jpg",
+        "dirk-bouts.jpg",
+        "domenico-beccafumi.jpg",
+        "domenico-tintoretto.jpg",
+        "dosso-dossi.jpg"
+      ]
+    },
+    {
+      "name": "romanticism",
+      "displayName": "Romanticism",
+      "subfolders": [
+        {
+          "name": "albert-bierstadt",
+          "displayName": "Albert Bierstadt"
+        },
+        {
+          "name": "albrecht-adam",
+          "displayName": "Albrecht Adam"
+        },
+        {
+          "name": "alexander-clarot",
+          "displayName": "Alexander Clarot"
+        },
+        {
+          "name": "alexander-orlowski",
+          "displayName": "Alexander Orlowski"
+        },
+        {
+          "name": "alexandre-gabriel-decamps",
+          "displayName": "Alexandre Gabriel Decamps"
+        },
+        {
+          "name": "alfred-dehodencq",
+          "displayName": "Alfred Dehodencq"
+        },
+        {
+          "name": "alfred-stevens",
+          "displayName": "Alfred Stevens"
+        },
+        {
+          "name": "andreas-achenbach",
+          "displayName": "Andreas Achenbach"
+        },
+        {
+          "name": "arthur-hughes",
+          "displayName": "Arthur Hughes"
+        },
+        {
+          "name": "arturo-michelena",
+          "displayName": "Arturo Michelena"
+        },
+        {
+          "name": "asher-brown-durand",
+          "displayName": "Asher Brown Durand"
+        },
+        {
+          "name": "bartolomeo-pinelli",
+          "displayName": "Bartolomeo Pinelli"
+        },
+        {
+          "name": "byam-shaw",
+          "displayName": "Byam Shaw"
+        },
+        {
+          "name": "camille-corot",
+          "displayName": "Camille Corot"
+        },
+        {
+          "name": "carl-haag",
+          "displayName": "Carl Haag"
+        },
+        {
+          "name": "caspar-david-friedrich",
+          "displayName": "Caspar David Friedrich"
+        },
+        {
+          "name": "charles-de-steuben",
+          "displayName": "Charles De Steuben"
+        },
+        {
+          "name": "charles-m-russell",
+          "displayName": "Charles M Russell"
+        },
+        {
+          "name": "charles-turner",
+          "displayName": "Charles Turner"
+        },
+        {
+          "name": "charlet",
+          "displayName": "Charlet"
+        }
+      ],
+      "images": [
+        "albert-bierstadt.jpg",
+        "albrecht-adam.jpg",
+        "alexander-clarot.jpg",
+        "alexander-orlowski.jpg",
+        "alexandre-gabriel-decamps.jpg",
+        "alfred-dehodencq.jpg",
+        "alfred-stevens.jpg",
+        "andreas-achenbach.jpg",
+        "arthur-hughes.jpg",
+        "arturo-michelena.jpg",
+        "asher-brown-durand.jpg",
+        "bartolomeo-pinelli.jpg",
+        "byam-shaw.jpg",
+        "camille-corot.jpg",
+        "carl-haag.jpg",
+        "caspar-david-friedrich.jpg",
+        "charles-de-steuben.jpg",
+        "charles-m-russell.jpg",
+        "charles-turner.jpg",
+        "charlet.jpg"
+      ]
+    },
+    {
+      "name": "surrealism",
+      "displayName": "Surrealism",
+      "subfolders": [
+        {
+          "name": "abercrombie",
+          "displayName": "Abercrombie"
+        },
+        {
+          "name": "andre-masson",
+          "displayName": "Andre Masson"
+        },
+        {
+          "name": "antoni",
+          "displayName": "Antoni"
+        },
+        {
+          "name": "bahtiar",
+          "displayName": "Bahtiar"
+        },
+        {
+          "name": "ben",
+          "displayName": "Ben"
+        },
+        {
+          "name": "bernard",
+          "displayName": "Bernard"
+        },
+        {
+          "name": "brassai",
+          "displayName": "Brassai"
+        },
+        {
+          "name": "brauner",
+          "displayName": "Brauner"
+        },
+        {
+          "name": "brigitte",
+          "displayName": "Brigitte"
+        },
+        {
+          "name": "carlos",
+          "displayName": "Carlos"
+        },
+        {
+          "name": "chavarria",
+          "displayName": "Chavarria"
+        },
+        {
+          "name": "colin",
+          "displayName": "Colin"
+        },
+        {
+          "name": "conroy-maddox",
+          "displayName": "Conroy Maddox"
+        },
+        {
+          "name": "cukier",
+          "displayName": "Cukier"
+        },
+        {
+          "name": "daniel",
+          "displayName": "Daniel"
+        },
+        {
+          "name": "david",
+          "displayName": "David"
+        },
+        {
+          "name": "de",
+          "displayName": "De"
+        },
+        {
+          "name": "dela",
+          "displayName": "Dela"
+        },
+        {
+          "name": "didier",
+          "displayName": "Didier"
+        },
+        {
+          "name": "dino",
+          "displayName": "Dino"
+        }
+      ],
+      "images": [
+        "abercrombie.jpg",
+        "andre-masson.jpg",
+        "antoni.jpg",
+        "bahtiar.jpg",
+        "ben.jpg",
+        "bernard.jpg",
+        "brassai.jpg",
+        "brauner.jpg",
+        "brigitte.jpg",
+        "carlos.jpg",
+        "chavarria.jpg",
+        "colin.jpg",
+        "conroy-maddox.jpg",
+        "cukier.jpg",
+        "daniel.jpg",
+        "david.jpg",
+        "de.jpg",
+        "dela.jpg",
+        "didier.jpg",
+        "dino.jpg"
+      ]
+    },
+    {
+      "name": "ukiyo_e",
+      "displayName": "Ukiyo E",
+      "subfolders": [
+        {
+          "name": "adachi-ginko",
+          "displayName": "Adachi Ginko"
+        },
+        {
+          "name": "chokosai-eisho",
+          "displayName": "Chokosai Eisho"
+        },
+        {
+          "name": "eishosai-choki",
+          "displayName": "Eishosai Choki"
+        },
+        {
+          "name": "gigado-ashiyuki",
+          "displayName": "Gigado Ashiyuki"
+        },
+        {
+          "name": "hasegawa-sadanobu-i",
+          "displayName": "Hasegawa Sadanobu I"
+        },
+        {
+          "name": "hiroshige",
+          "displayName": "Hiroshige"
+        },
+        {
+          "name": "hishikawa-moronobu",
+          "displayName": "Hishikawa Moronobu"
+        },
+        {
+          "name": "hosoda-eishi",
+          "displayName": "Hosoda Eishi"
+        },
+        {
+          "name": "ippitsusai-buncho",
+          "displayName": "Ippitsusai Buncho"
+        },
+        {
+          "name": "ishikawa-toyonobu",
+          "displayName": "Ishikawa Toyonobu"
+        },
+        {
+          "name": "isoda-koryusai",
+          "displayName": "Isoda Koryusai"
+        },
+        {
+          "name": "ito-jakuchu",
+          "displayName": "Ito Jakuchu"
+        },
+        {
+          "name": "katsukawa-shuncho",
+          "displayName": "Katsukawa Shuncho"
+        },
+        {
+          "name": "katsukawa-shunei",
+          "displayName": "Katsukawa Shunei"
+        },
+        {
+          "name": "katsukawa-shunko",
+          "displayName": "Katsukawa Shunko"
+        },
+        {
+          "name": "katsukawa-shunsho",
+          "displayName": "Katsukawa Shunsho"
+        },
+        {
+          "name": "katsukawa-shuntei",
+          "displayName": "Katsukawa Shuntei"
+        },
+        {
+          "name": "katsukawa-shunzan",
+          "displayName": "Katsukawa Shunzan"
+        },
+        {
+          "name": "katsushika-hokusai",
+          "displayName": "Katsushika Hokusai"
+        },
+        {
+          "name": "kawanabe-kyosai",
+          "displayName": "Kawanabe Kyosai"
+        }
+      ],
+      "images": [
+        "adachi-ginko.jpg",
+        "chokosai-eisho.jpg",
+        "eishosai-choki.jpg",
+        "gigado-ashiyuki.jpg",
+        "hasegawa-sadanobu-i.jpg",
+        "hiroshige.jpg",
+        "hishikawa-moronobu.jpg",
+        "hosoda-eishi.jpg",
+        "ippitsusai-buncho.jpg",
+        "ishikawa-toyonobu.jpg",
+        "isoda-koryusai.jpg",
+        "ito-jakuchu.jpg",
+        "katsukawa-shuncho.jpg",
+        "katsukawa-shunei.jpg",
+        "katsukawa-shunko.jpg",
+        "katsukawa-shunsho.jpg",
+        "katsukawa-shuntei.jpg",
+        "katsukawa-shunzan.jpg",
+        "katsushika-hokusai.jpg",
+        "kawanabe-kyosai.jpg"
+      ]
+    }
+  ]
+}

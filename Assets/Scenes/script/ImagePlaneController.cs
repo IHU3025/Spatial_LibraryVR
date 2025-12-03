@@ -52,29 +52,64 @@ public class ImagePlaneController : MonoBehaviour
         SpawnFolderLabel();
     }
 
-     void LoadImageTexture(){
-            GameObject panel = transform.parent.gameObject;
-            var meshController = panel.GetComponent<MeshController>();
-            if (meshController == null)
+     void LoadImageTexture()
+    {
+        if (transform.parent == null)
+        {
+            Debug.LogError("[ImagePlaneController] No parent transform found.");
+            return;
+        }
+
+        GameObject panel = transform.parent.gameObject;
+        var meshController = panel.GetComponent<MeshController>();
+        if (meshController == null)
+        {
+            Debug.LogError("[ImagePlaneController] Parent does not have a MeshController component.");
+            return;
+        }
+
+        string display = meshController.displayPath;
+        string folder  = meshController.folderPath;
+
+        Debug.Log($"[ImagePlaneController] displayPath='{display}', folderPath='{folder}'");
+
+        string path = null;
+        if (!string.IsNullOrEmpty(display) && File.Exists(display))
+        {
+            path = display;
+        }
+        else if (!string.IsNullOrEmpty(folder) && File.Exists(folder))
+        {
+            path = folder;
+        }
+
+        if (string.IsNullOrEmpty(path))
+        {
+            Debug.LogError("[ImagePlaneController] No valid image file found. " +
+                        "Neither displayPath nor folderPath points to an existing file.");
+            return;
+        }
+
+        try
+        {
+            byte[] imageData = File.ReadAllBytes(path);
+            Texture2D tex = new Texture2D(2, 2);
+            if (tex.LoadImage(imageData))
             {
-                Debug.LogError("Parent does not have a MeshController component.");
-                return;
+                imageTexture = tex;
+                Debug.Log($"[ImagePlaneController] Loaded image texture from: {path}");
             }
-            string path = meshController.folderPath;
-                byte[] imageData = File.ReadAllBytes(path);
-                Texture2D tex = new Texture2D(2, 2); 
-                if (tex.LoadImage(imageData))
-                {
-                    imageTexture = tex;
-                    Debug.Log($"setting image tex to {path}");
-
-                }
-                else
-                {
-                    Debug.LogError("Failed to load image from path: " + path);
-                }
-
+            else
+            {
+                Debug.LogError("[ImagePlaneController] Failed to decode image from path: " + path);
             }
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("[ImagePlaneController] Exception reading image from '" + path + "': " + ex.Message);
+        }
+    }
+
 
     
     public GameObject SpawnQuadInFrontOfCard(GameObject quadPrefab, Texture tex, float localZOffset = 0.01f)
@@ -102,14 +137,12 @@ public class ImagePlaneController : MonoBehaviour
         var cornerScores = new List<(Vector3 pos, float score)>(8);
         for (int i = 0; i < corners.Count; i++)
         {
-            // Score by how much they're in the outward direction from center
-            // Score by how much they're in the outward direction from center
+          
             Vector3 toCorner = (corners[i] - c).normalized;
             float score = Vector3.Dot(toCorner, outwardDirection);
             cornerScores.Add((corners[i], score));
         }
         
-        // Sort by highest score (most outward)
         cornerScores.Sort((a, b) => b.score.CompareTo(a.score));
         
         // Take the front 4 corners
@@ -153,7 +186,6 @@ public class ImagePlaneController : MonoBehaviour
 
         Vector3 quadLocalPos = frontCenterLocal + new Vector3(0, 0, localZOffset);
 
-        // spawning
         if (spawnedQuad != null) Destroy(spawnedQuad);
         
         spawnedQuad = Instantiate(quadPrefab);
@@ -161,7 +193,6 @@ public class ImagePlaneController : MonoBehaviour
         spawnedQuad.transform.SetParent(transform, false);
         spawnedQuad.transform.localPosition = quadLocalPos;
 
-        // Calculate scale 
         float uniformLocalScale = Mathf.Max(localWidth, localHeight) * scaleMultiplier;
         spawnedQuad.transform.localScale = new Vector3(uniformLocalScale, uniformLocalScale, uniformLocalScale);
         spawnedQuad.transform.localRotation = Quaternion.Euler(0f, 0f, rotaionZ);
@@ -169,14 +200,12 @@ public class ImagePlaneController : MonoBehaviour
         Transform child = spawnedQuad.transform.GetChild(0);
         if (child != null)
         {
-            //offset between quad and card
             float childYOffset = -0.014f; 
             child.localPosition = new Vector3(0f, childYOffset, worldOffset);
         }
 
         Debug.Log($"Quad local position: {quadLocalPos}, scale: {uniformLocalScale}");
 
-        // Set material/texture
         Renderer quadR = spawnedQuad.GetComponentInChildren<Renderer>();
         if (quadR != null && tex != null)
         {
@@ -185,7 +214,7 @@ public class ImagePlaneController : MonoBehaviour
                 new Material(Shader.Find("Standard"));
             
             mat.mainTexture = tex;
-            mat.mainTextureScale = new Vector2(-1f, -1f);
+            mat.mainTextureScale = new Vector2(1f, -1f);
             quadR.material = mat;
         }
 
