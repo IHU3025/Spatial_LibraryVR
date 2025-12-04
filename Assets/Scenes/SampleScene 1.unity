@@ -915,7 +915,6 @@ GameObject:
   - component: {fileID: 308484594}
   - component: {fileID: 308484593}
   - component: {fileID: 308484598}
-  - component: {fileID: 308484597}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1150,18 +1149,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &308484597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308484591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9af670488835a49fdac968ad40f52fda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &308484598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1171,9 +1158,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 308484591}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 905f01a13bb4045df84b2b4856dc98a0, type: 3}
+  m_Script: {fileID: 11500000, guid: add40d705f86f3449982e1c6fd24109c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gazeCamera: {fileID: 308484596}
+  rayDistance: 30
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  controllerNode: 5
+  gripThreshold: 0.7
+  useTrigger: 0
+  showGazeRay: 1
+  gazeRayColor: {r: 0, g: 1, b: 1, a: 1}
+  rayWidth: 0.003
+  highlightGazedObject: 1
+  highlightColor: {r: 0, g: 1, b: 1, a: 1}
+  verboseLogging: 0
 --- !u!1 &407861027
 GameObject:
   m_ObjectHideFlags: 0
@@ -3166,6 +3167,7 @@ GameObject:
   - component: {fileID: 35684588906420633}
   - component: {fileID: 5460375835596774007}
   - component: {fileID: 5460375835596774008}
+  - component: {fileID: 5460375835596774009}
   m_Layer: 0
   m_Name: Body4
   m_TagString: Untagged
@@ -3224,6 +3226,25 @@ MonoBehaviour:
     type: 3}
   labelHeight: -0.008
   labelz: 0.065
+--- !u!114 &5460375835596774009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5460375835596774006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b0c59ce4858e4a8d9abe0afeff2cb22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gazeCamera: {fileID: 308484596}
+  lookAwayDuration: 0.75
+  gazeAngleThreshold: 10
+  followDistance: 20
+  smoothSpeed: 2
+  rotationSpeed: 2
+  verboseLogging: 0
 --- !u!1 &6125217650284782337
 GameObject:
   m_ObjectHideFlags: 0
