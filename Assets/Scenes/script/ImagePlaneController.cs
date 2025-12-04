@@ -69,12 +69,31 @@ public class ImagePlaneController : MonoBehaviour
 
         string path = null;
 
-        // Leaf planes: folderPath is usually the full file
-        if (!string.IsNullOrEmpty(folder) && File.Exists(folder))
+        // Check if folderPath looks like a file (has an image extension)
+        bool folderIsFile = !string.IsNullOrEmpty(folder) && 
+            (folder.EndsWith(".jpg", System.StringComparison.OrdinalIgnoreCase) ||
+            folder.EndsWith(".jpeg", System.StringComparison.OrdinalIgnoreCase) ||
+            folder.EndsWith(".png", System.StringComparison.OrdinalIgnoreCase));
+
+        bool displayIsFile = !string.IsNullOrEmpty(display) && 
+            (display.EndsWith(".jpg", System.StringComparison.OrdinalIgnoreCase) ||
+            display.EndsWith(".jpeg", System.StringComparison.OrdinalIgnoreCase) ||
+            display.EndsWith(".png", System.StringComparison.OrdinalIgnoreCase));
+
+        // Prioritize file paths over directory paths
+        if (folderIsFile)
         {
             path = folder;
         }
-        else if (!string.IsNullOrEmpty(display) && File.Exists(display))
+        else if (displayIsFile)
+        {
+            path = display;
+        }
+        else if (!string.IsNullOrEmpty(folder))
+        {
+            path = folder;
+        }
+        else if (!string.IsNullOrEmpty(display))
         {
             path = display;
         }
@@ -89,8 +108,10 @@ public class ImagePlaneController : MonoBehaviour
         }
 
         string url = path;
-        if (!url.StartsWith("file://"))
+        if (!url.StartsWith("file://") && !url.StartsWith("jar:") && !url.StartsWith("http"))
+        {
             url = "file://" + url;
+        }
 
         Debug.Log($"[ImagePlaneController] Loading texture via URL: {url}");
         StartCoroutine(LoadImageTextureFromPath(url));
