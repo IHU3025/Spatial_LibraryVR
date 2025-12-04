@@ -9,6 +9,14 @@
       },
       "hash": "791b5db0fab41efe661ebd2c1abf8e30b6f22ad8"
     },
+    "com.bezi.sidekick": {
+      "version": "file:com.bezi.sidekick",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      }
+    },
     "com.unity.ai.navigation": {
       "version": "1.1.7",
       "depth": 0,
